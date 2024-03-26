@@ -7,6 +7,8 @@ import { useCurrentUser } from '../contexts/CurrentUserContext';
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
+
+  // Navlinks to display while logged out
   const loggedOutIcons = (
     <>
     <NavLink
@@ -25,6 +27,8 @@ const NavBar = () => {
         </NavLink>
     </>
   )
+
+  // Navlinks to display while logged in
   const loggedInIcons = (
     <>
     <NavLink
@@ -41,7 +45,24 @@ const NavBar = () => {
       >
         <i class="fa-solid fa-clipboard-list"></i> My Assigned Tasks
         </NavLink>
-      {currentUser?.username}
+        <NavLink
+        to='/log-out'
+        className={styles.NavLink}
+        onClick={() => {}}
+      >
+        <i class="fa-solid fa-right-from-bracket"></i> Log Out
+        </NavLink>
+        <NavLink
+        to={`/profiles/${currentUser?.profile_id}`}
+        className={styles.NavLink}
+      >
+        <img 
+        src={currentUser?.profile_picture}
+        height='30' 
+        width='30'
+        />
+        {currentUser?.username}
+        </NavLink>
     </>
   )
 
