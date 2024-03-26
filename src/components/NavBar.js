@@ -32,7 +32,7 @@ const NavBar = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
       <Container>
-      <Nav>
+      <Nav className='ml-auto text-center'>
         <NavLink
          to='log-in'
          className={styles.NavLink}
