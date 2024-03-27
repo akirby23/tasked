@@ -1,9 +1,10 @@
 import React from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import logo from '../assets/tasked-logo.png';
 import styles from '../styles/NavBar.module.css';
 import { NavLink } from 'react-router-dom';
 import { useCurrentUser } from '../contexts/CurrentUserContext';
+import ProfilePicture from './ProfilePicture';
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -45,24 +46,24 @@ const NavBar = () => {
       >
         <i class="fa-solid fa-clipboard-list"></i> My Assigned Tasks
         </NavLink>
-        <NavLink
-        to='/log-out'
-        className={styles.NavLink}
-        onClick={() => {}}
-      >
-        <i class="fa-solid fa-right-from-bracket"></i> Log Out
-        </NavLink>
-        <NavLink
+        <NavDropdown title={<ProfilePicture 
+        src={currentUser?.profile_picture} 
+        text={currentUser?.username} 
+        />} 
+        id="basic-nav-dropdown">
+        <NavDropdown.Item
+        as={NavLink}
         to={`/profiles/${currentUser?.profile_id}`}
-        className={styles.NavLink}
-      >
-        <img 
-        src={currentUser?.profile_picture}
-        height='30' 
-        width='30'
-        />
-        {currentUser?.username}
-        </NavLink>
+        >
+        <i class="fa-regular fa-user"></i> My Profile
+        </NavDropdown.Item>
+        <NavDropdown.Item
+        as={NavLink}
+        to='/log-out'
+        >
+        <i class="fa-solid fa-right-from-bracket"></i> Log Out
+        </NavDropdown.Item>
+      </NavDropdown>
     </>
   )
 
