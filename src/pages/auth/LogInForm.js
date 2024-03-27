@@ -3,6 +3,7 @@ import { Row, Col, Form, Button, Container, Alert } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
 import axios from 'axios'
 import { useSetCurrentUser } from '../../contexts/CurrentUserContext'
+import { setTokenTimestamp } from '../../utils/utils'
 
 const LogInForm = () => {
     const setCurrentUser = useSetCurrentUser();
@@ -29,6 +30,7 @@ const LogInForm = () => {
         try {
             const {data} = await axios.post('dj-rest-auth/login/', logInData)
             setCurrentUser(data.user)
+            setTokenTimestamp(data);
             history.push('/')
             
         } catch (err) {

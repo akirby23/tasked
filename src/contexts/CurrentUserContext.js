@@ -2,6 +2,7 @@ import axios from 'axios';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { axiosReq, axiosRes } from '../api/axiosDefaults';
 import { useHistory } from 'react-router-dom';
+import { removeTokenTimestamp, shouldRefreshToken } from '../utils/utils';
 
 // Code obtained from CI's Moments walkthrough project
 export const CurrentUserContext = createContext();
@@ -31,6 +32,7 @@ export const CurrentUserProvider = ({ children }) => {
         // Refreshes access token before making a request
         axiosReq.interceptors.request.use(
             async (config) => {
+                if (shouldRefreshToken()) {
                 try {
                     await axios.post('/dj-rest-auth/token/refresh/');
                 } catch(err) {
@@ -39,9 +41,11 @@ export const CurrentUserProvider = ({ children }) => {
                             history.push('/log-in');
                         }
                         return null;
-                    })
+                    });
+                    removeTokenTimestamp()
                     return config;
                 }
+            }
                 return config;
             },
             (err) => {
@@ -61,8 +65,9 @@ export const CurrentUserProvider = ({ children }) => {
                             if (prevCurrentUser){
                                 history.push('/log-in')
                             }
-                            return null
-                        })
+                            return null;
+                        });
+                        removeTokenTimestamp();
                     }
                     return axios.Cancel(err.config)
                 }

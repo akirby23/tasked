@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useSetCurrentUser } from '../../contexts/CurrentUserContext'
 import { useHistory } from 'react-router-dom';
 import { Row, Col, Button } from 'react-bootstrap';
+import { removeTokenTimestamp } from '../../utils/utils';
 
 const LogOut = () => {
     const setCurrentUser  = useSetCurrentUser();
@@ -17,6 +18,7 @@ const LogOut = () => {
         try {
           await axios.post('dj-rest-auth/logout/');
           setCurrentUser(null);
+          removeTokenTimestamp();
           history.push('/')
         } catch(err){
           console.log(err)
