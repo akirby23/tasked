@@ -33,6 +33,12 @@ const NavBar = () => {
   const loggedInIcons = (
     <>
     <NavLink
+        to='/create-task'
+        className={styles.NavLink}
+      >
+        <i class="fa-regular fa-square-plus"></i> New Task
+        </NavLink>
+    <NavLink
         to='/my-tasks'
         className={styles.NavLink}
         activeClassName={styles.Active}
@@ -78,7 +84,6 @@ const NavBar = () => {
         exact 
         to='/'
         className={styles.NavLink}
-        activeClassName={styles.Active}
         >
       <Navbar.Brand>
         <img
