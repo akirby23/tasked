@@ -2,10 +2,14 @@
     background-color: #67D09F;
 }
 
-.NavLink {
+.NavLink, 
+.NavDropdown {
     padding: 0.4rem;
 }
 
-.Active {
-    border-bottom: 1px solid;
+
+@media screen and (min-width: 768px) {
+    .Active {
+        border-bottom: 1px solid;
+    }
 }

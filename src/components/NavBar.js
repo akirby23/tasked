@@ -95,15 +95,15 @@ const NavBar = () => {
         />
       </Navbar.Brand>
       </NavLink>
-      </Container>
+      
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
-      <Container>
+    
       <Nav className='ml-auto text-center'>
         {currentUser ? loggedInIcons : loggedOutIcons}
       </Nav>
-      </Container>
     </Navbar.Collapse>
+    </Container>
   </Navbar>
   )
 }
