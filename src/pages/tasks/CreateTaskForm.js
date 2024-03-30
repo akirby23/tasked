@@ -13,12 +13,22 @@ const CreateTaskForm = () => {
 
     const [errors, setErrors] = useState({})
 
+    const [taskData, setTaskData] = useState({
+        title: '',
+        category: '',
+        priority_level: '',
+        task_detail: '',
+        assignee: '',
+    });
+
+    const { title, category, priority_level, task_detail, assignee } = taskData
+
     // Retrieve categories from the drf-tasked API
     const retrieveCategories = async () => {
         try {
-            const {data} = await axios.get('/categories/')
+            const { data } = await axios.get('/categories/')
             setCategories(data)
-        } catch (err){
+        } catch (err) {
             console.log(err)
         }
     }
@@ -26,9 +36,9 @@ const CreateTaskForm = () => {
     // Retrieve priority levels from the drf-tasked API
     const retrievePriorityLevels = async () => {
         try {
-            const {data} = await axios.get('/priority-levels/')
+            const { data } = await axios.get('/priority-levels/')
             setPriorityLevels(data)
-        } catch (err){
+        } catch (err) {
             console.log(err)
         }
     }
@@ -36,29 +46,18 @@ const CreateTaskForm = () => {
     // Retrieve profiles from the drf-tasked API
     const retrieveProfiles = async () => {
         try {
-            const {data} = await axios.get('/profiles/')
+            const { data } = await axios.get('/profiles/')
             setProfiles(data)
-        } catch (err){
+        } catch (err) {
             console.log(err)
         }
     }
-    
+
     useEffect(() => {
         retrieveCategories();
         retrievePriorityLevels();
         retrieveProfiles();
     }, []);
-
-    const [taskData, setTaskData] = useState({
-        title: '',
-        category: '',
-        priority_level: '',
-        task_detail: '',
-        assignee: '',
-        status: ''
-    });
-
-    const { title, category, priority_level, task_detail, assignee } = taskData
 
     const handleChange = (event) => {
         setTaskData({
@@ -79,12 +78,15 @@ const CreateTaskForm = () => {
                 <Form.Label>Category</Form.Label>
                 <Form.Control
                     as='select'
+                    name='category'
                     onChange={handleChange}
                     aria-label='category'
                 >
-                    {categories.map(category => (
+                    <option disabled selected hidden>Select a category</option>
+                    {categories.results?.map(category => (
                         <option
                             key={category.id}
+                            value={category.id}
                         >
                             {category.name}: {category.description}
                         </option>
@@ -92,41 +94,46 @@ const CreateTaskForm = () => {
                 </Form.Control>
             </Form.Group>
             {errors?.category?.map((message, idx) =>
-                        <Alert variant="warning" key={idx}>
-                            {message}
-                        </Alert>
-                        )}
+                <Alert variant="warning" key={idx}>
+                    {message}
+                </Alert>
+            )}
 
             <Form.Group controlId="priority-level">
                 <Form.Label>Priority Level</Form.Label>
                 <Form.Control
                     as='select'
+                    name='priority_level'
                     onChange={handleChange}
                     aria-label='priority level'
                 >
-                    {priorityLevels.map(priority_level => (
+                    <option disabled selected hidden>Select a priority level</option>
+                    {priorityLevels.results?.map(priority_level => (
                         <option
                             key={priority_level.id}
+                            value={priority_level.id}
                         >
-                            {priorityLevels.priority_level}
+                            {priority_level.name}: {priority_level.description}
                         </option>
                     ))}
                 </Form.Control>
             </Form.Group>
             {errors?.priority_level?.map((message, idx) =>
-                        <Alert variant="warning" key={idx}>
-                            {message}
-                        </Alert>
-                        )}
+                <Alert variant="warning" key={idx}>
+                    {message}
+                </Alert>
+            )}
 
             <Form.Group controlId="assignee">
                 <Form.Label>Assignee</Form.Label>
                 <Form.Control
                     as='select'
+                    name='assignee'
                     onChange={handleChange}
                     aria-label='assignee'
                 >
-                    {profiles.map((profile) => (
+                    <option disabled selected hidden>Select an assignee</option>
+                    {profiles.results?.map((profile) => (
                         <option
                             key={profile.id}
                             value={profile.id}
@@ -137,10 +144,10 @@ const CreateTaskForm = () => {
                 </Form.Control>
             </Form.Group>
             {errors?.assignee?.map((message, idx) =>
-                        <Alert variant="warning" key={idx}>
-                            {message}
-                        </Alert>
-                        )}
+                <Alert variant="warning" key={idx}>
+                    {message}
+                </Alert>
+            )}
 
         </div>
     )
@@ -154,43 +161,33 @@ const CreateTaskForm = () => {
                     name="title"
                     value={title}
                     onChange={handleChange}
-                    placeholder="Enter a title" />
+                    placeholder="Enter a title"
+                >
+                </Form.Control>
             </Form.Group>
             {errors?.title?.map((message, idx) =>
-                        <Alert variant="warning" key={idx}>
-                            {message}
-                        </Alert>
-                        )}
+                <Alert variant="warning" key={idx}>
+                    {message}
+                </Alert>
+            )}
 
-            <Form.Group controlId="task-details">
+            <Form.Group controlId="task-detail">
                 <Form.Label>Task Details</Form.Label>
                 <Form.Control
                     as='textarea'
-                    rows={7}
-                    name='task-details'
+                    rows={5}
+                    name='task_detail'
                     value={task_detail}
                     onChange={handleChange}
                     placeholder='Enter task details'
-                />
+                >
+                </Form.Control>
             </Form.Group>
-            {errors?.task_details?.map((message, idx) =>
-                        <Alert variant="warning" key={idx}>
-                            {message}
-                        </Alert>
-                        )}
-
-
-            <Button
-                variant="primary"
-                type="submit"
-            >Create Task
-            </Button>
-            <Button
-                variant="outline-primary"
-                onClick={returnToPreviousPage}
-            >
-                Cancel
-            </Button>
+            {errors?.task_detail?.map((message, idx) =>
+                <Alert variant="warning" key={idx}>
+                    {message}
+                </Alert>
+            )}
         </div>
 
     )
@@ -207,11 +204,11 @@ const CreateTaskForm = () => {
         formData.append('assignee', assignee)
 
         try {
-            const {data} = await axiosReq.post('/tasks/', formData)
+            const { data } = await axiosReq.post('/tasks/', formData)
             history.push(`/tasks/${data.id}`)
-        } catch(err){
+        } catch (err) {
             console.log(err);
-            if (err.response?.status !== 401){
+            if (err.response?.status !== 401) {
                 setErrors(err.response?.data);
             }
         }
@@ -226,6 +223,18 @@ const CreateTaskForm = () => {
 
                         {textFields}
                         {dropdownFields}
+
+                        <Button
+                            variant="primary"
+                            type="submit"
+                        >Create Task
+                        </Button>
+                        <Button
+                            variant="outline-primary"
+                            onClick={returnToPreviousPage}
+                        >
+                            Cancel
+                        </Button>
 
                     </Container>
                 </Col>
