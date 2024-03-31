@@ -7,6 +7,7 @@ import LogInForm from './pages/auth/LogInForm';
 import LogOut from './pages/auth/LogOut.js';
 import { Container } from 'react-bootstrap';
 import CreateTaskForm from './pages/tasks/CreateTaskForm.js';
+import TaskPage from './pages/tasks/TaskPage.js';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route exact path='/create-task' render={() => <CreateTaskForm />}></Route>
           <Route exact path='/my-tasks' render={() => <h1>My Tasks</h1>}></Route>
           <Route exact path='/my-assigned-tasks' render={() => <h1>My Assigned Tasks</h1>}></Route>
+          <Route exact path='/tasks/:id' render={() => <TaskPage />}></Route>
         </Switch>
       </Container>
     </div >
