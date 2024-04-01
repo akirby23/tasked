@@ -29,7 +29,7 @@ const TaskPage = () => {
             <Col 
             md={8}
             className='mt-3'>
-            <Task {...task.results[0]} setTasks={setTask} />
+            <Task {...task.results[0]} setTasks={setTask} taskPage />
             </Col>
             <Col>
             <p></p>
