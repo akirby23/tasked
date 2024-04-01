@@ -1,8 +1,10 @@
 import React from 'react'
 import { useCurrentUser } from '../../contexts/CurrentUserContext'
 import { Card, ListGroup, ListGroupItem, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import ProfilePicture from '../../components/ProfilePicture';
+import { DropDownMenu } from '../../components/DropDownMenu';
+import { axiosRes } from '../../api/axiosDefaults';
 
 const Task = (props) => {
   const {
@@ -24,6 +26,20 @@ const Task = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+  const history = useHistory();
+
+  const handleEdit = () => {
+    history.push(`/tasks/${id}/edit`)
+  }
+
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/tasks/${id}/`)
+      history.goBack();
+    } catch (err){
+      console.log(err);
+    };
+  };
 
   return (
     <Card
@@ -46,7 +62,10 @@ const Task = (props) => {
               </Link>
             </Col>
             <Col>
-              {is_owner && taskPage && '...'}
+              {is_owner && taskPage && (<DropDownMenu 
+              handleEdit={handleEdit}
+              handleDelete={handleDelete} 
+              />)}
             </Col>
           </Row>
         </Card.Header>
