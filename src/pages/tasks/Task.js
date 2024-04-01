@@ -32,9 +32,11 @@ const Task = (props) => {
       <Card.Body>
         <Card.Header>
           <Row>
-            <Col>
-              {title && <Card.Title>Task: {title}</Card.Title>}
-            </Col>
+            <Link to={`/tasks/${id}`}>
+              <Col>
+                {title && <Card.Title>Task: {title}</Card.Title>}
+              </Col>
+            </Link>
             <Col>
               <Link
                 to={`/profiles/${profile_id}`}
@@ -44,7 +46,7 @@ const Task = (props) => {
               </Link>
             </Col>
             <Col>
-            {is_owner && taskPage && '...'}
+              {is_owner && taskPage && '...'}
             </Col>
           </Row>
         </Card.Header>
@@ -55,16 +57,18 @@ const Task = (props) => {
         </ListGroup>
         {task_detail && <Card.Text>Task details: {task_detail}</Card.Text>}
         <Card.Footer>
-            <Row>
-              <Col>
-                <div>Created on: {created_on}</div>
-                <div>Updated on: {updated_on}</div>
-              </Col>
-              <Col>
-                {assignee_name && <div>Assigned to: {assignee_name}</div>}
+          <Row>
+            <Col>
+              <div>Created on: {created_on}</div>
+              <div>Updated on: {updated_on}</div>
+            </Col>
+            <Col>
+              {assignee_name && <div>Assigned to: {assignee_name}</div>}
+              <Link to={`/tasks/${id}`}>
                 <div><i class="fa-regular fa-comments"></i> {comments_count}</div>
-              </Col>
-            </Row>
+              </Link>
+            </Col>
+          </Row>
         </Card.Footer>
       </Card.Body>
     </Card>
