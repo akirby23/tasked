@@ -20,6 +20,7 @@ const Task = (props) => {
     category_name,
     priority_level_name,
     task_detail,
+    assignee,
     assignee_name,
     status,
     taskPage,
@@ -27,6 +28,7 @@ const Task = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+  const is_assignee = currentUser?.profile_id === assignee;
   const history = useHistory();
 
   const [displayDeleteModal, setDisplayDeleteModal] = useState(false);
@@ -74,7 +76,7 @@ const Task = (props) => {
               </Link>
             </Col>
             <Col>
-              {is_owner && taskPage && (<DropDownMenu 
+              {(is_owner || is_assignee) && taskPage && (<DropDownMenu 
               handleEdit={handleEdit}
               handleDelete={handeDisplayDeleteModal} 
               />)}

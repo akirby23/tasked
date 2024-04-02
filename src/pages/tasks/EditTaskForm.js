@@ -199,9 +199,9 @@ const EditTaskForm = () => {
         const handleMount = async () => {
             try {
                 const { data } = await axiosReq.get(`/tasks/${id}/`)
-                const { title, category, priority_level, task_detail, assignee, is_owner } = data;
+                const { title, category, priority_level, task_detail, assignee, is_owner, is_assignee } = data;
 
-                is_owner ? setTaskData({ title, category, priority_level, task_detail, assignee }) : history.push('/')
+                (is_owner || is_assignee) ? setTaskData({ title, category, priority_level, task_detail, assignee }) : history.push('/')
             } catch (err) {
                 console.log(err);
             };
