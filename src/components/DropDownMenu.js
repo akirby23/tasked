@@ -23,6 +23,7 @@ export const DropDownMenu = ({ handleEdit, handleDelete }) => {
 
       <Dropdown.Menu
       className='text-center'
+      popperConfig={{ strategy: "fixed" }}
       >
         <Dropdown.Item
           onClick={handleEdit}
