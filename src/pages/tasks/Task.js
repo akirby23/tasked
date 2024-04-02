@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useCurrentUser } from '../../contexts/CurrentUserContext'
-import { Card, ListGroup, ListGroupItem, Row, Col } from 'react-bootstrap';
+import { Card, ListGroup, ListGroupItem, Row, Col, Button } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import ProfilePicture from '../../components/ProfilePicture';
 import { DropDownMenu } from '../../components/DropDownMenu';
 import { axiosRes } from '../../api/axiosDefaults';
+import ModalPopup from '../../components/ModalPopup';
 
 const Task = (props) => {
   const {
@@ -28,6 +29,16 @@ const Task = (props) => {
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
 
+  const [displayDeleteModal, setDisplayDeleteModal] = useState(false);
+
+  const handeDisplayDeleteModal = () => {
+    setDisplayDeleteModal(true);
+  }
+
+  const handleCloseDeleteModal = () => {
+    setDisplayDeleteModal(false);
+  }
+
   const handleEdit = () => {
     history.push(`/tasks/${id}/edit`)
   }
@@ -38,6 +49,7 @@ const Task = (props) => {
       history.goBack();
     } catch (err){
       console.log(err);
+      setDisplayDeleteModal(false);
     };
   };
 
@@ -64,9 +76,32 @@ const Task = (props) => {
             <Col>
               {is_owner && taskPage && (<DropDownMenu 
               handleEdit={handleEdit}
-              handleDelete={handleDelete} 
+              handleDelete={handeDisplayDeleteModal} 
               />)}
             </Col>
+            {displayDeleteModal && (<ModalPopup 
+            show={displayDeleteModal}
+            onHide={handleCloseDeleteModal}
+            title={<h2>Delete Task</h2>}
+            body={<p>Are you sure you want to delete this task? This action cannot be undone.</p> }
+            footer={
+              <div>
+                <Button
+                variant='danger'
+                onClick={handleDelete}
+                >
+                Delete Task
+                </Button>
+                <Button
+                variant='secondary'
+                onClick={handleCloseDeleteModal}
+                >
+                  Cancel
+                </Button>
+              </div>
+            }
+            />
+            )};
           </Row>
         </Card.Header>
         <ListGroup className="list-group-flush">
