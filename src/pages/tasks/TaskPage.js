@@ -12,7 +12,7 @@ const TaskPage = () => {
     const [task, setTask] = useState({ results: [] });
 
     const currentUser = useCurrentUser();
-    const [comments, setComments] = useState({ results: [] })
+    const [comments, setComments] = useState({ results: [] });
 
     useEffect(() => {
         const handleMount = async () => {
@@ -36,7 +36,11 @@ const TaskPage = () => {
                 <Col
                     md={8}
                     className='mt-3'>
-                    <Task {...task.results[0]} setTasks={setTask} taskPage />
+                    <Task 
+                    {...task.results[0]} 
+                    setTasks={setTask} 
+                    taskPage 
+                    />
                 </Col>
                 <Col>
                     <p></p>
@@ -63,6 +67,8 @@ const TaskPage = () => {
                             <Comment 
                             key={comment.id} 
                             {...comment}
+                            setTask={setTask}
+                            setComments={setComments}
                             />
                         ))
                         // tbd if the below will be needed

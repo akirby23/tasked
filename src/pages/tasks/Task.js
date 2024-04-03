@@ -121,8 +121,8 @@ const Task = (props) => {
             <Col>
               {assignee_name && <div>Assigned to: {assignee_name}</div>}
               <Link to={`/tasks/${id}`}>
-                <div><i class="fa-regular fa-comments"></i> {comments_count}</div>
-              </Link>
+                <i class="fa-regular fa-comments"></i> {comments_count}
+                </Link>
             </Col>
           </Row>
         </Card.Footer>

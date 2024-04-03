@@ -1,9 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ProfilePicture from '../../components/ProfilePicture'
-import { Media } from 'react-bootstrap';
+import { Media, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import { DropDownMenu } from '../../components/DropDownMenu';
+import { axiosRes } from '../../api/axiosDefaults';
+import ModalPopup from '../../components/ModalPopup';
 
-const Comment = ( { profile_id, profile_image, owner, created_on, updated_on, comment_detail }) => {
+const Comment = ( { profile_id, profile_image, owner, created_on, updated_on, comment_detail, id, setTask, setComments }) => {
+
+  const currentUser = useCurrentUser();
+  const is_owner = currentUser?.username === owner;
+
+  const [displayDeleteModal, setDisplayDeleteModal] = useState(false);
+
+  const handeDisplayDeleteModal = () => {
+    setDisplayDeleteModal(true);
+  }
+
+  const handleCloseDeleteModal = () => {
+    setDisplayDeleteModal(false);
+  }
+
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/comments/${id}/`);
+      console.log("comment deleted!")
+      setTask((prevTask) => ({
+        ...prevTask.results[0],
+        comments_count: prevTask.results[0].comments_count -1,
+      }));
+      setComments((prevComments) => ({
+        ...prevComments, 
+        results: prevComments.results.filter((comment) => comment.id !== id)
+      }));
+    } catch (err){
+      console.log(err);
+      setDisplayDeleteModal(false);
+    };
+  };
 
   return (
     <div>
@@ -23,7 +58,35 @@ const Comment = ( { profile_id, profile_image, owner, created_on, updated_on, co
                 <p>{comment_detail}</p>
                 <span>Last updated: {updated_on}</span>
             </Media.Body>
+            {is_owner && (
+              <DropDownMenu 
+              handleDelete={handeDisplayDeleteModal}
+              />
+            )}
         </Media>
+        {displayDeleteModal && (<ModalPopup 
+            show={displayDeleteModal}
+            onHide={handleCloseDeleteModal}
+            title={<h2>Delete Comment</h2>}
+            body={<p>Are you sure you want to delete this comment? This action cannot be undone.</p> }
+            footer={
+              <div>
+                <Button
+                variant='danger'
+                onClick={handleDelete}
+                >
+                Delete Comment
+                </Button>
+                <Button
+                variant='secondary'
+                onClick={handleCloseDeleteModal}
+                >
+                  Cancel
+                </Button>
+              </div>
+            }
+            />
+            )};
     </div>
   )
 }
