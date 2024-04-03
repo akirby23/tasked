@@ -23,7 +23,6 @@ const CreateCommentForm = (props) => {
                 comment_detail,
                 task,
             });
-            // 
             setComments((prevComments) => ({
                 ...prevComments,
                 results: [data, ...prevComments.results],

@@ -21,12 +21,12 @@ const TaskPage = () => {
                     axiosReq.get(`/tasks/${id}`),
                     axiosReq.get(`/comments/?task=${id}`)
                 ])
-                setTask({ results: [task] })
-                setComments(comments)
+                setTask({ results: [task] });
+                setComments(comments);
             } catch (err) {
-                console.log(err)
-            }
-        }
+                console.log(err);
+            };
+        };
         handleMount();
     }, [id]);
 
