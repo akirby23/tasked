@@ -12,7 +12,7 @@ const EditCommentForm = ({ id, comment_detail, setDisplayEditForm, setComments }
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axiosRes.put(`/comments/${id}/`, {
+            await axiosRes.patch(`/comments/${id}/`, {
                 comment_detail: formContent.trim(),
             });
             setComments((prevComments) => ({

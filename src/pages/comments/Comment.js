@@ -35,7 +35,6 @@ const Comment = ({ profile_id, profile_image, owner, created_on, updated_on, com
         ...prevComments,
         results: prevComments.results.filter((comment) => comment.id !== id),
       }));
-      console.log(setTask)
     } catch (err) {
       console.log(err);
       setDisplayDeleteModal(false);
