@@ -12,6 +12,9 @@ import TasksPage from './pages/tasks/TasksPage.js';
 import { useCurrentUser } from './contexts/CurrentUserContext.js';
 import EditTaskForm from './pages/tasks/EditTaskForm.js';
 import ProfilePage from './pages/profiles/ProfilePage.js';
+import EditUsernameForm from './pages/profiles/EditUsernameForm.js';
+import EditProfileForm from './pages/profiles/EditProfileForm.js';
+import EditPasswordForm from './pages/profiles/EditPasswordForm.js';
 
 
 function App() {
@@ -39,6 +42,9 @@ function App() {
           <Route exact path='/my-assigned-tasks' render={() => <h1>My Assigned Tasks</h1>}></Route>
           <Route exact path='/tasks/:id' render={() => <TaskPage />}></Route>
           <Route exact path='/profiles/:id' render={() => <ProfilePage />}></Route>
+          <Route exact path='/profiles/:id/edit' render={() => <EditProfileForm />}></Route>
+          <Route exact path="/profiles/:id/edit/username" render={() => <EditUsernameForm />}></Route>
+          <Route exact path="/profiles/:id/edit/password" render={() => <EditPasswordForm/>}></Route>
           <Route render={() => <p>Page not found</p>} />
         </Switch>
       </Container>
