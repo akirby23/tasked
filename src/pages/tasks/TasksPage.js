@@ -28,6 +28,7 @@ const TasksPage = ({ message, filter = "" }) => {
 
 
   return (
+
     <Row>
         <Col
         md={8}
@@ -54,11 +55,11 @@ const TasksPage = ({ message, filter = "" }) => {
                 <Asset spinner />
             </Container>
         )}
-        </Col>
-        <Col>
-        Placeholder
-        </Col>
-    </Row>
+          </Col>
+          <Col>
+        
+          </Col>
+      </Row>
   )
 }
 

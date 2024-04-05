@@ -11,6 +11,7 @@ import TaskPage from './pages/tasks/TaskPage.js';
 import TasksPage from './pages/tasks/TasksPage.js';
 import { useCurrentUser } from './contexts/CurrentUserContext.js';
 import EditTaskForm from './pages/tasks/EditTaskForm.js';
+import ProfilePage from './pages/profiles/ProfilePage.js';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route exact path='/my-tasks' render={() => <h1>My Tasks</h1>}></Route>
           <Route exact path='/my-assigned-tasks' render={() => <h1>My Assigned Tasks</h1>}></Route>
           <Route exact path='/tasks/:id' render={() => <TaskPage />}></Route>
+          <Route exact path='/profiles/:id' render={() => <ProfilePage />}></Route>
           <Route render={() => <p>Page not found</p>} />
         </Switch>
       </Container>
