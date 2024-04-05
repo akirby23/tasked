@@ -16,4 +16,11 @@ a {
 
 a:hover {
     text-decoration: none;
+    color: #1E4185;
+    transition: 0.5s;
+}
+
+.Container {
+    background-color: #FFFFFF;
+    padding: 2rem;
 }
