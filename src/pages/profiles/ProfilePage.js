@@ -5,6 +5,8 @@ import { Col, Container, Image, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import { useProfileData, useSetProfileData } from '../../contexts/ProfileDataContext';
+import { EditProfileDropdown } from '../../components/DropDownMenu';
+import appStyles from "../../App.module.css";
 
 
 const ProfilePage = () => {
@@ -33,7 +35,11 @@ const ProfilePage = () => {
     }, [id, setProfileData]);
 
     const mainProfile = (
-        <>
+        <Container className={`shadow mt-3 ${appStyles.Container}`}>
+        {profile?.is_owner &&
+                <EditProfileDropdown
+                    id={profile?.id}
+                />}
             <Row className='m-3'>
                 <Col lg={3}>
                     <Image
@@ -47,33 +53,32 @@ const ProfilePage = () => {
                     <hr />
                 </Col>
             </Row>
-            <Row className='text-center p-4'>
-                    <Col>
-                        <div>{profile?.tasks_count}</div>
-                        <div>tasks</div>
-                    </Col>
-                    <Col>
+            <Row className='text-center p-3'>
+                <Col>
+                    <div>{profile?.created_tasks_count}</div>
+                    <div>tasks</div>
+                </Col>
+                <Col>
                     Placeholder
-                    </Col>
-                    <Col>
+                </Col>
+                <Col>
                     Placeholder
-                    </Col>
-                </Row>
-                <Row>
-                    <Col
+                </Col>
+            </Row>
+            <Row>
+                <Col
                     md={4}
-                    className='p-4'
-                    >
+                >
                     Member since: {profile?.created_on}
-                    </Col>
-                    
-                </Row>
-        </>
+                </Col>
+
+            </Row>
+        </Container>
+      
     )
 
     return (
         <Row
-        className='shadow m-3'
         >
             <Col>
                 <Container>
