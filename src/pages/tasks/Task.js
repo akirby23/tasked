@@ -23,6 +23,7 @@ const Task = (props) => {
     assignee,
     assignee_name,
     status,
+    status_name,
     taskPage,
   } = props;
 
@@ -110,7 +111,7 @@ const Task = (props) => {
         <ListGroup className="list-group-flush">
           {category_name && <ListGroupItem>Category: {category_name}</ListGroupItem>}
           {priority_level_name && <ListGroupItem>Priority Level: {priority_level_name}</ListGroupItem>}
-          {status && <ListGroupItem>Status: {status}</ListGroupItem>}
+          {status && <ListGroupItem>Status: {status_name}</ListGroupItem>}
         </ListGroup>
         {task_detail && <Card.Text>Task details: {task_detail}</Card.Text>}
         <Card.Footer>
