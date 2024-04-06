@@ -91,6 +91,7 @@ const Task = (props) => {
                 <Button
                 variant='danger'
                 onClick={handleDelete}
+                className='mr-1'
                 >
                 Delete Task
                 </Button>
