@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import { useProfileData, useSetProfileData } from '../../contexts/ProfileDataContext';
 import { EditProfileDropdown } from '../../components/DropDownMenu';
-import appStyles from "../../App.module.css";
+import appStyles from '../../App.module.css';
 
 
 const ProfilePage = () => {
@@ -35,8 +35,8 @@ const ProfilePage = () => {
     }, [id, setProfileData]);
 
     const mainProfile = (
-        <Container className={`shadow mt-3 ${appStyles.Container}`}>
-        {profile?.is_owner &&
+        <>
+            {profile?.is_owner &&
                 <EditProfileDropdown
                     id={profile?.id}
                 />}
@@ -73,15 +73,18 @@ const ProfilePage = () => {
                 </Col>
 
             </Row>
-        </Container>
-      
+        </>
+
     )
 
     return (
         <Row
         >
-            <Col>
-                <Container>
+            <Col lg={8}>
+                <Container
+                    className={`shadow mt-3 ${appStyles.Container}`}
+                    lg={8}
+                >
                     {hasLoaded ? (
                         <>
                             {mainProfile}

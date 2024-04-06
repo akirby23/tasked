@@ -1,7 +1,7 @@
-import React from "react";
-import { Dropdown } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
-import styles from "../styles/DropDownMenu.module.css"
+import React from 'react';
+import { Dropdown } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
+import styles from '../styles/DropDownMenu.module.css'
 
 
 // The forwardRef is important!!
@@ -27,21 +27,21 @@ export const DropDownMenu = ({ handleEdit, handleDelete }) => {
 
       <Dropdown.Menu
       className='text-center'
-      popperConfig={{ strategy: "fixed" }}
+      popperConfig={{ strategy: 'fixed' }}
       >
         <Dropdown.Item
           onClick={handleEdit}
           aria-label='edit'
           className={styles.DropdownItem}
         >
-          <i class="fa-regular fa-pen-to-square"></i>
+          <i class='fa-regular fa-pen-to-square'></i>
         </Dropdown.Item>
         <Dropdown.Item
           onClick={handleDelete}
           aria-label='delete'
           className={styles.DropdownItem}
         >
-          <i class="fa-regular fa-trash-can"></i>
+          <i class='fa-regular fa-trash-can'></i>
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
@@ -53,27 +53,32 @@ export const DropDownMenu = ({ handleEdit, handleDelete }) => {
 export function EditProfileDropdown({ id }) {
   const history = useHistory();
   return (
-    <Dropdown drop="left">
-      <Dropdown.Toggle as={ThreeDots} />
+    <Dropdown 
+    drop='left'
+    className={`ml-auto ${styles.Absolute}`}
+    >
+      <Dropdown.Toggle 
+      as={ThreeDots} 
+      />
       <Dropdown.Menu>
         <Dropdown.Item
           onClick={() => history.push(`/profiles/${id}/edit`)}
-          aria-label="edit-profile"
+          aria-label='edit-profile'
         >
-          <i class="fa-solid fa-user-pen" /> Edit Profile
+          <i class='fa-solid fa-user-pen' /> Edit Profile
         </Dropdown.Item>
         <Dropdown.Item
           onClick={() => history.push(`/profiles/${id}/edit/username`)}
-          aria-label="edit-username"
+          aria-label='edit-username'
         >
-          <i class="fa-regular fa-id-card" />
+          <i class='fa-regular fa-id-card' />
            Change Username
         </Dropdown.Item>
         <Dropdown.Item
           onClick={() => history.push(`/profiles/${id}/edit/password`)}
-          aria-label="edit-password"
+          aria-label='edit-password'
         >
-          <i class="fa-solid fa-lock" />
+          <i class='fa-solid fa-lock' />
            Change Password
         </Dropdown.Item>
       </Dropdown.Menu>

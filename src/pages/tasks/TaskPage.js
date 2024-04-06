@@ -6,13 +6,19 @@ import Task from './Task';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import CreateCommentForm from '../comments/CreateCommentForm';
 import Comment from '../comments/Comment';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { fetchMoreData } from '../../utils/utils';
+import Asset from '../../components/Asset';
+
 
 const TaskPage = () => {
     const { id } = useParams();
     const [task, setTask] = useState({ results: [] });
 
+
     const currentUser = useCurrentUser();
     const [comments, setComments] = useState({ results: [] });
+
 
     useEffect(() => {
         const handleMount = async () => {
@@ -30,16 +36,17 @@ const TaskPage = () => {
         handleMount();
     }, [id]);
 
+
     return (
         <>
             <Row>
                 <Col
                     md={8}
                     className='mt-3'>
-                    <Task 
-                    {...task.results[0]} 
-                    setTasks={setTask} 
-                    taskPage 
+                    <Task
+                        {...task.results[0]}
+                        setTasks={setTask}
+                        taskPage
                     />
                 </Col>
                 <Col>
@@ -52,6 +59,7 @@ const TaskPage = () => {
                     md={8}
                 >
 
+
                     {currentUser ? (
                         <CreateCommentForm
                             profile_id={currentUser.profile_id}
@@ -60,17 +68,27 @@ const TaskPage = () => {
                             setComments={setComments}
                         />
                     ) : comments.results.length ? (
-                        "Comments"
+                        'Comments'
                     ) : null}
                     {comments.results.length ? (
-                        comments.results.map((comment) => (
-                            <Comment 
-                            key={comment.id} 
-                            {...comment}
-                            setTask={setTask}
-                            setComments={setComments}
-                            />
-                        ))
+                        <InfiniteScroll
+                            children={
+                                comments.results.map((comment) => (
+                                    <Comment
+                                        key={comment.id}
+                                        {...comment}
+                                        setTask={setTask}
+                                        setComments={setComments}
+                                    />
+
+
+                                ))
+                            }
+                            dataLength={comments.results.length}
+                            loader={<Asset spinner />}
+                            hasMore={!!comments.next}
+                            next={() => { fetchMoreData(comments, setComments) }}
+                        />
                         // tbd if the below will be needed
                     ) : currentUser ? (
                         <span>No comments yet. Be the first to leave a comment!</span>
@@ -82,5 +100,6 @@ const TaskPage = () => {
         </>
     )
 }
+
 
 export default TaskPage

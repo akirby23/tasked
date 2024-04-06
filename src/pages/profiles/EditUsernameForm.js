@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { Alert, Row, Col, Container, Button, Form } from 'react-bootstrap'
-import { useHistory, useParams } from "react-router-dom";
-import { axiosRes } from "../../api/axiosDefaults";
-import { useCurrentUser, useSetCurrentUser } from "../../contexts/CurrentUserContext";
-import appStyles from "../../App.module.css";
+import { useHistory, useParams } from 'react-router-dom';
+import { axiosRes } from '../../api/axiosDefaults';
+import { useCurrentUser, useSetCurrentUser } from '../../contexts/CurrentUserContext';
+import appStyles from '../../App.module.css';
 
 // Allows the user to edit their username
 // Adapted from CI's Moments walkthrough project
 const EditUsernameForm = () => {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState('');
   const [errors, setErrors] = useState({});
 
   const history = useHistory();
@@ -21,14 +21,14 @@ const EditUsernameForm = () => {
     if (currentUser?.profile_id?.toString() === id) {
       setUsername(currentUser.username);
     } else {
-      history.push("/");
+      history.push('/');
     }
   }, [currentUser, history, id]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axiosRes.put("/dj-rest-auth/user/", {
+      await axiosRes.put('/dj-rest-auth/user/', {
         username,
       });
       setCurrentUser((prevUser) => ({
@@ -61,7 +61,7 @@ const EditUsernameForm = () => {
               />
             </Form.Group>
             {errors?.username?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
+              <Alert key={idx} variant='warning'>
                 {message}
               </Alert>
             ))}
