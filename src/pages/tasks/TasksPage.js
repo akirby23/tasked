@@ -5,6 +5,8 @@ import { Row, Col, Container } from 'react-bootstrap';
 import Task from './Task';
 import NoResults from "../../assets/no-results.png";
 import Asset from '../../components/Asset';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { fetchMoreData } from '../../utils/utils';
 
 // Adapted from CI's Moments walkthrough project
 const TasksPage = ({ message, filter = "" }) => {
@@ -37,13 +39,21 @@ const TasksPage = ({ message, filter = "" }) => {
         {hasLoaded ? (
             <>
             {tasks.results.length ? (
-                tasks.results.map((task) => (
-                    <Task 
-                    key={task.id} 
-                    {...task} 
-                    setTasks={setTasks}
-                    />
-                ))
+                <InfiniteScroll 
+                children={
+                    tasks.results.map((task) => (
+                        <Task 
+                        key={task.id} 
+                        {...task} 
+                        setTasks={setTasks}
+                        />
+                    ))
+                }
+                dataLength={tasks.results.length}
+                loader={<Asset spinner />}
+                hasMore={!!tasks.next}
+                next={() => {fetchMoreData(tasks, setTasks)}}
+                />
             ) : (
                 <Container>
                     <Asset src={NoResults} message={message} />
