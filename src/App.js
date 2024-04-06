@@ -28,17 +28,16 @@ function App() {
         <Switch>
           <Route exact path='/' render={() => <h1>Home Page</h1>}></Route>
           <Route exact path='/my-tasks' render={() => <TasksPage
-          filter={`owner__profile=${profile_id}`}
+          filter={`owner__profile=${profile_id}&`}
           message='No results found. Adjust the search keyword or create a task.' />}></Route>
           <Route exact path='/my-assigned-tasks' render={() => <TasksPage
-          filter={`assignee=${profile_id}`}
+          filter={`assignee=${profile_id}&`}
           message='You have no assigned tasks.' />}></Route>
           <Route exact path='/log-in' render={() => <LogInForm />}></Route>
           <Route exact path='/sign-up' render={() => <SignUpForm />}></Route>
           <Route exact path='/log-out' render={() => <LogOut />}></Route>
           <Route exact path='/create-task' render={() => <CreateTaskForm />}></Route>
           <Route exact path='/tasks/:id/edit' render={() => <EditTaskForm />}></Route>
-          <Route exact path='/my-tasks' render={() => <h1>My Tasks</h1>}></Route>
           <Route exact path='/my-assigned-tasks' render={() => <h1>My Assigned Tasks</h1>}></Route>
           <Route exact path='/tasks/:id' render={() => <TaskPage />}></Route>
           <Route exact path='/profiles/:id' render={() => <ProfilePage />}></Route>

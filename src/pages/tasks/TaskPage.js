@@ -58,8 +58,6 @@ const TaskPage = () => {
                     className='mt-3'
                     md={8}
                 >
-
-
                     {currentUser ? (
                         <CreateCommentForm
                             profile_id={currentUser.profile_id}

@@ -58,7 +58,7 @@ const Task = (props) => {
 
   return (
     <Card
-      className='shadow'
+      className='shadow mb-3'
     >
       <Card.Body>
         <Card.Header>
