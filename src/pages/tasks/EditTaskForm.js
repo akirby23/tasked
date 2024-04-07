@@ -3,7 +3,7 @@ import { Form, Row, Col, Container, Button, Alert } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { axiosReq } from '../../api/axiosDefaults';
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { useParams } from 'react-router-dom';
 
 const EditTaskForm = () => {
     const [categories, setCategories] = useState([])
@@ -262,3 +262,5 @@ const EditTaskForm = () => {
 }
 
 export default EditTaskForm
+
+

@@ -15,7 +15,6 @@ const TaskPage = () => {
     const { id } = useParams();
     const [task, setTask] = useState({ results: [] });
 
-
     const currentUser = useCurrentUser();
     const [comments, setComments] = useState({ results: [] });
 

@@ -11,10 +11,10 @@ import styles from '../../styles/TasksPage.module.css';
 
 // Adapted from CI's Moments walkthrough project
 const TasksPage = ({ message, filter = '' }) => {
-    const [tasks, setTasks] = useState({ results: [] })
+    const [tasks, setTasks] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
-    const [query, setQuery] = useState('')
+    const [query, setQuery] = useState('');
 
     useEffect(() => {
         const fetchTasks = async () => {
