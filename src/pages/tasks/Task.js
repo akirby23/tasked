@@ -6,6 +6,7 @@ import { DropDownMenu } from '../../components/DropDownMenu';
 import { axiosReq, axiosRes } from '../../api/axiosDefaults';
 import ModalPopup from '../../components/ModalPopup';
 import styles from '../../styles/Task.module.css';
+import appStyles from '../../App.module.css';
 
 
 const Task = (props) => {
@@ -152,7 +153,7 @@ const Task = (props) => {
             {status === 'IN_PROGRESS' ? (<Button
               onClick={handleStatusChange}
               aria-label='Mark task as completed'
-              className='ml-2'
+              className={`ml-2 ${appStyles.ButtonPrimary}`}
 
             >
               <i class='fa-regular fa-circle-check' /> Mark as Completed
@@ -160,6 +161,7 @@ const Task = (props) => {
               <Button
                 onClick={handleStatusChange}
                 aria-label='Reopen task'
+                className={`ml-2 ${appStyles.ButtonPrimary}`}
               >
                 <i class='fa-solid fa-arrow-rotate-right' /> Reopen
               </Button>

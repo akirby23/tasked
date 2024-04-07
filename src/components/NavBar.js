@@ -35,6 +35,7 @@ const NavBar = () => {
     <NavLink
         to='/create-task'
         className={styles.NavLink}
+        activeClassName={styles.Active}
       >
         <i class="fa-regular fa-square-plus"></i> New Task
         </NavLink>

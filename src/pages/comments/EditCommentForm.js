@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { axiosRes } from '../../api/axiosDefaults';
 import { Form, Button } from 'react-bootstrap';
+import appStyles from '../../App.module.css';
+
 
 const EditCommentForm = ({ id, comment_detail, setDisplayEditForm, setComments }) => {
     const [formContent, setFormContent] = useState(comment_detail);
@@ -48,9 +50,8 @@ const EditCommentForm = ({ id, comment_detail, setDisplayEditForm, setComments }
             <div>
                 <Button
                     disabled={!comment_detail.trim()}
+                    className={`mr-1 ${appStyles.ButtonPrimary}`}
                     type='submit'
-                    variant='primary'
-                    className='mr-1'
                 >
                     Save Changes
                 </Button>

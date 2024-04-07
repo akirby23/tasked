@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { Row, Col } from 'react-bootstrap'
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { Row, Col } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import Task from './Task';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
@@ -27,6 +27,7 @@ const TaskPage = () => {
                     axiosReq.get(`/comments/?task=${id}`)
                 ])
                 setTask({ results: [task] });
+
                 setComments(comments);
             } catch (err) {
                 console.log(err);
@@ -77,8 +78,6 @@ const TaskPage = () => {
                                         setTask={setTask}
                                         setComments={setComments}
                                     />
-
-
                                 ))
                             }
                             dataLength={comments.results.length}

@@ -3,6 +3,7 @@ import { Form, Row, Col, Container, Button, Alert } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { axiosReq } from '../../api/axiosDefaults';
+import appStyles from '../../App.module.css';
 
 const CreateTaskForm = () => {
     const [categories, setCategories] = useState([])
@@ -74,7 +75,7 @@ const CreateTaskForm = () => {
 
     const dropdownFields = (
         <div>
-            <Form.Group controlId="category">
+            <Form.Group controlId='category'>
                 <Form.Label>Category</Form.Label>
                 <Form.Control
                     as='select'
@@ -94,12 +95,12 @@ const CreateTaskForm = () => {
                 </Form.Control>
             </Form.Group>
             {errors?.category?.map((message, idx) =>
-                <Alert variant="warning" key={idx}>
+                <Alert variant='warning' key={idx}>
                     {message}
                 </Alert>
             )}
 
-            <Form.Group controlId="priority-level">
+            <Form.Group controlId='priority-level'>
                 <Form.Label>Priority Level</Form.Label>
                 <Form.Control
                     as='select'
@@ -119,12 +120,12 @@ const CreateTaskForm = () => {
                 </Form.Control>
             </Form.Group>
             {errors?.priority_level?.map((message, idx) =>
-                <Alert variant="warning" key={idx}>
+                <Alert variant='warning' key={idx}>
                     {message}
                 </Alert>
             )}
 
-            <Form.Group controlId="assignee">
+            <Form.Group controlId='assignee'>
                 <Form.Label>Assignee</Form.Label>
                 <Form.Control
                     as='select'
@@ -144,7 +145,7 @@ const CreateTaskForm = () => {
                 </Form.Control>
             </Form.Group>
             {errors?.assignee?.map((message, idx) =>
-                <Alert variant="warning" key={idx}>
+                <Alert variant='warning' key={idx}>
                     {message}
                 </Alert>
             )}
@@ -154,24 +155,24 @@ const CreateTaskForm = () => {
 
     const textFields = (
         <div>
-            <Form.Group controlId="title">
+            <Form.Group controlId='title'>
                 <Form.Label>Title</Form.Label>
                 <Form.Control
-                    type="text"
-                    name="title"
+                    type='text'
+                    name='title'
                     value={title}
                     onChange={handleChange}
-                    placeholder="Enter a title"
+                    placeholder='Enter a title'
                 >
                 </Form.Control>
             </Form.Group>
             {errors?.title?.map((message, idx) =>
-                <Alert variant="warning" key={idx}>
+                <Alert variant='warning' key={idx}>
                     {message}
                 </Alert>
             )}
 
-            <Form.Group controlId="task-detail">
+            <Form.Group controlId='task-detail'>
                 <Form.Label>Task Details</Form.Label>
                 <Form.Control
                     as='textarea'
@@ -184,7 +185,7 @@ const CreateTaskForm = () => {
                 </Form.Control>
             </Form.Group>
             {errors?.task_detail?.map((message, idx) =>
-                <Alert variant="warning" key={idx}>
+                <Alert variant='warning' key={idx}>
                     {message}
                 </Alert>
             )}
@@ -216,21 +217,23 @@ const CreateTaskForm = () => {
 
     return (
         <Form onSubmit={handleSubmit}>
-            <Row>
-                <Col>
-                    <Container>
-                        <h1>Create New Task</h1>
+            <Row className='d-flex justify-content-center mt-4'>
+                <Col className='text-center' md={6}>
+                    <Container
+                        className={`shadow rounded ${appStyles.Container}`}
+                    >
+                        <h2>Create New Task</h2>
 
                         {textFields}
                         {dropdownFields}
 
                         <Button
-                            variant="primary"
-                            type="submit"
+                            className={`mr-1 ${appStyles.ButtonPrimary}`}
+                            type='submit'
                         >Create Task
                         </Button>
                         <Button
-                            variant="outline-primary"
+                            variant='secondary'
                             onClick={returnToPreviousPage}
                         >
                             Cancel

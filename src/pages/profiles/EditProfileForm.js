@@ -90,10 +90,9 @@ const EditProfileForm = () => {
           {message}
         </Alert>
       ))}
-      <Button 
-      variant='primary'
-      type='submit'
-      className='mr-1'
+      <Button
+        className={`mr-1 ${appStyles.ButtonPrimary}`}
+        type='submit'
       >
         Save Changes
       </Button>
@@ -110,15 +109,15 @@ const EditProfileForm = () => {
     <Form onSubmit={handleSubmit}>
       <Row className='d-flex justify-content-center mt-4'>
         <Col className='text-center' md={7} lg={6}>
-          <Container 
-          className={`shadow rounded ${appStyles.Container}`}
+          <Container
+            className={`shadow rounded ${appStyles.Container}`}
           >
             <Form.Group>
               {profile_picture && (
                 <figure>
-                  <Image 
-                  src={profile_picture} 
-                  fluid 
+                  <Image
+                    src={profile_picture}
+                    fluid
                   />
                 </figure>
               )}
@@ -154,11 +153,11 @@ const EditProfileForm = () => {
           </Container>
         </Col>
         <Col md={5} lg={6} className='d-none d-md-block p-0 text-center'>
-          <Container 
-          className={`shadow rounded ${appStyles.Container}`}
+          <Container
+            className={`shadow rounded ${appStyles.Container}`}
           >
             {textFields}
-            </Container>
+          </Container>
         </Col>
       </Row>
     </Form>

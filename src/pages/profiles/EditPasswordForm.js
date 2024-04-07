@@ -83,8 +83,7 @@ const EditPasswordForm = () => {
               </Alert>
             ))}
             <Button
-              className='mr-1'
-              variant='primary'
+              className={`mr-1 ${appStyles.ButtonPrimary}`}
               type='submit'
             >
               Save Changes

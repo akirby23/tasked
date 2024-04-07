@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { Row, Col, Form, Button, Container, Alert } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
+import appStyles from '../../App.module.css';
 
 const SignUpForm = () => {
     const [signUpData, setSignUpData] = useState({
@@ -33,80 +34,80 @@ const SignUpForm = () => {
         }
     }
     return (
-        <Row>
-            <Col>
-                <Container>
-                    <h1>Sign Up</h1>
+        <Row className='d-flex justify-content-center mt-4'>
+      <Col className='text-center' md={6}>
+        <Container
+          className={`shadow rounded ${appStyles.Container}`}
+        >
+                    <h2>Sign Up</h2>
                     <Form onSubmit={handleSubmit}>
-                        <Form.Group controlId="username">
-                            <Form.Label className="d-none">Username</Form.Label>
+                        <Form.Group controlId='username'>
+                            <Form.Label className='d-none'>Username</Form.Label>
                             <Form.Control
-                                type="text"
-                                placeholder="Enter username"
-                                name="username"
+                                type='text'
+                                placeholder='Enter username'
+                                name='username'
                                 value={username}
                                 onChange={handleChange}
                             />
                         </Form.Group>
                         {errors.username?.map((message, idx) =>
-                        <Alert variant="warning" key={idx}>
+                        <Alert variant='warning' key={idx}>
                             {message}
                         </Alert>
                         )}
 
-                        <Form.Group controlId="password1">
-                            <Form.Label className="d-none">Password</Form.Label>
+                        <Form.Group controlId='password1'>
+                            <Form.Label className='d-none'>Password</Form.Label>
                             <Form.Control
-                                type="password"
-                                placeholder="Password"
-                                name="password1"
+                                type='password'
+                                placeholder='Password'
+                                name='password1'
                                 value={password1}
                                 onChange={handleChange}
                             />
                         </Form.Group>
                         {errors.password1?.map((message, idx) =>
-                        <Alert variant="warning" key={idx}>
+                        <Alert variant='warning' key={idx}>
                             {message}
                         </Alert>
                         )}
 
-                        <Form.Group controlId="password2">
-                            <Form.Label className="d-none">Confirm Password</Form.Label>
+                        <Form.Group controlId='password2'>
+                            <Form.Label className='d-none'>Confirm Password</Form.Label>
                             <Form.Control
-                                type="password"
-                                placeholder="Confirm password"
-                                name="password2"
+                                type='password'
+                                placeholder='Confirm password'
+                                name='password2'
                                 value={password2}
                                 onChange={handleChange}
                             />
                         </Form.Group>
                         {errors.password2?.map((message, idx) =>
-                        <Alert variant="warning" key={idx}>
+                        <Alert variant='warning' key={idx}>
                             {message}
                         </Alert>
                         )}
                         <Button
-                            variant="primary"
-                            type="submit">
+                            className={appStyles.ButtonPrimary}
+                            type='submit'>
                             Sign Up Now
                         </Button>
                         {errors.non_field_errors?.map((message, idx) =>
-                        <Alert variant="warning" key={idx}>
+                        <Alert variant='warning' key={idx}>
                             {message}
                         </Alert>
                         )}
                     </Form>
-                </Container>
-                <Container>
+                    <hr />
+                    <span>
                     <Link
-                        to="/log-in"
+                        to='/log-in'
                     >
                         Already have an account? <span>Log In</span>
                     </Link>
+                    </span>
                 </Container>
-            </Col>
-            <Col>
-            Placeholder
             </Col>
         </Row>
     )

@@ -20,6 +20,12 @@ a:hover {
     transition: 0.5s;
 }
 
+a:hover i {
+    color: #AC524B;
+    transition: color ease-in-out 0.3s;
+  }
+
+
 .Container {
     background-color: #FFFFFF;
     padding: 2rem;
@@ -27,4 +33,11 @@ a:hover {
 
 .ButtonPrimary {
     background-color: #67D09F;
+    border-color: #67D09F;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+}
+
+.ButtonPrimary:hover {
+    background-color: #376153;
+    border-color: #376153;
 }

@@ -45,11 +45,11 @@ const EditUsernameForm = () => {
   return (
     <Row className='d-flex justify-content-center mt-4'>
       <Col className='text-center' md={6}>
-        <Container 
-        className={`shadow rounded ${appStyles.Container}`}
+        <Container
+          className={`shadow rounded ${appStyles.Container}`}
         >
-          <Form 
-          onSubmit={handleSubmit} 
+          <Form
+            onSubmit={handleSubmit}
           >
             <Form.Group>
               <Form.Label>Change Username</Form.Label>
@@ -66,9 +66,8 @@ const EditUsernameForm = () => {
               </Alert>
             ))}
             <Button
-              variant='primary'
+              className={`mr-1 ${appStyles.ButtonPrimary}`}
               type='submit'
-              className='mr-1'
             >
               Save Changes
             </Button>
