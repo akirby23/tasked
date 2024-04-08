@@ -39,6 +39,13 @@ const NavBar = () => {
       >
         <i class="fa-regular fa-square-plus"></i> New Task
         </NavLink>
+      <NavLink
+        to='/tasks'
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+      >
+        <i class="fa-solid fa-list"></i> All Tasks
+      </NavLink>
     <NavLink
         to='/my-tasks'
         className={styles.NavLink}
