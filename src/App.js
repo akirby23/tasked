@@ -30,10 +30,12 @@ function App() {
           <Route exact path='/my-tasks' render={() => <TasksPage
           filter={`owner__profile=${profile_id}&`}
           message='No results found. Adjust the search keyword or create a task.' />}></Route>
-          <Route exact path='/tasks' render={() => <TasksPage />}></Route>
+          <Route exact path='/tasks' render={() => <TasksPage 
+          message='No results found. Adjust the search keyword or create a task.' />}></Route>
           <Route exact path='/my-assigned-tasks' render={() => <TasksPage
           filter={`assignee=${profile_id}&`}
-          message='You have no assigned tasks.' />}></Route>
+          message='No results found. Time for coffee! 
+          Adjust the keyword search if you are looking for something specific.' />}></Route>
           <Route exact path='/log-in' render={() => <LogInForm />}></Route>
           <Route exact path='/sign-up' render={() => <SignUpForm />}></Route>
           <Route exact path='/log-out' render={() => <LogOut />}></Route>

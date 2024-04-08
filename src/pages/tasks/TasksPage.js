@@ -19,7 +19,7 @@ const TasksPage = ({ message, filter = '' }) => {
     useEffect(() => {
         const fetchTasks = async () => {
             try {
-                const { data } = await axiosReq.get(`/tasks/?${filter}?search=${query}`);
+                const { data } = await axiosReq.get(`/tasks/?${filter}search=${query}`);
                 setTasks(data);
                 setHasLoaded(true);
                 console.log(data)
