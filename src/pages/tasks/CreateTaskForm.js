@@ -216,17 +216,23 @@ const CreateTaskForm = () => {
     }
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <Row className='d-flex justify-content-center mt-4'>
+        <Form 
+        onSubmit={handleSubmit}
+        >
+            <Row className='d-flex justify-content-center mt-3'>
                 <Col className='text-center' md={6}>
                     <Container
-                        className={`shadow rounded ${appStyles.Container}`}
+                        className={`shadow rounded mb-2 ${appStyles.Container}`}
                     >
                         <h2>Create New Task</h2>
 
                         {textFields}
                         {dropdownFields}
-
+                        <p class='text-muted'>
+                            <small>
+                            Please note that your task will be visible to other members of the Tasked community.
+                            </small>
+                            </p>
                         <Button
                             className={`mr-1 ${appStyles.ButtonPrimary}`}
                             type='submit'
@@ -238,7 +244,6 @@ const CreateTaskForm = () => {
                         >
                             Cancel
                         </Button>
-
                     </Container>
                 </Col>
             </Row>
