@@ -45,7 +45,7 @@ const ProfilePage = () => {
                     <Image
                         src={profile?.profile_picture}
                         roundedCircle
-                        className={styles.ProfilePicture}
+                        className={`shadow ${styles.ProfilePicture}`}
                     />
                 </Col>
                 <Col>
