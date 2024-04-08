@@ -8,7 +8,6 @@ import ModalPopup from '../../components/ModalPopup';
 import styles from '../../styles/Task.module.css';
 import appStyles from '../../App.module.css';
 
-
 const Task = (props) => {
   const {
     id,
@@ -34,11 +33,11 @@ const Task = (props) => {
   const history = useHistory();
 
   const [displayDeleteModal, setDisplayDeleteModal] = useState(false);
-  const [taskStatus, setTaskStatus] = useState({
-    status: ''
-  });
+  const [taskStatus, setTaskStatus] = useState('In Progress');
 
-  console.log(taskStatus)
+  console.log('initial taskStatus:', taskStatus)
+  console.log('initial status_name', {status_name})
+  console.log('initial status', {status})
 
   const handeDisplayDeleteModal = () => {
     setDisplayDeleteModal(true);
@@ -62,15 +61,22 @@ const Task = (props) => {
     };
   };
 
+
   const handleStatusChange = async () => {
     try {
-      const updatedTaskStatus = taskStatus === 'IN_PROGRESS' ? 'COMPLETED' : 'IN_PROGRESS';
+      const updatedTaskStatus = taskStatus === 'In Progress' ? 'Completed' : 'In Progress';
+      console.log('taskStatus before patch request:', taskStatus)
+      console.log('status_name before patch request:', {status_name})
+      console.log('status before patch request:', {status})
+      console.log('updatedTaskStatus before patch request:', {updatedTaskStatus})
       await axiosReq.patch(`/tasks/${id}`, {
-        status: updatedTaskStatus,
+        status_name: updatedTaskStatus,
       });
       setTaskStatus(updatedTaskStatus);
-      // window.location.reload();
-      console.log(updatedTaskStatus);
+      console.log('updatedTaskStatus:', updatedTaskStatus);
+      console.log('taskStatus after patch request:', taskStatus);
+      console.log('updated status_name:', {status_name});
+      console.log('updated status:', {status});
     } catch (err) {
       console.log(err)
     }
@@ -132,7 +138,7 @@ const Task = (props) => {
                 <span className='font-weight-bold'>Priority Level:</span> <span>{priority_level_name}</span>
               </ListGroupItem>}
               {status && <ListGroupItem>
-                <span className='font-weight-bold'>Status:</span> <span>{status_name}</span>
+                <span className='font-weight-bold'>Status:</span> <span>{taskStatus}</span>
               </ListGroupItem>}
             </ListGroup>
           </Col>
@@ -150,14 +156,14 @@ const Task = (props) => {
                 <span><Link to={`/profiles/${profile_id}`}> {assignee_name}</Link></span>
               </ListGroupItem>}
             </ListGroup>
-            {status === 'IN_PROGRESS' ? (<Button
+            {(is_owner || is_assignee) && taskStatus === 'In Progress' ? (<Button
               onClick={handleStatusChange}
               aria-label='Mark task as completed'
               className={`ml-2 ${appStyles.ButtonPrimary}`}
 
             >
               <i class='fa-regular fa-circle-check' /> Mark as Completed
-            </Button>) : (
+            </Button>) : (is_owner || is_assignee) && (
               <Button
                 onClick={handleStatusChange}
                 aria-label='Reopen task'

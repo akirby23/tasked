@@ -1,10 +1,13 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import appStyles from '../../App.module.css';
 import { Row, Col, Form, Button, Container, Alert } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
-import appStyles from '../../App.module.css';
+import { useRedirect } from '../../hooks/useRedirect';
 
 const SignUpForm = () => {
+    useRedirect('loggedIn');
+
     const [signUpData, setSignUpData] = useState({
         username: '',
         password1: '',

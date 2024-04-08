@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Asset from '../../components/Asset';
 import styles from '../../styles/ProfilePage.module.css'
+import appStyles from '../../App.module.css';
 import { Col, Container, Image, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import { useProfileData, useSetProfileData } from '../../contexts/ProfileDataContext';
 import { EditProfileDropdown } from '../../components/DropDownMenu';
-import appStyles from '../../App.module.css';
-
 
 const ProfilePage = () => {
     const [hasLoaded, setHasLoaded] = useState(false);

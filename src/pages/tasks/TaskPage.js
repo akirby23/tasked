@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
-import Task from './Task';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import CreateCommentForm from '../comments/CreateCommentForm';
-import Comment from '../comments/Comment';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import { fetchMoreData } from '../../utils/utils';
 import Asset from '../../components/Asset';
+import Comment from '../comments/Comment';
+import CreateCommentForm from '../comments/CreateCommentForm';
+import Task from './Task';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 
 const TaskPage = () => {

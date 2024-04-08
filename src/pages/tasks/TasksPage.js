@@ -22,7 +22,6 @@ const TasksPage = ({ message, filter = '' }) => {
                 const { data } = await axiosReq.get(`/tasks/?${filter}search=${query}`);
                 setTasks(data);
                 setHasLoaded(true);
-                console.log(data)
             } catch (err) {
                 console.log(err);
             }

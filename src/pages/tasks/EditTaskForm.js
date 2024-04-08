@@ -4,9 +4,12 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { axiosReq } from '../../api/axiosDefaults';
 import { useParams } from 'react-router-dom';
+import { useRedirect } from '../../hooks/useRedirect';
 import appStyles from '../../App.module.css';
 
 const EditTaskForm = () => {
+    useRedirect('loggedOut');
+
     const [categories, setCategories] = useState([])
 
     const [priorityLevels, setPriorityLevels] = useState([])

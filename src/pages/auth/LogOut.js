@@ -1,12 +1,15 @@
 import React from 'react'
 import axios from 'axios';
+import appStyles from '../../App.module.css';
 import { useSetCurrentUser } from '../../contexts/CurrentUserContext'
 import { useHistory } from 'react-router-dom';
 import { Row, Col, Button, Container } from 'react-bootstrap';
 import { removeTokenTimestamp } from '../../utils/utils';
-import appStyles from '../../App.module.css';
+import { useRedirect } from '../../hooks/useRedirect';
 
 const LogOut = () => {
+  useRedirect('loggedOut');
+
   const setCurrentUser = useSetCurrentUser();
 
   const history = useHistory()

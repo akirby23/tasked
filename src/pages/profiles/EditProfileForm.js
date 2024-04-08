@@ -3,11 +3,14 @@ import { Alert, Row, Col, Container, Button, Form, Image } from 'react-bootstrap
 import { useHistory, useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import { useCurrentUser, useSetCurrentUser } from '../../contexts/CurrentUserContext';
+import { useRedirect } from '../../hooks/useRedirect';
 import appStyles from '../../App.module.css';
 
 // Allows users to edit their profiles
 // Adapted from CI's Moments walkthrough project
 const EditProfileForm = () => {
+  useRedirect('loggedOut');
+
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
   const { id } = useParams();

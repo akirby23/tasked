@@ -3,11 +3,14 @@ import { Alert, Row, Col, Container, Button, Form } from 'react-bootstrap'
 import { useHistory, useParams } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { useRedirect } from "../../hooks/useRedirect";
 import appStyles from "../../App.module.css";
 
 // Allows the user to change their password
 // Adapted from CI's Moments walkthrough project
 const EditPasswordForm = () => {
+  useRedirect('loggedOut');
+
   const history = useHistory();
   const { id } = useParams();
   const currentUser = useCurrentUser();

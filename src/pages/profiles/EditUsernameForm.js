@@ -3,11 +3,14 @@ import { Alert, Row, Col, Container, Button, Form } from 'react-bootstrap'
 import { useHistory, useParams } from 'react-router-dom';
 import { axiosRes } from '../../api/axiosDefaults';
 import { useCurrentUser, useSetCurrentUser } from '../../contexts/CurrentUserContext';
+import { useRedirect } from '../../hooks/useRedirect';
 import appStyles from '../../App.module.css';
 
 // Allows the user to edit their username
 // Adapted from CI's Moments walkthrough project
 const EditUsernameForm = () => {
+  useRedirect('loggedOut');
+
   const [username, setUsername] = useState('');
   const [errors, setErrors] = useState({});
 
