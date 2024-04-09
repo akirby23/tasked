@@ -5,6 +5,7 @@ import { axiosRes } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
 import appStyles from "../../App.module.css";
+import toast from 'react-hot-toast';
 
 // Allows the user to change their password
 // Adapted from CI's Moments walkthrough project
@@ -41,6 +42,7 @@ const EditPasswordForm = () => {
     event.preventDefault();
     try {
       await axiosRes.post("/dj-rest-auth/password/change/", userData);
+      toast.success('Password changed successfully.')
       history.goBack();
     } catch (err) {
       console.log(err);

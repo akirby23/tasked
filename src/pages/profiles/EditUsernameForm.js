@@ -4,6 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { axiosRes } from '../../api/axiosDefaults';
 import { useCurrentUser, useSetCurrentUser } from '../../contexts/CurrentUserContext';
 import { useRedirect } from '../../hooks/useRedirect';
+import toast from 'react-hot-toast';
 import appStyles from '../../App.module.css';
 
 // Allows the user to edit their username
@@ -38,6 +39,7 @@ const EditUsernameForm = () => {
         ...prevUser,
         username,
       }));
+      toast.success('Username changed successfully.')
       history.goBack();
     } catch (err) {
       console.log(err);

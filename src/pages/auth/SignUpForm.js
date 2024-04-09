@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import appStyles from '../../App.module.css';
-import { Row, Col, Form, Button, Container, Alert } from 'react-bootstrap'
-import { Link, useHistory } from 'react-router-dom'
+import toast from 'react-hot-toast';
+import { Row, Col, Form, Button, Container, Alert } from 'react-bootstrap';
+import { Link, useHistory } from 'react-router-dom';
 import { useRedirect } from '../../hooks/useRedirect';
 
 const SignUpForm = () => {
@@ -30,8 +31,8 @@ const SignUpForm = () => {
         event.preventDefault();
         try {
             await axios.post('dj-rest-auth/registration/', signUpData)
+            toast.success('Sign up successful! Please log in to continue.')
             history.push('/log-in')
-            
         } catch (err) {
             setErrors(err.response?.data)
         }

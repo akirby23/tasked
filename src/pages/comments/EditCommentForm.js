@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { axiosRes } from '../../api/axiosDefaults';
 import { Form, Button } from 'react-bootstrap';
 import appStyles from '../../App.module.css';
+import toast from 'react-hot-toast';
 
 
 const EditCommentForm = ({ id, comment_detail, setDisplayEditForm, setComments }) => {
@@ -29,6 +30,7 @@ const EditCommentForm = ({ id, comment_detail, setDisplayEditForm, setComments }
                         : comment;
                 }),
             }));
+            toast.success('Your changes have been saved.')
             setDisplayEditForm(false);
         } catch (err) {
             console.log(err);

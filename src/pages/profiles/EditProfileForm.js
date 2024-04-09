@@ -5,6 +5,8 @@ import { axiosReq } from '../../api/axiosDefaults';
 import { useCurrentUser, useSetCurrentUser } from '../../contexts/CurrentUserContext';
 import { useRedirect } from '../../hooks/useRedirect';
 import appStyles from '../../App.module.css';
+import toast from 'react-hot-toast';
+
 
 // Allows users to edit their profiles
 // Adapted from CI's Moments walkthrough project
@@ -68,6 +70,7 @@ const EditProfileForm = () => {
         ...currentUser,
         profile_image: data.image,
       }));
+      toast.success('Your changes have been saved.')
       history.goBack();
     } catch (err) {
       console.log(err);

@@ -1,6 +1,7 @@
-import axios from 'axios';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 // Adapted from CI's Moments walkthrough project
 export const useRedirect = (userAuthStatus) => {
@@ -17,6 +18,7 @@ export const useRedirect = (userAuthStatus) => {
       } catch (err) {
         // Code will run if user is logged out
         if (userAuthStatus === 'loggedOut') {
+          toast.error('Please log in to view this page.')
           history.push('/log-in/');
         }
       }

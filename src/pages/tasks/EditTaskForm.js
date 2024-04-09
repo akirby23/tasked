@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Form, Row, Col, Container, Button, Alert } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
 import { axiosReq } from '../../api/axiosDefaults';
 import { useParams } from 'react-router-dom';
 import { useRedirect } from '../../hooks/useRedirect';
+import axios from 'axios';
 import appStyles from '../../App.module.css';
+import toast from 'react-hot-toast';
 
 const EditTaskForm = () => {
     useRedirect('loggedOut');
@@ -227,6 +228,7 @@ const EditTaskForm = () => {
 
         try {
             await axiosReq.put(`/tasks/${id}/`, formData)
+            toast.success('Your changes have been saved.')
             history.push(`/tasks/${id}`)
         } catch (err) {
             console.log(err);

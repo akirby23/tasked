@@ -1,15 +1,16 @@
 import styles from './App.module.css';
 import NavBar from './components/NavBar';
 import { Route, Switch } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast';
+import { useCurrentUser } from './contexts/CurrentUserContext.js';
+import { Container } from 'react-bootstrap';
 import './api/axiosDefaults.js'
 import SignUpForm from './pages/auth/SignUpForm';
 import LogInForm from './pages/auth/LogInForm';
 import LogOut from './pages/auth/LogOut.js';
-import { Container } from 'react-bootstrap';
 import CreateTaskForm from './pages/tasks/CreateTaskForm.js';
 import TaskPage from './pages/tasks/TaskPage.js';
 import TasksPage from './pages/tasks/TasksPage.js';
-import { useCurrentUser } from './contexts/CurrentUserContext.js';
 import EditTaskForm from './pages/tasks/EditTaskForm.js';
 import ProfilePage from './pages/profiles/ProfilePage.js';
 import EditUsernameForm from './pages/profiles/EditUsernameForm.js';
@@ -49,6 +50,10 @@ function App() {
           <Route exact path="/profiles/:id/edit/password" render={() => <EditPasswordForm/>}></Route>
           <Route render={() => <p>Page not found</p>} />
         </Switch>
+        <Toaster 
+        position='bottom-right'
+        reverseOrder={false}
+        />
       </Container>
     </div >
   );

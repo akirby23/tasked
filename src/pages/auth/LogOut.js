@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import appStyles from '../../App.module.css';
+import toast from 'react-hot-toast';
 import { useSetCurrentUser } from '../../contexts/CurrentUserContext'
 import { useHistory } from 'react-router-dom';
 import { Row, Col, Button, Container } from 'react-bootstrap';
@@ -23,6 +24,7 @@ const LogOut = () => {
       await axios.post('dj-rest-auth/logout/');
       setCurrentUser(null);
       removeTokenTimestamp();
+      toast.success('Successfully logged out.')
       history.push('/')
     } catch (err) {
       console.log(err)

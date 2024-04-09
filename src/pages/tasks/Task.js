@@ -7,6 +7,7 @@ import { axiosReq, axiosRes } from '../../api/axiosDefaults';
 import ModalPopup from '../../components/ModalPopup';
 import styles from '../../styles/Task.module.css';
 import appStyles from '../../App.module.css';
+import toast from 'react-hot-toast';
 
 const Task = (props) => {
   const {
@@ -60,6 +61,7 @@ const Task = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/tasks/${id}/`)
+      toast.success('Task deleted successfully.');
       history.goBack();
     } catch (err) {
       console.log(err);

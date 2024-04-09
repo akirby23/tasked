@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { Form, Row, Col, Container, Button, Alert } from 'react-bootstrap'
+import React, { useEffect, useState } from 'react';
+import { Form, Row, Col, Container, Button, Alert } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
 import { axiosReq } from '../../api/axiosDefaults';
-import appStyles from '../../App.module.css';
 import { useRedirect } from '../../hooks/useRedirect';
+import appStyles from '../../App.module.css';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const CreateTaskForm = () => {
     useRedirect('loggedOut');
@@ -209,6 +210,7 @@ const CreateTaskForm = () => {
 
         try {
             const { data } = await axiosReq.post('/tasks/', formData)
+            toast.success('Task created successfully!')
             history.push(`/tasks/${data.id}`)
         } catch (err) {
             console.log(err);

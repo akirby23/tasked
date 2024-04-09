@@ -7,6 +7,7 @@ import { DropDownMenu } from '../../components/DropDownMenu';
 import { axiosRes } from '../../api/axiosDefaults';
 import ModalPopup from '../../components/ModalPopup';
 import EditCommentForm from './EditCommentForm';
+import toast from 'react-hot-toast';
 
 const Comment = ({ profile_id, profile_image, owner, created_on, updated_on, comment_detail, id, setTask, setComments }) => {
 
@@ -35,6 +36,7 @@ const Comment = ({ profile_id, profile_image, owner, created_on, updated_on, com
         ...prevComments,
         results: prevComments.results.filter((comment) => comment.id !== id),
       }));
+      toast.success('Your comment has been deleted.')
     } catch (err) {
       console.log(err);
       setDisplayDeleteModal(false);

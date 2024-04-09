@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
-import { Row, Col, Form, Button, Container, Alert } from 'react-bootstrap'
-import { Link, useHistory } from 'react-router-dom'
-import { useSetCurrentUser } from '../../contexts/CurrentUserContext'
-import { setTokenTimestamp } from '../../utils/utils'
-import axios from 'axios'
+import React, { useState } from 'react';
+import { Row, Col, Form, Button, Container, Alert } from 'react-bootstrap';
+import { Link, useHistory } from 'react-router-dom';
+import { useSetCurrentUser } from '../../contexts/CurrentUserContext';
+import { setTokenTimestamp } from '../../utils/utils';
+import { useRedirect } from '../../hooks/useRedirect';
+import axios from 'axios';
 import appStyles from '../../App.module.css';
-import { useRedirect } from '../../hooks/useRedirect'
+import toast from 'react-hot-toast';
 
 const LogInForm = () => {
     useRedirect('loggedIn');
@@ -35,8 +36,8 @@ const LogInForm = () => {
             const { data } = await axios.post('dj-rest-auth/login/', logInData)
             setCurrentUser(data.user)
             setTokenTimestamp(data);
+            toast.success(`Logged in as ${username}.`)
             history.push('/')
-
         } catch (err) {
             setErrors(err.response?.data)
         }
