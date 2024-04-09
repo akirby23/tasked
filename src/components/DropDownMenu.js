@@ -34,14 +34,14 @@ export const DropDownMenu = ({ handleEdit, handleDelete }) => {
           aria-label='edit'
           className={styles.DropdownItem}
         >
-          <i class='fa-regular fa-pen-to-square'></i>
+          <i className='fa-regular fa-pen-to-square'></i>
         </Dropdown.Item>
         <Dropdown.Item
           onClick={handleDelete}
           aria-label='delete'
           className={styles.DropdownItem}
         >
-          <i class='fa-regular fa-trash-can'></i>
+          <i className='fa-regular fa-trash-can'></i>
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
@@ -65,20 +65,20 @@ export function EditProfileDropdown({ id }) {
           onClick={() => history.push(`/profiles/${id}/edit`)}
           aria-label='edit-profile'
         >
-          <i class='fa-solid fa-user-pen' /> Edit Profile
+          <i className='fa-solid fa-user-pen' /> Edit Profile
         </Dropdown.Item>
         <Dropdown.Item
           onClick={() => history.push(`/profiles/${id}/edit/username`)}
           aria-label='edit-username'
         >
-          <i class='fa-regular fa-id-card' />
+          <i className='fa-regular fa-id-card' />
            Change Username
         </Dropdown.Item>
         <Dropdown.Item
           onClick={() => history.push(`/profiles/${id}/edit/password`)}
           aria-label='edit-password'
         >
-          <i class='fa-solid fa-lock' />
+          <i className='fa-solid fa-lock' />
            Change Password
         </Dropdown.Item>
       </Dropdown.Menu>

@@ -162,14 +162,14 @@ const Task = (props) => {
               className={`ml-2 ${appStyles.ButtonPrimary}`}
 
             >
-              <i class='fa-regular fa-circle-check' /> Mark as Completed
+              <i className='fa-regular fa-circle-check' /> Mark as Completed
             </Button>) : (is_owner || is_assignee) && (
               <Button
                 onClick={handleStatusChange}
                 aria-label='Reopen task'
                 className={`ml-2 ${appStyles.ButtonPrimary}`}
               >
-                <i class='fa-solid fa-arrow-rotate-right' /> Reopen
+                <i className='fa-solid fa-arrow-rotate-right' /> Reopen
               </Button>
             )
             }
@@ -198,7 +198,7 @@ const Task = (props) => {
               <Link
                 to={`/tasks/${id}`}
                 className={styles.CommentsCount}>
-                <i class='fa-regular fa-comments'></i> {comments_count}
+                <i className='fa-regular fa-comments'></i> {comments_count}
               </Link>
             </Col>
           </Row>

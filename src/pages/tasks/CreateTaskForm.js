@@ -231,7 +231,7 @@ const CreateTaskForm = () => {
 
                         {textFields}
                         {dropdownFields}
-                        <p class='text-muted'>
+                        <p className='text-muted'>
                             <small>
                             Please note that your task will be visible to other members of the Tasked community.
                             </small>

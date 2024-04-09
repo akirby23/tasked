@@ -17,14 +17,14 @@ const NavBar = () => {
          className={styles.NavLink}
          activeClassName={styles.Active}
          >
-        <i class="fa-solid fa-right-to-bracket"></i> Log In
+        <i className="fa-solid fa-right-to-bracket"></i> Log In
           </NavLink>
         <NavLink 
         to='sign-up'
         className={styles.NavLink}
         activeClassName={styles.Active}
         >
-        <i class="fa-solid fa-user-plus"></i> Sign Up
+        <i className="fa-solid fa-user-plus"></i> Sign Up
         </NavLink>
     </>
   )
@@ -37,28 +37,28 @@ const NavBar = () => {
         className={styles.NavLink}
         activeClassName={styles.Active}
       >
-        <i class="fa-regular fa-square-plus"></i> New Task
+        <i className="fa-regular fa-square-plus"></i> New Task
         </NavLink>
       <NavLink
         to='/tasks'
         className={styles.NavLink}
         activeClassName={styles.Active}
       >
-        <i class="fa-solid fa-list"></i> All Tasks
+        <i className="fa-solid fa-list"></i> All Tasks
       </NavLink>
     <NavLink
         to='/my-tasks'
         className={styles.NavLink}
         activeClassName={styles.Active}
       >
-        <i class="fa-solid fa-list-check"></i> My Tasks
+        <i className="fa-solid fa-list-check"></i> My Tasks
         </NavLink>
         <NavLink
         to='/my-assigned-tasks'
         className={styles.NavLink}
         activeClassName={styles.Active}
       >
-        <i class="fa-solid fa-clipboard-list"></i> My Assigned Tasks
+        <i className="fa-solid fa-clipboard-list"></i> My Assigned Tasks
         </NavLink>
         <NavDropdown title={<ProfilePicture 
         src={currentUser?.profile_picture} 
@@ -69,13 +69,13 @@ const NavBar = () => {
         as={NavLink}
         to={`/profiles/${currentUser?.profile_id}`}
         >
-        <i class="fa-regular fa-user"></i> My Profile
+        <i className="fa-regular fa-user"></i> My Profile
         </NavDropdown.Item>
         <NavDropdown.Item
         as={NavLink}
         to='/log-out'
         >
-        <i class="fa-solid fa-right-from-bracket"></i> Log Out
+        <i className="fa-solid fa-right-from-bracket"></i> Log Out
         </NavDropdown.Item>
       </NavDropdown>
     </>
