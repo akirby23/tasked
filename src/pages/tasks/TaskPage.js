@@ -27,7 +27,6 @@ const TaskPage = () => {
                     axiosReq.get(`/comments/?task=${id}`)
                 ])
                 setTask({ results: [task] });
-
                 setComments(comments);
             } catch (err) {
                 console.log(err);

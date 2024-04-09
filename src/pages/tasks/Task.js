@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useCurrentUser } from '../../contexts/CurrentUserContext'
 import { Card, ListGroup, ListGroupItem, Row, Col, Button } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
@@ -23,7 +23,6 @@ const Task = (props) => {
     assignee,
     assignee_name,
     status,
-    status_name,
     taskPage,
   } = props;
 
@@ -33,11 +32,18 @@ const Task = (props) => {
   const history = useHistory();
 
   const [displayDeleteModal, setDisplayDeleteModal] = useState(false);
-  const [taskStatus, setTaskStatus] = useState('In Progress');
+  const [taskStatus, setTaskStatus] = useState({
+    status: '',
+  });
 
-  console.log('initial taskStatus:', taskStatus)
-  console.log('initial status_name', {status_name})
-  console.log('initial status', {status})
+  const currentTaskStatus = useMemo(() => {
+    const taskStatusName = {status}
+    return taskStatusName
+  }, [status])
+
+  useEffect(() => {
+      setTaskStatus(currentTaskStatus);
+    }, [currentTaskStatus])
 
   const handeDisplayDeleteModal = () => {
     setDisplayDeleteModal(true);
@@ -61,26 +67,21 @@ const Task = (props) => {
     };
   };
 
-
   const handleStatusChange = async () => {
     try {
-      const updatedTaskStatus = taskStatus === 'In Progress' ? 'Completed' : 'In Progress';
-      console.log('taskStatus before patch request:', taskStatus)
-      console.log('status_name before patch request:', {status_name})
-      console.log('status before patch request:', {status})
-      console.log('updatedTaskStatus before patch request:', {updatedTaskStatus})
+      const updatedStatus = taskStatus.status === 'IN_PROGRESS' ? 'COMPLETED' : 'IN_PROGRESS';
+      const updatedTaskStatus = {
+        ...taskStatus, 
+        status: updatedStatus,
+      }
       await axiosReq.patch(`/tasks/${id}`, {
-        status_name: updatedTaskStatus,
+        status: updatedStatus,
       });
       setTaskStatus(updatedTaskStatus);
-      console.log('updatedTaskStatus:', updatedTaskStatus);
-      console.log('taskStatus after patch request:', taskStatus);
-      console.log('updated status_name:', {status_name});
-      console.log('updated status:', {status});
     } catch (err) {
       console.log(err)
-    }
-  }
+    };
+  };
 
   return (
     <Card
@@ -138,7 +139,7 @@ const Task = (props) => {
                 <span className='font-weight-bold'>Priority Level:</span> <span>{priority_level_name}</span>
               </ListGroupItem>}
               {status && <ListGroupItem>
-                <span className='font-weight-bold'>Status:</span> <span>{taskStatus}</span>
+                <span className='font-weight-bold'>Status:</span> <span>{taskStatus.status}</span>
               </ListGroupItem>}
             </ListGroup>
           </Col>
@@ -148,7 +149,6 @@ const Task = (props) => {
                 <Link
                   to={`/profiles/${profile_id}`}
                 >
-
                   <span className='font-weight-bold'>Created by:</span> <span>{owner}</span>
                 </Link>
               </ListGroupItem>}
@@ -156,9 +156,9 @@ const Task = (props) => {
                 <span><Link to={`/profiles/${profile_id}`}> {assignee_name}</Link></span>
               </ListGroupItem>}
             </ListGroup>
-            {(is_owner || is_assignee) && taskStatus === 'In Progress' ? (<Button
+            {(is_owner || is_assignee) && taskStatus.status === 'IN_PROGRESS' ? (<Button
               onClick={handleStatusChange}
-              aria-label='Mark task as completed'
+              aria-label='Mark task as Completed'
               className={`ml-2 ${appStyles.ButtonPrimary}`}
 
             >
