@@ -180,7 +180,7 @@ const Task = (props) => {
         </Row>
         <hr className='mt-0' />
         <Row>
-          <Col className={`text-center ${styles.TaskDetails}`}>
+          <Col className={`text-left ml-2 ${styles.TaskDetails}`}>
             {task_detail &&
               <>
                 <Card.Text className='font-weight-bold'>Task Details</Card.Text>
