@@ -1,9 +1,20 @@
-/* Obtained from CI's Moments walkthrough project */
+/* Adapted from CI's Moments walkthrough project */
 
 .Asset {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     min-height: 120px;
   }
+
+.Image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+
+  .Image {
+    height: 80%;
+    width: 80%;
+  }
+
+}
