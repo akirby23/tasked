@@ -1,15 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import Asset from '../../components/Asset';
 import styles from '../../styles/ProfilePage.module.css'
 import appStyles from '../../App.module.css';
+import Task from '../tasks/Task';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { fetchMoreData } from '../../utils/utils';
 import { Col, Container, Image, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import { useProfileData, useSetProfileData } from '../../contexts/ProfileDataContext';
 import { EditProfileDropdown } from '../../components/DropDownMenu';
 
+
 const ProfilePage = () => {
     const [hasLoaded, setHasLoaded] = useState(false);
+    const [profileInProgressTasks, setProfileInProgressTasks] = useState({ results: [] });
+    const [profileCompletedTasks, setProfileCompletedTasks] = useState({ results: [] });
+
     const { id } = useParams();
     const setProfileData = useSetProfileData();
     const { pageProfile } = useProfileData();
@@ -18,13 +25,17 @@ const ProfilePage = () => {
     useEffect(() => {
         const fetchProfileData = async () => {
             try {
-                const [{ data: pageProfile }] = await Promise.all([
+                const [{ data: pageProfile }, { data: profileInProgressTasks }, { data: profileCompletedTasks }] = await Promise.all([
                     axiosReq.get(`/profiles/${id}/`),
+                    axiosReq.get(`/tasks/?assignee=${id}&status=IN_PROGRESS&`),
+                    axiosReq.get(`/tasks/?assignee=${id}&status=COMPLETED&`)
                 ]);
                 setProfileData(prevState => ({
                     ...prevState,
                     pageProfile: { results: [pageProfile] },
                 }));
+                setProfileInProgressTasks(profileInProgressTasks);
+                setProfileCompletedTasks(profileCompletedTasks);
                 setHasLoaded(true);
             } catch (err) {
                 console.log(err)
@@ -32,6 +43,7 @@ const ProfilePage = () => {
         }
         fetchProfileData();
     }, [id, setProfileData]);
+
 
     const mainProfile = (
         <>
@@ -53,20 +65,21 @@ const ProfilePage = () => {
                     {profile?.content ? (
                         <p>{profile.content}</p>
                     ) : (
-                        <p>{profile.owner} has not provided a bio yet.</p>
+                        <p>{profile?.owner} has not provided a bio yet.</p>
                     )}
                 </Col>
             </Row>
             <Row className='text-center p-3'>
                 <Col>
                     <div>{profile?.created_tasks_count}</div>
-                    <div>tasks</div>
+                    <div>tasks created</div>
                 </Col>
                 <Col>
-                    Placeholder
+                    
+                    tasks assigned 
                 </Col>
                 <Col>
-                    Placeholder
+                    tasks completed
                 </Col>
             </Row>
             <Row>
@@ -75,23 +88,86 @@ const ProfilePage = () => {
                 >
                     Member since: {profile?.created_on}
                 </Col>
-
             </Row>
         </>
 
     )
 
+    const mainProfileTasksInProgress = (
+        <>
+            {profileInProgressTasks.results.length ? (
+                <InfiniteScroll
+                    children={profileInProgressTasks.results.map((task) => (
+                        <Task
+                            key={task.id}
+                            {...task}
+                            setProfileInProgressTasks={setProfileInProgressTasks}
+                        />
+                    ))}
+                    dataLength={profileInProgressTasks.results.length}
+                    loader={<Asset spinner />}
+                    hasMore={!!profileInProgressTasks.next}
+                    next={() => fetchMoreData(profileInProgressTasks, setProfileInProgressTasks)}
+                />
+            ) : (
+                <p>
+                    {profile?.owner} has no ongoing tasks assigned.
+                </p>
+            )}
+        </>
+    );
+
+    const mainProfileTasksCompleted = (
+        <>
+            {profileCompletedTasks.results.length ? (
+                <InfiniteScroll
+                    children={profileCompletedTasks.results.map((task) => (
+                        <Task
+                            key={task.id}
+                            {...task}
+                            setProfileCompletedTasks={setProfileCompletedTasks}
+                        />
+                    ))}
+                    dataLength={profileCompletedTasks.results.length}
+                    loader={<Asset spinner />}
+                    hasMore={!!profileCompletedTasks.next}
+                    next={() => fetchMoreData(profileCompletedTasks, setProfileCompletedTasks)}
+                />
+            ) : (
+                <p>
+                    {profile?.owner} has not completed any assigned tasks yet.
+                </p>
+            )}
+        </>
+    );
+
     return (
-        <Row
-        >
-            <Col lg={8}>
+        <Row>
+            <Col lg={11}>
                 <Container
                     className={`shadow mt-3 ${appStyles.Container}`}
-                    lg={8}
+                    lg={11}
                 >
                     {hasLoaded ? (
                         <>
                             {mainProfile}
+                            <hr />
+                            <h4 className='text-center'>{profile?.owner}'s assigned tasks</h4>
+                            <hr />
+                            <Row className='text-center'>
+                                <Col>
+                                    <p className='font-weight-bold mt-1'>
+                                        <i className='fa-solid fa-spinner' /> In Progress
+                                    </p>
+                                    {mainProfileTasksInProgress}
+                                </Col>
+                                <Col>
+                                    <p className='font-weight-bold mt-1'>
+                                        <i className='fa-solid fa-check-double' /> Completed
+                                    </p>
+                                    {mainProfileTasksCompleted}
+                                </Col>
+                            </Row>
                         </>
                     ) : (
                         <Asset spinner />
