@@ -47,9 +47,14 @@ const ProfilePage = () => {
                         className={`shadow ${styles.ProfilePicture}`}
                     />
                 </Col>
-                <Col>
-                    <h3 className='text-center'>{profile?.owner}</h3>
+                <Col className='text-center'>
+                    <h3>{profile?.owner}</h3>
                     <hr />
+                    {profile?.content ? (
+                        <p>{profile.content}</p>
+                    ) : (
+                        <p>{profile.owner} has not provided a bio yet.</p>
+                    )}
                 </Col>
             </Row>
             <Row className='text-center p-3'>
