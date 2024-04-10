@@ -31,12 +31,13 @@ function App() {
         <Switch>
           <Route exact path='/' render={() => <HomePage />}></Route>
           <Route exact path='/my-tasks' render={() => <TasksPage
-          filter={`owner__profile=${profile_id}&`}
+          filter={`owner__profile=${profile_id}&status=IN_PROGRESS&`}
           message='No results found. Adjust the search keyword or create a task.' />}></Route>
-          <Route exact path='/tasks' render={() => <TasksPage 
+          <Route exact path='/tasks' render={() => <TasksPage
+          filter={`status=IN_PROGRESS&`} 
           message='No results found. Adjust the search keyword or create a task.' />}></Route>
           <Route exact path='/my-assigned-tasks' render={() => <TasksPage
-          filter={`assignee=${profile_id}&`}
+          filter={`assignee=${profile_id}&status=IN_PROGRESS&`}
           message='No results found. Time for coffee! 
           Adjust the keyword search if you are looking for something specific.' />}></Route>
           <Route exact path='/log-in' render={() => <LogInForm />}></Route>
