@@ -5,7 +5,7 @@ import appStyles from '../../App.module.css';
 import Task from '../tasks/Task';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { fetchMoreData } from '../../utils/utils';
-import { Col, Container, Image, Row } from 'react-bootstrap';
+import { Col, Container, Image, Row, Tabs, Tab } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import { useProfileData, useSetProfileData } from '../../contexts/ProfileDataContext';
@@ -16,6 +16,12 @@ const ProfilePage = () => {
     const [hasLoaded, setHasLoaded] = useState(false);
     const [profileInProgressTasks, setProfileInProgressTasks] = useState({ results: [] });
     const [profileCompletedTasks, setProfileCompletedTasks] = useState({ results: [] });
+
+    // const [assignedInProgressCount, setAssignedInProgressCount] = useState(0);
+    // const [assignedCompletedCount, setAssignedCompletedCount] = useState(0);
+
+    console.log('profileInProgressTasks:', profileInProgressTasks)
+    console.log('profileCompletedTasks:', profileCompletedTasks)
 
     const { id } = useParams();
     const setProfileData = useSetProfileData();
@@ -43,7 +49,6 @@ const ProfilePage = () => {
         }
         fetchProfileData();
     }, [id, setProfileData]);
-
 
     const mainProfile = (
         <>
@@ -75,11 +80,12 @@ const ProfilePage = () => {
                     <div>tasks created</div>
                 </Col>
                 <Col>
-                    
-                    tasks assigned 
+                <div>{assignedInProgressCount}</div>
+                    <div>tasks assigned</div> 
                 </Col>
                 <Col>
-                    tasks completed
+                <div>{assignedCompletedCount}</div>
+                    <div>tasks completed</div>
                 </Col>
             </Row>
             <Row>
@@ -154,20 +160,19 @@ const ProfilePage = () => {
                             <hr />
                             <h4 className='text-center'>{profile?.owner}'s assigned tasks</h4>
                             <hr />
-                            <Row className='text-center'>
+                            <Row>
                                 <Col>
-                                    <p className='font-weight-bold mt-1'>
-                                        <i className='fa-solid fa-spinner' /> In Progress
-                                    </p>
-                                    {mainProfileTasksInProgress}
-                                </Col>
-                                <Col>
-                                    <p className='font-weight-bold mt-1'>
-                                        <i className='fa-solid fa-check-double' /> Completed
-                                    </p>
-                                    {mainProfileTasksCompleted}
+                                    <Tabs className='font-weight-bold'>
+                                        <Tab eventKey='in_progress' title={<><i className='fa-solid fa-spinner' /> In Progress</>}>
+                                            {mainProfileTasksInProgress}
+                                        </Tab>
+                                        <Tab eventKey='completed' title={<><i className='fa-solid fa-check-double' /> Completed</>}>
+                                            {mainProfileTasksCompleted}
+                                        </Tab>
+                                    </Tabs>
                                 </Col>
                             </Row>
+
                         </>
                     ) : (
                         <Asset spinner />
