@@ -107,7 +107,7 @@ const NavBar = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
     
-      <Nav className='ml-auto text-center'>
+      <Nav className='ml-auto text-center d-flex align-items-center'>
         {currentUser ? loggedInIcons : loggedOutIcons}
       </Nav>
     </Navbar.Collapse>
