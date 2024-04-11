@@ -17,11 +17,8 @@ const ProfilePage = () => {
     const [profileInProgressTasks, setProfileInProgressTasks] = useState({ results: [] });
     const [profileCompletedTasks, setProfileCompletedTasks] = useState({ results: [] });
 
-    // const [assignedInProgressCount, setAssignedInProgressCount] = useState(0);
-    // const [assignedCompletedCount, setAssignedCompletedCount] = useState(0);
-
-    console.log('profileInProgressTasks:', profileInProgressTasks)
-    console.log('profileCompletedTasks:', profileCompletedTasks)
+    const [assignedInProgressCount, setAssignedInProgressCount] = useState(0);
+    const [assignedCompletedCount, setAssignedCompletedCount] = useState(0);
 
     const { id } = useParams();
     const setProfileData = useSetProfileData();
@@ -49,6 +46,12 @@ const ProfilePage = () => {
         }
         fetchProfileData();
     }, [id, setProfileData]);
+
+    useEffect(() => {
+        setAssignedInProgressCount(profileInProgressTasks.results.length);
+        setAssignedCompletedCount(profileCompletedTasks.results.length);
+    }, [profileInProgressTasks.results.length, profileCompletedTasks.results])
+
 
     const mainProfile = (
         <>
