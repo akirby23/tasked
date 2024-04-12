@@ -40,7 +40,7 @@ const HomePage = () => {
                     { data: totalTasksCompleted },
                 ] = await Promise.all([
                     axiosReq.get(`/profiles/`),
-                    axiosReq.get(`/tasks/?assignee=${profile_id}&priority_level=3`),
+                    axiosReq.get(`/tasks/?assignee=${profile_id}&priority_level=3&status=IN_PROGRESS`),
                     axiosReq.get(`/tasks/?status=IN_PROGRESS`),
                     axiosReq.get(`/tasks/?status=COMPLETED`),
                 ]);
