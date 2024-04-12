@@ -53,7 +53,7 @@ function App() {
           <Route render={() => <NotFound message="Sorry, the page you're looking for could not be found." />} />
         </Switch>
         <Toaster 
-        position='bottom-right'
+        position='top-center'
         reverseOrder={false}
         />
       </Container>
