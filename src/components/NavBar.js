@@ -76,7 +76,7 @@ const NavBar = () => {
         </NavDropdown.Item>
         <NavDropdown.Item
         as={NavLink}
-        to='/log-out'
+        to='/logout'
         >
         <i className='fa-solid fa-right-from-bracket'></i> Log Out
         </NavDropdown.Item>

@@ -42,7 +42,7 @@ function App() {
           Adjust the keyword search if you are looking for something specific.' />}></Route>
           <Route exact path='/log-in' render={() => <LogInForm />}></Route>
           <Route exact path='/sign-up' render={() => <SignUpForm />}></Route>
-          <Route exact path='/log-out' render={() => <LogOut />}></Route>
+          <Route exact path='/logout' render={() => <LogOut />}></Route>
           <Route exact path='/create-task' render={() => <CreateTaskForm />}></Route>
           <Route exact path='/tasks/:id/edit' render={() => <EditTaskForm />}></Route>
           <Route exact path='/tasks/:id' render={() => <TaskPage />}></Route>
