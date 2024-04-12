@@ -35,7 +35,6 @@ const TaskPage = () => {
         handleMount();
     }, [id]);
 
-
     return (
         <>
             <Row>
@@ -43,13 +42,10 @@ const TaskPage = () => {
                     md={8}
                     className='mt-3'>
                     <Task
-                        {...task.results[0]}
+                        {...task.results?.[0]}
                         setTasks={setTask}
                         taskPage
                     />
-                </Col>
-                <Col>
-                    <p></p>
                 </Col>
             </Row>
             <Row>

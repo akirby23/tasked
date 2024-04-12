@@ -8,6 +8,7 @@ import Asset from '../../components/Asset';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { fetchMoreData } from '../../utils/utils';
 import styles from '../../styles/TasksPage.module.css';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
 // Adapted from CI's Moments walkthrough project
 const TasksPage = ({ message, filter = '' }) => {
@@ -15,6 +16,7 @@ const TasksPage = ({ message, filter = '' }) => {
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
     const [query, setQuery] = useState('');
+    const currentUser = useCurrentUser();
 
     useEffect(() => {
         const fetchTasks = async () => {
@@ -33,7 +35,7 @@ const TasksPage = ({ message, filter = '' }) => {
         return () => {
             clearTimeout(timer)
         }
-    }, [filter, query, pathname]);
+    }, [filter, query, pathname, currentUser]);
 
 
     return (

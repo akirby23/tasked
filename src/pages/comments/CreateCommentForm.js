@@ -29,9 +29,9 @@ const CreateCommentForm = ({ task, setTask, setComments, profile_id }) => {
             setTask((prevTask) => ({
                 results: [
                     {
-                        ...prevTask.results[0],
+                        ...prevTask.results?.[0],
                         // Increments the comment count
-                        comments_count: prevTask.results[0].comments_count + 1,
+                        comments_count: prevTask.results?.[0].comments_count + 1,
                     },
                 ],
             }));

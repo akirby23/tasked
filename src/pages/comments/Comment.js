@@ -29,8 +29,8 @@ const Comment = ({ profile_id, profile_image, owner, created_on, updated_on, com
     try {
       await axiosRes.delete(`/comments/${id}/`);
       setTask((prevTask) => ({
-        ...prevTask.results[0],
-        comments_count: prevTask.results[0].comments_count - 1,
+        ...prevTask.results?.[0],
+        comments_count: prevTask.results?.[0].comments_count - 1,
       }));
       setComments((prevComments) => ({
         ...prevComments,
