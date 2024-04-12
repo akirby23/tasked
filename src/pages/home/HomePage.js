@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
+import { Jumbotron, Container, Row, Col, Button } from 'react-bootstrap';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { axiosReq } from '../../api/axiosDefaults';
 import { useParams } from 'react-router-dom/cjs/react-router-dom';
 import { useProfileData, useSetProfileData } from '../../contexts/ProfileDataContext';
 import { fetchMoreData } from '../../utils/utils';
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Asset from '../../components/Asset';
 import Task from '../tasks/Task';
 import appStyles from '../../App.module.css';
+import styles from '../../styles/HomePage.module.css'
+import HomePageGraphic from '../../assets/home-page-graphic.png';
 
 
 const HomePage = () => {
@@ -81,7 +84,7 @@ const HomePage = () => {
                     next={() => fetchMoreData(highPriorityTasks, setHighPriorityTasks)}
                 />
             ) : (
-                <p>
+                <p className='text-center'>
                     No high priority tasks in progress...yet.
                 </p>
             )}
@@ -125,47 +128,79 @@ const HomePage = () => {
 
     return (
         <>
-            {currentUser  ? (
+            {currentUser ? (
                 hasLoaded ? (
                     <>
-                    <h3 className='mt-2 text-center'>Hi {currentUser?.username}!</h3>
-                    <hr />
+                        <h3 className='mt-2 text-center'>Hi {currentUser?.username}!</h3>
+                        <hr />
                         <Row>
-                        <Col lg={8}>
-                            <Container
-                                className={`shadow rounded ${appStyles.Container}`}
-                            >
-                                <h4 className='text-center'>My High Priority Tasks</h4>
-                                {myHighPriorityTasks}
-                            </Container>
-                        </Col>
-                            <Col lg={4}>
-                            <Container
-                            className={`shadow rounded ${appStyles.Container}`}
-                        >
-                                <h4 className='text-center'>All Tasks</h4>
-                                {globalTaskData}
+                            <Col lg={8}>
+                                <Container
+                                    className={`shadow rounded ${appStyles.Container}`}
+                                >
+                                    <h4 className='text-center'>My High Priority Tasks</h4>
+                                    {myHighPriorityTasks}
                                 </Container>
                             </Col>
-                    </Row>
-</>
-                    ) : (
-                        <Asset spinner />
-                    )
+                            <Col lg={4}>
+                                <Container
+                                    className={`shadow rounded ${appStyles.Container}`}
+                                >
+                                    <h4 className='text-center'>All Tasks</h4>
+                                    {globalTaskData}
+                                </Container>
+                            </Col>
+                        </Row>
+                    </>
+                ) : (
+                    <Asset spinner />
+                )
             ) : (
                 <Jumbotron
                     className='mt-5 text-center shadow'
                 >
                     <Container
                     >
-                        <h1>
-                            Welcome to Tasked!
-                        </h1>
-                        <p>Organise, assign, and track your tasks with ease. Stay productive and accountable together.</p>
+                        <Row className='d-flex align-items-center'>
+                            <Col md={7}>
+                                <h1>
+                                    Welcome to Tasked!
+                                </h1>
+                                <p>Organise, assign, and track your tasks with ease. Stay productive and accountable together.</p>
+                                <hr />
+                                <Link
+                                to='/log-in'
+                                >
+                                <Button 
+                                className={`mr-2 ${styles.Button}`}
+                                aria-label='Log In'
+                                >
+                                    Log In
+                                </Button>
+                                </Link>
+                                <Link
+                                to='sign-up'
+                                >
+                                <Button 
+                                className={`${styles.Button}`}
+                                aria-label='Sign Up'
+                                >
+                                    Sign Up
+                                </Button>
+                                </Link>
+                            </Col>
+                            <Col md={5}>
+                                <img
+                                    src={HomePageGraphic}
+                                    className={styles.Image}
+                                    alt='Tasked logo'
+                                />
+                            </Col>
+                        </Row>
                     </Container>
                 </Jumbotron>
             )}
-            </>
+        </>
     );
 };
 

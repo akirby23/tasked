@@ -6,6 +6,7 @@
 
 //   const { id, owner, profile_picture } = profile;
 
+
 //   return (
 //     <div>
 //       <div>

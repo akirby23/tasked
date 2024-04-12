@@ -1,0 +1,31 @@
+.Button {
+    background-color: #AC524B;
+    border-color: #AC524B;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+}
+
+.Button:hover {
+    background-color: #376153;
+    border-color: #376153;
+}
+
+.Image {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+  
+  @media screen and (min-width: 768px) {
+  
+    .Image {
+      height: 80%;
+      width: 80%;
+    }
+  
+  }
+
+  @media screen and (max-width: 768px) {
+    .Image {
+        margin-top: 2rem;
+      }
+  }
