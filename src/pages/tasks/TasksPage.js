@@ -38,9 +38,11 @@ const TasksPage = ({ message, filter = '' }) => {
 
     return (
 
-        <Row>
+        <Row
+        className='align-items-center'
+        >
             <Col
-                md={8}
+                md={10}
                 className='mt-3'
             >
                 <i 
