@@ -1,13 +1,16 @@
 import React from 'react';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
-import logo from '../assets/tasked-logo.png';
-import styles from '../styles/NavBar.module.css';
 import { NavLink } from 'react-router-dom';
 import { useCurrentUser } from '../contexts/CurrentUserContext';
 import ProfilePicture from './ProfilePicture';
+import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
+import logo from '../assets/tasked-logo.png';
+import styles from '../styles/NavBar.module.css';
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
+
+  const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
   // Navlinks to display while logged out
   const loggedOutIcons = (
@@ -17,14 +20,14 @@ const NavBar = () => {
          className={styles.NavLink}
          activeClassName={styles.Active}
          >
-        <i className="fa-solid fa-right-to-bracket"></i> Log In
+        <i className='fa-solid fa-right-to-bracket'></i> Log In
           </NavLink>
         <NavLink 
         to='sign-up'
         className={styles.NavLink}
         activeClassName={styles.Active}
         >
-        <i className="fa-solid fa-user-plus"></i> Sign Up
+        <i className='fa-solid fa-user-plus'></i> Sign Up
         </NavLink>
     </>
   )
@@ -37,45 +40,45 @@ const NavBar = () => {
         className={styles.NavLink}
         activeClassName={styles.Active}
       >
-        <i className="fa-regular fa-square-plus"></i> New Task
+        <i className='fa-regular fa-square-plus'></i> New Task
         </NavLink>
       <NavLink
         to='/tasks'
         className={styles.NavLink}
         activeClassName={styles.Active}
       >
-        <i className="fa-solid fa-list"></i> All Tasks
+        <i className='fa-solid fa-list'></i> All Tasks
       </NavLink>
     <NavLink
         to='/my-tasks'
         className={styles.NavLink}
         activeClassName={styles.Active}
       >
-        <i className="fa-solid fa-list-check"></i> My Tasks
+        <i className='fa-solid fa-list-check'></i> My Tasks
         </NavLink>
         <NavLink
         to='/my-assigned-tasks'
         className={styles.NavLink}
         activeClassName={styles.Active}
       >
-        <i className="fa-solid fa-clipboard-list"></i> My Assigned Tasks
+        <i className='fa-solid fa-clipboard-list'></i> My Assigned Tasks
         </NavLink>
         <NavDropdown title={<ProfilePicture 
         src={currentUser?.profile_picture} 
         text={currentUser?.username} 
         />} 
-        id="basic-nav-dropdown">
+        id='basic-nav-dropdown'>
         <NavDropdown.Item
         as={NavLink}
         to={`/profiles/${currentUser?.profile_id}`}
         >
-        <i className="fa-regular fa-user"></i> My Profile
+        <i className='fa-regular fa-user'></i> My Profile
         </NavDropdown.Item>
         <NavDropdown.Item
         as={NavLink}
         to='/log-out'
         >
-        <i className="fa-solid fa-right-from-bracket"></i> Log Out
+        <i className='fa-solid fa-right-from-bracket'></i> Log Out
         </NavDropdown.Item>
       </NavDropdown>
     </>
@@ -83,8 +86,9 @@ const NavBar = () => {
 
   return (
     <Navbar 
+    expanded={expanded}
     collapseOnSelect 
-    expand="md" 
+    expand='md' 
     className={styles.NavBar}
     >
       <Container>
@@ -96,17 +100,22 @@ const NavBar = () => {
       <Navbar.Brand>
         <img
           src={logo}
-          width="70"
-          height="70"
-          className="d-inline-block align-top"
-          alt="Tasked logo"
+          width='70'
+          height='70'
+          className='d-inline-block align-top'
+          alt='Tasked logo'
         />
       </Navbar.Brand>
       </NavLink>
       
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-    
+      <Navbar.Toggle 
+      aria-controls='responsive-navbar-nav' 
+      ref={ref}
+      onClick={() => setExpanded(!expanded)}
+      />
+      <Navbar.Collapse 
+      id='responsive-navbar-nav'
+      >
       <Nav className='ml-auto text-center d-flex align-items-center'>
         {currentUser ? loggedInIcons : loggedOutIcons}
       </Nav>
