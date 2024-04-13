@@ -86,8 +86,11 @@ const CreateTaskForm = () => {
                     name='category'
                     onChange={handleChange}
                     aria-label='category'
+                    defaultValue='Select a category'
                 >
-                    <option disabled selected hidden>Select a category</option>
+                    <option 
+                    disabled 
+                    hidden>Select a category</option>
                     {categories.results?.map(category => (
                         <option
                             key={category.id}
@@ -111,8 +114,11 @@ const CreateTaskForm = () => {
                     name='priority_level'
                     onChange={handleChange}
                     aria-label='priority level'
+                    defaultValue='Select a priority level'
                 >
-                    <option disabled selected hidden>Select a priority level</option>
+                    <option 
+                    disabled 
+                    hidden>Select a priority level</option>
                     {priorityLevels.results?.map(priority_level => (
                         <option
                             key={priority_level.id}
@@ -136,8 +142,11 @@ const CreateTaskForm = () => {
                     name='assignee'
                     onChange={handleChange}
                     aria-label='assignee'
+                    defaultValue='Select an assignee'
                 >
-                    <option disabled selected hidden>Select an assignee</option>
+                    <option 
+                    disabled 
+                    hidden>Select an assignee</option>
                     {profiles.results?.map((profile) => (
                         <option
                             key={profile.id}
