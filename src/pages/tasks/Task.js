@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { useCurrentUser } from '../../contexts/CurrentUserContext'
-import { Card, ListGroup, ListGroupItem, Row, Col, Button } from 'react-bootstrap';
+import { Card, Row, Col, Button } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { DropDownMenu } from '../../components/DropDownMenu';
 import { axiosReq, axiosRes } from '../../api/axiosDefaults';
@@ -38,13 +38,13 @@ const Task = (props) => {
   });
 
   const currentTaskStatus = useMemo(() => {
-    const taskStatusName = {status}
+    const taskStatusName = { status }
     return taskStatusName
   }, [status])
 
   useEffect(() => {
-      setTaskStatus(currentTaskStatus);
-    }, [currentTaskStatus])
+    setTaskStatus(currentTaskStatus);
+  }, [currentTaskStatus])
 
   const handeDisplayDeleteModal = () => {
     setDisplayDeleteModal(true);
@@ -73,7 +73,7 @@ const Task = (props) => {
     try {
       const updatedStatus = taskStatus.status === 'IN_PROGRESS' ? 'COMPLETED' : 'IN_PROGRESS';
       const updatedTaskStatus = {
-        ...taskStatus, 
+        ...taskStatus,
         status: updatedStatus,
       }
       await axiosReq.patch(`/tasks/${id}`, {
@@ -85,118 +85,104 @@ const Task = (props) => {
     };
   };
 
+
   return (
     <Card
       className='shadow mb-3'
     >
       <Card.Body>
-        <Card.Header>
-          <Row>
-            <Link to={`/tasks/${id}`}>
-              <Col>
-                {title && <Card.Title>
-                  <h2>{title}</h2>
-                </Card.Title>}
-              </Col>
-            </Link>
-            <Col>
-              {(is_owner || is_assignee) && taskPage && (<DropDownMenu
-                handleEdit={handleEdit}
-                handleDelete={handeDisplayDeleteModal}
-              />)}
-            </Col>
-            {displayDeleteModal && (<ModalPopup
-              show={displayDeleteModal}
-              onHide={handleCloseDeleteModal}
-              title={<h2>Delete Task</h2>}
-              body={<p>Are you sure you want to delete this task? This action cannot be undone.</p>}
-              footer={
-                <div>
-                  <Button
-                    variant='danger'
-                    onClick={handleDelete}
-                    className='mr-1'
-                  >
-                    Delete Task
-                  </Button>
-                  <Button
-                    variant='secondary'
-                    onClick={handleCloseDeleteModal}
-                  >
-                    Cancel
-                  </Button>
-                </div>
-              }
-            />
-            )};
-          </Row>
-        </Card.Header>
         <Row>
+          <Link to={`/tasks/${id}`}>
+            <Col className='text-center'>
+              {title && <Card.Title>
+                <h2>{title}</h2>
+              </Card.Title>}
+            </Col>
+          </Link>
           <Col>
-            <ListGroup className='list-group-flush'>
-              {category_name && <ListGroupItem>
-                <span className='font-weight-bold'>Category:</span> <span>{category_name}</span>
-              </ListGroupItem>}
-              {priority_level_name && <ListGroupItem>
-                <span className='font-weight-bold'>Priority Level:</span> <span>{priority_level_name}</span>
-              </ListGroupItem>}
-              {status && <ListGroupItem>
-                <span className='font-weight-bold'>Status:</span> <span>{taskStatus.status}</span>
-              </ListGroupItem>}
-            </ListGroup>
+            {(is_owner || is_assignee) && taskPage && (<DropDownMenu
+              handleEdit={handleEdit}
+              handleDelete={handeDisplayDeleteModal}
+            />)}
           </Col>
-          <Col>
-            <ListGroup className='list-group-flush'>
-              {owner && <ListGroupItem>
-                <Link
-                  to={`/profiles/${profile_id}`}
+          {displayDeleteModal && (<ModalPopup
+            show={displayDeleteModal}
+            onHide={handleCloseDeleteModal}
+            title={<h2>Delete Task</h2>}
+            body={<p>Are you sure you want to delete this task? This action cannot be undone.</p>}
+            footer={
+              <div>
+                <Button
+                  variant='danger'
+                  onClick={handleDelete}
+                  className='mr-1'
                 >
-                  <span className='font-weight-bold'>Created by:</span> <span>{owner}</span>
-                </Link>
-              </ListGroupItem>}
-              {assignee_name && <ListGroupItem><span className='font-weight-bold'>Assigned to:</span>
-                <span><Link to={`/profiles/${profile_id}`}> {assignee_name}</Link></span>
-              </ListGroupItem>}
-            </ListGroup>
+                  Delete Task
+                </Button>
+                <Button
+                  variant='secondary'
+                  onClick={handleCloseDeleteModal}
+                >
+                  Cancel
+                </Button>
+              </div>
+            }
+          />
+          )};
+        </Row>
+        <hr className='mt-0' />
+        <Row>
+          <Col md={12} className={styles.Col}>
+            <div className={`d-flex ${styles.Labels}`}>
+              <span className={`rounded-pill shadow-sm mx-1 ${styles.Label}`}>category: {category_name}</span>
+              <span className={`rounded-pill shadow-sm mx-1 ${styles.Label}`}>priority: {priority_level_name}</span>
+              <span className={`rounded-pill shadow-sm mx-1 ${styles.Label}`}>status: {taskStatus.status}</span>
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col className={`text-left ml-2 ${styles.TaskDetails}`}>
+            {task_detail &&
+              <>
+                <Card.Text>{task_detail}</Card.Text>
+              </>
+            }
+          </Col>
+        </Row>
+        <hr className='mt-0' />
+        <Row className='align-items-center ml-2'>
+          <Col md={6} className='text-left'>
+            <Link to={`/profiles/${profile_id}`}><span>assigned to {assignee_name} <i class='fa-solid fa-arrow-up-right-from-square' /></span></Link>
+          </Col>
+          <Col md={6}>
             {(is_owner || is_assignee) && taskStatus.status === 'IN_PROGRESS' ? (<Button
               onClick={handleStatusChange}
               aria-label='Mark task as Completed'
-              className={`ml-2 ${appStyles.ButtonPrimary}`}
-
+              className={`text-center ${appStyles.ButtonPrimary}`}
             >
               <i className='fa-regular fa-circle-check' /> Mark as Completed
             </Button>) : (is_owner || is_assignee) && (
               <Button
                 onClick={handleStatusChange}
                 aria-label='Reopen task'
-                className={`ml-2 ${appStyles.ButtonPrimary}`}
+                className={`${appStyles.ButtonPrimary}`}
               >
                 <i className='fa-solid fa-arrow-rotate-right' /> Reopen
               </Button>
             )
             }
           </Col>
-
         </Row>
-        <hr className='mt-0' />
-        <Row>
-          <Col className={`text-left ml-2 ${styles.TaskDetails}`}>
-            {task_detail &&
-              <>
-                <Card.Text className='font-weight-bold'>Task Details</Card.Text>
-                <Card.Text>{task_detail}</Card.Text>
-              </>
-            }
-          </Col>
-        </Row>
-        <Card.Footer>
+        <Card.Footer className='mt-3'>
           <Row className='d-flex justify-content-md-between font-weight-light'>
-            <Col className='md-9'>
-              <span>Created on {created_on}</span>
+            <Col lg={9} sm={8} xs={7}>
+              <span>
+                created on {created_on} by <Link to={`/profiles/${profile_id}`}>{owner} <i class='fa-solid fa-arrow-up-right-from-square' /></Link>
+              </span>
               <div className='vr'></div>
-              <span>Last updated {updated_on}</span>
+              <span>last updated {updated_on}</span>
             </Col>
-            <Col className='d-flex justify-content-end align-items-center pr-2'>
+            <Col lg={3} sm={4} xs={5} className='d-flex justify-content-end align-items-center pr-2'>
               <Link
                 to={`/tasks/${id}`}
                 className={styles.CommentsCount}>

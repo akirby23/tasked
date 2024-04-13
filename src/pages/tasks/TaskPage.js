@@ -39,7 +39,7 @@ const TaskPage = () => {
         <>
             <Row>
                 <Col
-                    md={8}
+                    md={10}
                     className='mt-3'>
                     <Task
                         {...task.results?.[0]}
@@ -51,7 +51,7 @@ const TaskPage = () => {
             <Row>
                 <Col
                     className='mt-3'
-                    md={8}
+                    md={10}
                 >
                     {currentUser ? (
                         <CreateCommentForm

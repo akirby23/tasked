@@ -5,3 +5,26 @@
 .CommentsCount {
     padding-right: 2rem;
 }
+
+.Label {
+    background-color: #AC524B;
+    color: #FFFFFF;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+}
+
+@media screen and (max-width: 540px) {
+    .Labels {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .Label {
+        margin-top: 0.4rem;
+    }
+
+    .Col {
+        width: auto;
+    }
+}
+
