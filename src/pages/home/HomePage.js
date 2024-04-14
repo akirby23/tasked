@@ -3,7 +3,6 @@ import { Jumbotron, Container, Row, Col, Button } from 'react-bootstrap';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { axiosReq } from '../../api/axiosDefaults';
 import { useParams } from 'react-router-dom/cjs/react-router-dom';
-import { useProfileData, useSetProfileData } from '../../contexts/ProfileDataContext';
 import { fetchMoreData } from '../../utils/utils';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -27,9 +26,6 @@ const HomePage = () => {
     const [totalCompletedCount, setTotalCompletedCount] = useState(0)
 
     const { id } = useParams();
-    const setProfileData = useSetProfileData();
-    const { pageProfile } = useProfileData();
-    const [profile] = pageProfile.results;
     const profile_id = currentUser?.profile_id || "";
 
 
@@ -37,20 +33,14 @@ const HomePage = () => {
         const fetchHomePageData = async () => {
             try {
                 const [
-                    { data: pageProfile },
                     { data: highPriorityTasks },
                     { data: totalTasksInProgress },
                     { data: totalTasksCompleted },
                 ] = await Promise.all([
-                    axiosReq.get(`/profiles/`),
                     axiosReq.get(`/tasks/?assignee=${profile_id}&priority_level=3&status=IN_PROGRESS`),
                     axiosReq.get(`/tasks/?status=IN_PROGRESS`),
                     axiosReq.get(`/tasks/?status=COMPLETED`),
                 ]);
-                setProfileData(prevState => ({
-                    ...prevState,
-                    pageProfile: { results: [pageProfile] },
-                }));
                 setHighPriorityTasks(highPriorityTasks);
                 setTotalTasksInProgress(totalTasksInProgress);
                 setTotalTasksCompleted(totalTasksCompleted);
@@ -60,12 +50,18 @@ const HomePage = () => {
             }
         }
         fetchHomePageData();
-    }, [id, setProfileData, profile_id]);
+    }, [id, profile_id]);
+
+    // useEffect(() => {
+    //     fetchMoreData(totalTasksInProgress, setTotalTasksCompleted)
+    //     fetchMoreData(totalTasksCompleted, setTotalCompletedCount)
+    // }, [totalTasksInProgress, totalTasksCompleted])
 
     useEffect(() => {
         setTotalInProgressCount(totalTasksInProgress.results.length);
         setTotalCompletedCount(totalTasksCompleted.results.length);
     }, [totalTasksInProgress.results.length, totalTasksCompleted.results.length])
+
 
     const myHighPriorityTasks = (
         <>
@@ -97,12 +93,14 @@ const HomePage = () => {
                 className='table table-bordered text-center'
             >
                 <thead>
+                    <tr>
                     <th scope='col'>
                         Status
                     </th>
                     <th scope='col'>
                         Total Count
                     </th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr>
