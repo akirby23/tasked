@@ -71,7 +71,7 @@ const LogInForm = () => {
                             <Form.Label className='d-none'>Password</Form.Label>
                             <Form.Control
                                 type='password'
-                                placeholder='Password'
+                                placeholder='Enter password'
                                 name='password'
                                 value={password}
                                 onChange={handleChange}
