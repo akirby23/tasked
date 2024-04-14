@@ -7,7 +7,6 @@ import { Container } from 'react-bootstrap';
 import './api/axiosDefaults.js'
 import SignUpForm from './pages/auth/SignUpForm';
 import LogInForm from './pages/auth/LogInForm';
-import LogOut from './pages/auth/LogOut.js';
 import CreateTaskForm from './pages/tasks/CreateTaskForm.js';
 import TaskPage from './pages/tasks/TaskPage.js';
 import TasksPage from './pages/tasks/TasksPage.js';
@@ -42,7 +41,6 @@ function App() {
           Adjust the keyword search if you are looking for something specific.' />}></Route>
           <Route exact path='/log-in' render={() => <LogInForm />}></Route>
           <Route exact path='/sign-up' render={() => <SignUpForm />}></Route>
-          <Route exact path='/logout' render={() => <LogOut />}></Route>
           <Route exact path='/create-task' render={() => <CreateTaskForm />}></Route>
           <Route exact path='/tasks/:id/edit' render={() => <EditTaskForm />}></Route>
           <Route exact path='/tasks/:id' render={() => <TaskPage />}></Route>
