@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import { useCurrentUser } from '../../contexts/CurrentUserContext'
+import React, { useEffect, useMemo, useState } from 'react';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { Card, Row, Col, Button } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { DropDownMenu } from '../../components/DropDownMenu';
@@ -42,164 +42,189 @@ const Task = (props) => {
   });
 
   const currentTaskStatus = useMemo(() => {
-    const taskStatusName = { status }
-    return taskStatusName
-  }, [status])
+    const taskStatusName = { status };
+    return taskStatusName;
+  }, [status]);
 
   useEffect(() => {
     setTaskStatus(currentTaskStatus);
-  }, [currentTaskStatus])
+  }, [currentTaskStatus]);
 
   const handeDisplayDeleteModal = () => {
     setDisplayDeleteModal(true);
-  }
+  };
 
   const handleCloseDeleteModal = () => {
     setDisplayDeleteModal(false);
-  }
+  };
 
   const handleEdit = () => {
-    history.push(`/tasks/${id}/edit`)
-  }
+    history.push(`/tasks/${id}/edit`);
+  };
 
   const handleDelete = async () => {
     try {
-      await axiosRes.delete(`/tasks/${id}/`)
+      await axiosRes.delete(`/tasks/${id}/`);
       toast.success('Task deleted successfully.');
-      history.push('/tasks/');
+      history.goBack();
     } catch (err) {
       console.log(err);
       setDisplayDeleteModal(false);
-    };
+    }
   };
 
   const handleStatusChange = async () => {
     try {
-      const updatedStatus = taskStatus.status === 'IN_PROGRESS' ? 'COMPLETED' : 'IN_PROGRESS';
+      const updatedStatus =
+        taskStatus.status === 'IN_PROGRESS' ? 'COMPLETED' : 'IN_PROGRESS';
       const updatedTaskStatus = {
         ...taskStatus,
         status: updatedStatus,
-      }
+      };
       await axiosReq.patch(`/tasks/${id}`, {
         status: updatedStatus,
       });
       setTaskStatus(updatedTaskStatus);
     } catch (err) {
-      console.log(err)
-    };
+      console.log(err);
+    }
   };
 
-
   return (
-    <Card
-      className='shadow mb-3'
-    >
+    <Card className={`shadow mb-3 ${styles.Card}`}>
       <Card.Body>
         <Row>
           <Link to={`/tasks/${id}`}>
             <Col className='text-center'>
-              {title && <Card.Title>
-                <h2>{title}</h2>
-              </Card.Title>}
+              {title && (
+                <Card.Title>
+                  <h2>{title}</h2>
+                </Card.Title>
+              )}
             </Col>
           </Link>
           <Col>
-            {(is_owner || is_assignee) && taskPage && (<DropDownMenu
-              handleEdit={handleEdit}
-              handleDelete={handeDisplayDeleteModal}
-            />)}
+            {(is_owner || is_assignee) && taskPage && (
+              <DropDownMenu
+                handleEdit={handleEdit}
+                handleDelete={handeDisplayDeleteModal}
+              />
+            )}
           </Col>
-          {displayDeleteModal && (<ModalPopup
-            show={displayDeleteModal}
-            onHide={handleCloseDeleteModal}
-            title={<h2>Delete Task</h2>}
-            body={<p>Are you sure you want to delete this task? This action cannot be undone.</p>}
-            footer={
-              <div>
-                <Button
-                  variant='danger'
-                  onClick={handleDelete}
-                  className='mr-1'
-                  aria-label='Delete task'
-                >
-                  Delete Task
-                </Button>
-                <Button
-                  variant='secondary'
-                  onClick={handleCloseDeleteModal}
-                  aria-label='Cancel'
-                >
-                  Cancel
-                </Button>
-              </div>
-            }
-          />
-          )};
+          {displayDeleteModal && (
+            <ModalPopup
+              show={displayDeleteModal}
+              onHide={handleCloseDeleteModal}
+              title={<h2>Delete Task</h2>}
+              body={
+                <p>
+                  Are you sure you want to delete this task? This action cannot
+                  be undone.
+                </p>
+              }
+              footer={
+                <div>
+                  <Button
+                    variant='danger'
+                    onClick={handleDelete}
+                    className='mr-1'
+                  >
+                    Delete Task
+                  </Button>
+                  <Button variant='secondary' onClick={handleCloseDeleteModal}>
+                    Cancel
+                  </Button>
+                </div>
+              }
+            />
+          )}
+          ;
         </Row>
         <hr className='mt-0' />
         <Row>
           <Col md={12} className={styles.Col}>
             <div className={`d-flex ${styles.Labels}`}>
-              <span className={`rounded-pill shadow-sm mx-1 ${styles.Label}`}>category: {category_name}</span>
-              <span className={`rounded-pill shadow-sm mx-1 ${styles.Label}`}>priority: {priority_level_name}</span>
-              <span className={`rounded-pill shadow-sm mx-1 ${styles.Label}`}>status: {taskStatus.status}</span>
+              <span className={`rounded-pill shadow-sm mx-1 ${styles.Label}`}>
+                category: {category_name}
+              </span>
+              <span className={`rounded-pill shadow-sm mx-1 ${styles.Label}`}>
+                priority: {priority_level_name}
+              </span>
+              <span className={`rounded-pill shadow-sm mx-1 ${styles.Label}`}>
+                status: {taskStatus.status}
+              </span>
             </div>
           </Col>
+          {(is_owner || is_assignee) &&
+            taskStatus.status === 'IN_PROGRESS' ? (
+              <Row>
+                <Col md={12}>
+              <Button
+                onClick={handleStatusChange}
+                aria-label='Mark task as Completed'
+                className={`text-center rounded-pill ml-3 my-3  ${appStyles.ButtonPrimary}`}
+              >
+                <i className='fa-regular fa-circle-check' /> Mark as Completed
+              </Button>
+              </Col>
+              </Row>
+            ) : (
+              (is_owner || is_assignee) && (
+                <Row>
+                  <Col md={12} >
+                <Button
+                  onClick={handleStatusChange}
+                  aria-label='Reopen task'
+                  className={`rounded-pill ml-3 my-3 ${appStyles.ButtonPrimary}`}
+                >
+                  <i className='fa-solid fa-arrow-rotate-right' /> Reopen
+                </Button>
+                </Col>
+                </Row>
+              )
+            )}
         </Row>
         <Row>
           <Col className={`text-left ml-2 ${styles.TaskDetails}`}>
-            {task_detail &&
+            {task_detail && (
               <>
                 <Card.Text>{task_detail}</Card.Text>
               </>
-            }
+            )}
           </Col>
         </Row>
         <hr className='mt-0' />
-        <Row className='align-items-center ml-2'>
-          <Col md={6} className='text-left'>
-            <Link to={`/profiles/${assignee_profile_id}`}><span>assigned to {assignee_name} <i className='fa-solid fa-arrow-up-right-from-square' /></span></Link>
+        <Row className='d-flex justify-content-md-between mt-3 font-weight-light'>
+          <Col className='ml-2'>
+            <div>
+            <Link to={`/profiles/${assignee_profile_id}`}>
+            <span>
+                assigned to {assignee_name}{' '}
+                <i className='fa-solid fa-arrow-up-right-from-square' />
+              </span>
+              </Link>
+            </div>
+            <div>
+            <span>
+              created on {created_on} by{' '}
+              <Link to={`/profiles/${profile_id}`}>
+                {owner} <i class='fa-solid fa-arrow-up-right-from-square' />
+              </Link>
+            </span>
+            </div>
+            <div>
+            <span>last updated {updated_on}</span>
+            </div>
           </Col>
-          <Col md={6}>
-            {(is_owner || is_assignee) && taskStatus.status === 'IN_PROGRESS' ? (<Button
-              onClick={handleStatusChange}
-              aria-label='Mark task as Completed'
-              className={`text-center ${appStyles.ButtonPrimary}`}
-            >
-              <i className='fa-regular fa-circle-check' /> Mark as Completed
-            </Button>) : (is_owner || is_assignee) && (
-              <Button
-                onClick={handleStatusChange}
-                aria-label='Reopen task'
-                className={`${appStyles.ButtonPrimary}`}
-              >
-                <i className='fa-solid fa-arrow-rotate-right' /> Reopen
-              </Button>
-            )
-            }
+          <Col className='d-flex justify-content-end ml-2 align-items-center pr-2'>
+            <Link to={`/tasks/${id}`} className={styles.CommentsCount}>
+              <i className='fa-regular fa-comments'></i> {comments_count}
+            </Link>
           </Col>
         </Row>
-        <Card.Footer className='mt-3'>
-          <Row className='d-flex justify-content-md-between font-weight-light'>
-            <Col lg={9} sm={8} xs={7}>
-              <span>
-                created on {created_on} by <Link to={`/profiles/${profile_id}`}>{owner} <i class='fa-solid fa-arrow-up-right-from-square' /></Link>
-              </span>
-              <div className='vr'></div>
-              <span>last updated {updated_on}</span>
-            </Col>
-            <Col lg={3} sm={4} xs={5} className='d-flex justify-content-end align-items-center pr-2'>
-              <Link
-                to={`/tasks/${id}`}
-                className={styles.CommentsCount}>
-                <i className='fa-regular fa-comments'></i> {comments_count}
-              </Link>
-            </Col>
-          </Row>
-        </Card.Footer>
       </Card.Body>
     </Card>
-  )
-}
+  );
+};
 
-export default Task
+export default Task;

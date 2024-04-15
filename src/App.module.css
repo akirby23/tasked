@@ -29,6 +29,8 @@ a:hover i {
 .Container {
     background-color: #FFFFFF;
     padding: 2rem;
+    border: 1px solid rgba(0, 0, 0, 1);
+    border-radius: .25rem;
 }
 
 .ButtonPrimary {
@@ -38,6 +40,11 @@ a:hover i {
 }
 
 .ButtonPrimary:hover {
+    background-color: #376153;
+    border-color: #376153;
+}
+
+.ButtonPrimary:disabled {
     background-color: #376153;
     border-color: #376153;
 }
