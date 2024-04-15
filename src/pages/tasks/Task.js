@@ -66,7 +66,7 @@ const Task = (props) => {
     try {
       await axiosRes.delete(`/tasks/${id}/`);
       toast.success('Task deleted successfully.');
-      history.goBack();
+      history.push('/tasks/');
     } catch (err) {
       console.log(err);
       setDisplayDeleteModal(false);
@@ -208,7 +208,7 @@ const Task = (props) => {
             <span>
               created on {created_on} by{' '}
               <Link to={`/profiles/${profile_id}`}>
-                {owner} <i class='fa-solid fa-arrow-up-right-from-square' />
+                {owner} <i className='fa-solid fa-arrow-up-right-from-square' />
               </Link>
             </span>
             </div>
