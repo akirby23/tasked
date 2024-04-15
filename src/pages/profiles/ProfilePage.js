@@ -10,9 +10,12 @@ import { useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import { useProfileData, useSetProfileData } from '../../contexts/ProfileDataContext';
 import { EditProfileDropdown } from '../../components/DropDownMenu';
+import { useRedirect } from '../../hooks/useRedirect';
 
 
 const ProfilePage = () => {
+    useRedirect('loggedOut');
+
     const [hasLoaded, setHasLoaded] = useState(false);
     const [profileInProgressTasks, setProfileInProgressTasks] = useState({ results: [] });
     const [profileCompletedTasks, setProfileCompletedTasks] = useState({ results: [] });
@@ -94,8 +97,9 @@ const ProfilePage = () => {
             <Row>
                 <Col
                     md={4}
+                    className='font-weight-light'
                 >
-                    Member since: {profile?.created_on}
+                    Member since {profile?.created_on}
                 </Col>
             </Row>
         </>
@@ -119,7 +123,7 @@ const ProfilePage = () => {
                     next={() => fetchMoreData(profileInProgressTasks, setProfileInProgressTasks)}
                 />
             ) : (
-                <p>
+                <p className='mt-2'>
                     {profile?.owner} has no ongoing tasks assigned.
                 </p>
             )}
@@ -143,7 +147,7 @@ const ProfilePage = () => {
                     next={() => fetchMoreData(profileCompletedTasks, setProfileCompletedTasks)}
                 />
             ) : (
-                <p>
+                <p className='mt-2'>
                     {profile?.owner} has not completed any assigned tasks yet.
                 </p>
             )}

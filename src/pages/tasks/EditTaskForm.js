@@ -56,7 +56,7 @@ const EditTaskForm = () => {
     }
 
     // Retrieve profiles from the drf-tasked API
-    const retrieveProfiles = async () => {
+    const retrieveProfiles = async (setCategories) => {
         try {
             const { data } = await axios.get('/profiles/')
             setProfiles(data)

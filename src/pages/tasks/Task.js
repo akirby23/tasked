@@ -4,12 +4,15 @@ import { Card, Row, Col, Button } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { DropDownMenu } from '../../components/DropDownMenu';
 import { axiosReq, axiosRes } from '../../api/axiosDefaults';
+import { useRedirect } from '../../hooks/useRedirect';
 import ModalPopup from '../../components/ModalPopup';
 import styles from '../../styles/Task.module.css';
 import appStyles from '../../App.module.css';
 import toast from 'react-hot-toast';
 
 const Task = (props) => {
+  useRedirect('loggedOut');
+
   const {
     id,
     owner,

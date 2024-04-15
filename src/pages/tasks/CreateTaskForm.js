@@ -38,6 +38,8 @@ const CreateTaskForm = () => {
         }
     }
 
+    console.log(profiles.next)
+
     // Retrieve priority levels from the drf-tasked API
     const retrievePriorityLevels = async () => {
         try {
@@ -76,6 +78,8 @@ const CreateTaskForm = () => {
     const returnToPreviousPage = () => {
         history.goBack();
     };
+
+    console.log(profiles)
 
     const dropdownFields = (
         <div>

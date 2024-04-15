@@ -2,16 +2,20 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosReq } from '../../api/axiosDefaults';
 import { Row, Col, Container, Form } from 'react-bootstrap';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import { fetchMoreData } from '../../utils/utils';
+import { useRedirect } from '../../hooks/useRedirect';
 import Task from './Task';
 import NoResults from '../../assets/no-results.png';
 import Asset from '../../components/Asset';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { fetchMoreData } from '../../utils/utils';
 import styles from '../../styles/TasksPage.module.css';
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
+
 
 // Adapted from CI's Moments walkthrough project
 const TasksPage = ({ message, filter = '' }) => {
+    useRedirect('loggedOut');
+
     const [tasks, setTasks] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();

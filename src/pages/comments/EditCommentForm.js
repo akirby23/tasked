@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import { axiosRes } from '../../api/axiosDefaults';
 import { Form, Button } from 'react-bootstrap';
+import { useRedirect } from '../../hooks/useRedirect';
 import appStyles from '../../App.module.css';
 import toast from 'react-hot-toast';
 
 
 const EditCommentForm = ({ id, comment_detail, setDisplayEditForm, setComments }) => {
+    useRedirect('loggedOut');
+
     const [formContent, setFormContent] = useState(comment_detail);
 
     const handleChange = (event) => {

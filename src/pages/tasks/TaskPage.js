@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { fetchMoreData } from '../../utils/utils';
+import { useRedirect } from '../../hooks/useRedirect';
 import Asset from '../../components/Asset';
 import Comment from '../comments/Comment';
 import CreateCommentForm from '../comments/CreateCommentForm';
@@ -12,6 +13,8 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 
 const TaskPage = () => {
+    useRedirect('loggedOut');
+
     const { id } = useParams();
     const [task, setTask] = useState({ results: [] });
 
