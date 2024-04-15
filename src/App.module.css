@@ -41,3 +41,18 @@ a:hover i {
     background-color: #376153;
     border-color: #376153;
 }
+
+.ButtonPrimary:hover:active {
+    background-color: #376153 !important;
+    border-color: #376153 !important;
+}
+
+.ButtonPrimary:active {
+    background-color: #376153 !important;
+    border-color: #376153 !important;
+}
+
+.ButtonPrimary:focus {
+    background-color: #376153;
+    border-color: #376153;
+}

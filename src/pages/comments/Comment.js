@@ -45,9 +45,7 @@ const Comment = ({ profile_id, profile_image, owner, created_on, updated_on, com
 
   return (
     <div>
-      <Media
-        className='m-2 p-2 rounded shadow'
-      >
+      <Media className='shadow'>
         <Link
           to={`/profiles/${profile_id}`}
         >
@@ -55,7 +53,9 @@ const Comment = ({ profile_id, profile_image, owner, created_on, updated_on, com
             src={profile_image}
           />
         </Link>
-        <Media.Body>
+        <Media.Body
+        className="align-self-center ml-2"
+        >
           <span className='mr-1'>{owner}</span>
           <span>{created_on}</span>
           {displayEditForm ? (
@@ -67,7 +67,7 @@ const Comment = ({ profile_id, profile_image, owner, created_on, updated_on, com
               setDisplayEditForm={setDisplayEditForm}
             />
           ) : <p>{comment_detail}</p>}
-          <span>Last updated: {updated_on}</span>
+          <span className='font-weight-light'>last updated {updated_on}</span>
         </Media.Body>
         {is_owner && !displayEditForm && (
           <DropDownMenu
@@ -86,19 +86,22 @@ const Comment = ({ profile_id, profile_image, owner, created_on, updated_on, com
             <Button
               variant='danger'
               onClick={handleDelete}
+              aria-label='Delete comment'
+              className='mr-1'
             >
               Delete Comment
             </Button>
             <Button
               variant='secondary'
               onClick={handleCloseDeleteModal}
+              aria-label='Cancel'
             >
               Cancel
             </Button>
           </div>
         }
       />
-      )};
+      )}
     </div>
   )
 }

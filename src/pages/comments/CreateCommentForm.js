@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { axiosRes } from '../../api/axiosDefaults';
 import { Form, InputGroup, Button } from 'react-bootstrap';
-import ProfilePicture from '../../components/ProfilePicture';
 import { Link } from 'react-router-dom';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import appStyles from '../../App.module.css';
+import ProfilePicture from '../../components/ProfilePicture';
 
 // Adapted from CI's Moments walkthrough project
 const CreateCommentForm = ({ task, setTask, setComments, profile_id }) => {
-    const [commentDetail, setCommentDetail] = useState("");
+    const [commentDetail, setCommentDetail] = useState('');
     const currentUser = useCurrentUser();
 
     const handleChange = (event) => {
@@ -35,7 +36,7 @@ const CreateCommentForm = ({ task, setTask, setComments, profile_id }) => {
                     },
                 ],
             }));
-            setCommentDetail("");
+            setCommentDetail('');
         } catch (err) {
             console.log(err);
         };
@@ -43,7 +44,7 @@ const CreateCommentForm = ({ task, setTask, setComments, profile_id }) => {
 
 
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} className='mb-2'>
             <Form.Group>
                 <InputGroup>
                     <Link
@@ -54,17 +55,19 @@ const CreateCommentForm = ({ task, setTask, setComments, profile_id }) => {
                         />
                     </Link>
                     <Form.Control
-                        as="textarea"
+                        as='textarea'
                         rows={3}
-                        placeholder="Enter your comment here"
+                        placeholder='Enter your comment here'
                         value={commentDetail}
                         onChange={handleChange}
                     />
                 </InputGroup>
             </Form.Group>
             <Button
-                type="submit"
+                className={`btn d-block ml-auto mr-2 ${appStyles.ButtonPrimary}`}
                 disabled={!commentDetail.trim()}
+                type='submit'
+                aria-label='Submit comment'
             >
                 Submit
             </Button>
