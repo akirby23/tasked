@@ -28,28 +28,6 @@ const HomePage = () => {
     const { id } = useParams();
     const profile_id = currentUser?.profile_id || "";
 
-
-    // useEffect(() => {
-    //     const fetchHomePageData = async () => {
-    //         try {
-    //             let nextPageHighPriority = `/tasks/?assignee=${profile_id}&priority_level=3&status=IN_PROGRESS`;
-    //             let nextPageInProgress = `/tasks/?status=IN_PROGRESS`;
-    //             let nextPageCompleted = `/tasks/?status=COMPLETED`;
-    //             let allUrls = [nextPageHighPriority, nextPageInProgress, nextPageCompleted]
-
-    //             for (let url = 0, url < allUrls.length; url++) {
-    //                 let nextPageUrl = allUrls[url]
-
-    //                 while nextPageUrl !== null {
-    //                     const response = await axios.get(nextPageUrl)
-    //                     const homePage
-    //                 }
-    //             }
-    //         }
-            
-
-    //     }})
-
     useEffect(() => {
         const fetchHomePageData = async () => {
             try {
@@ -73,20 +51,8 @@ const HomePage = () => {
         fetchHomePageData();
     }, [id, profile_id]);
 
-    // useEffect(() => {
-    //     fetchMoreData(totalTasksInProgress, setTotalTasksCompleted)
-    //     fetchMoreData(totalTasksCompleted, setTotalCompletedCount)
-    // }, [totalTasksInProgress, totalTasksCompleted])
-
-    console.log(totalTasksInProgress)
-    console.log(totalInProgressCount)
-
     useEffect(() => {
-        
         setTotalInProgressCount(totalTasksInProgress.results.length);
-        // if (totalTasksInProgress.next) {
-        //     fetchMoreData(totalTasksInProgress.next, setTotalTasksInProgress)
-        // }
         setTotalCompletedCount(totalTasksCompleted.results.length);
     }, [totalTasksInProgress.next, totalTasksInProgress.results.length, totalTasksCompleted.results.length])
 
@@ -165,6 +131,7 @@ const HomePage = () => {
                                     className={`shadow rounded ${appStyles.Container}`}
                                 >
                                     <h4 className='text-center'>All Tasks</h4>
+                                    <p className='text-center text-muted'>The Tasked community has been keeping busy!</p>
                                     {globalTaskData}
                                 </Container>
                             </Col>
