@@ -64,7 +64,7 @@ const CreateCommentForm = ({ task, setTask, setComments, profile_id }) => {
                 </InputGroup>
             </Form.Group>
             <Button
-                className={`btn d-block ml-auto mr-2 ${appStyles.ButtonPrimary}`}
+                className={`btn d-block ml-auto mr-2 rounded-pill ${appStyles.ButtonPrimary}`}
                 disabled={!commentDetail.trim()}
                 type='submit'
                 aria-label='Submit comment'

@@ -45,7 +45,7 @@ const Comment = ({ profile_id, profile_image, owner, created_on, updated_on, com
 
   return (
     <div>
-      <Media className='shadow'>
+      <Media className='my-2 py-2'>
         <Link
           to={`/profiles/${profile_id}`}
         >

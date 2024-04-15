@@ -54,7 +54,7 @@ const TaskPage = () => {
             </Row>
             <Row>
                 <Col
-                    className='mt-3'
+                    className='my-3'
                     md={10}
                 >
                     <Container
