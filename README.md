@@ -33,7 +33,6 @@
 
 ### Future Features
 
-
 ## User Experience
 
 ### User Stories
@@ -206,6 +205,52 @@ A [GitHub project](https://github.com/users/akirby23/projects/7/views/1) was use
 ![GitHub project](documentation/readme/github-project.PNG)
 
 ## Deployment
+
+Tasked has been deployed to Heroku. Click [here](https://tasked-pp5-f085ebbd00be.herokuapp.com/) to view the live link. 
+
+The steps below can be followed to deploy the application:
+
+### Fork or clone the Tasked repository
+
+#### Forking the repository
+
+1. Navigate to [Tasked GitHub repository](https://github.com/akirby23/tasked).
+2. At the top right-hand corner of the page, click on "Fork".
+3. Rename or change the description if you wish.
+4. Click "Create Fork".
+5. A copy of the original repository should now appear on your GitHub account.
+
+#### Cloning the repository
+
+1. Navigate to [Tasked GitHub repository](https://github.com/akirby23/tasked).
+2. Navigate to the "<> Code" button and click on it.
+3. Choose your preferred cloning option (HTTPS, SSH or GitHub CLI).
+4. Open Git Bash or Terminal.
+5. Change the current working directory to the location where you want the cloned directory.
+6. In your terminal, enter the following command to clone The Crochet Corner repository:
+     ``git clone https://github.com/akirby23/tasked.git``
+7. Press enter to create a local clone in your preferred IDE.
+
+### Update your axios base URL 
+
+1. In your repository, navigate to ``src/api/axiosDefaults.js``. 
+2. Replace the current axios.defaults.baseURL with your own deployed API URL.
+    1. This can be found by navigating to your Heroku dashboard, clicking on your deployed API's app name, clicking on "Open App" at the top of the page and copying the app's url.
+
+### Create the app
+1. Create a Heroku account on [heroku.com](https://heroku.com/)
+2. From the top right hand corner of the dashboard, click "New", then click "Create new app".
+3. Give the app a unique name and select the relevant region.
+4. Click "Create app".
+
+### Deploy to Heroku
+
+- Navigate to the "Deploy" tab. 
+- Link the GitHub repository in the Deployment Method sectionn. 
+- Deploy manually or enable automatic deploys if you would prefer. 
+- If any errors occur during deployment, the build logs can be used to troubleshoot them.
+
+The app will now be live.
 
 ## Credits
 
