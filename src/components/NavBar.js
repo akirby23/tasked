@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Navbar, Nav, Container, NavDropdown, Button } from 'react-bootstrap';
+import React from 'react';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext';
 import { removeTokenTimestamp } from '../utils/utils';
@@ -10,8 +10,7 @@ import axios from 'axios';
 import logo from '../assets/tasked-logo.png';
 import styles from '../styles/NavBar.module.css';
 import toast from 'react-hot-toast';
-import ModalPopup from './ModalPopup';
-import appStyles from '../App.module.css';
+
 
 
 const NavBar = () => {
@@ -22,28 +21,27 @@ const NavBar = () => {
 
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
-  const [displayLogOutModal, setDisplayLogOutModal] = useState(false);
-
-  const handleDisplayLogOutModal = () => {
-    setDisplayLogOutModal(true);
-  }
-
-  const handleCloseLogOutModal = () => {
-    setDisplayLogOutModal(false);
-  }
-
   const handleLogOut = async () => {
     try {
       await axios.post('/dj-rest-auth/logout/');
       setCurrentUser(null);
       removeTokenTimestamp();
-      handleCloseLogOutModal();
       toast.success('Successfully logged out.')
       history.push('/')
     } catch (err) {
       console.log(err)
     }
   }
+
+  const newTaskIcon = (
+    <NavLink
+        to='/create-task'
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+      >
+        <i className='fa-regular fa-square-plus' /> New Task
+      </NavLink>
+  )
 
   // Navlinks to display while logged out
   const loggedOutIcons = (
@@ -69,13 +67,6 @@ const NavBar = () => {
   const loggedInIcons = (
     <>
       <NavLink
-        to='/create-task'
-        className={styles.NavLink}
-        activeClassName={styles.Active}
-      >
-        <i className='fa-regular fa-square-plus' /> New Task
-      </NavLink>
-      <NavLink
         to='/tasks'
         className={styles.NavLink}
         activeClassName={styles.Active}
@@ -96,25 +87,22 @@ const NavBar = () => {
       >
         <i className='fa-solid fa-clipboard-list' /> My Assigned Tasks
       </NavLink>
-      <NavDropdown title={<ProfilePicture
-        src={currentUser?.profile_picture}
-        text={currentUser?.username}
-      />}
-        id='basic-nav-dropdown'>
-        <NavDropdown.Item
+      <NavLink
           as={NavLink}
-          to={`/profiles/${currentUser?.profile_id}`}
-        >
-          <i className='fa-regular fa-user' /> My Profile
-        </NavDropdown.Item>
-        <NavDropdown.Item
-          as={NavLink}
-          onClick={handleDisplayLogOutModal}
-          to='#'
+          onClick={handleLogOut}
+          to='/'
         >
           <i className='fa-solid fa-right-from-bracket' /> Log Out
-        </NavDropdown.Item>
-      </NavDropdown>
+        </NavLink>
+        <NavLink
+          as={NavLink}
+          to={`/profiles/${currentUser?.profile_id}`}
+          className='pl-1'
+        >
+        <ProfilePicture
+        src={currentUser?.profile_picture}
+        text={currentUser?.username}/>
+        </NavLink>
     </>
   )
 
@@ -142,7 +130,7 @@ const NavBar = () => {
             />
           </Navbar.Brand>
         </NavLink>
-
+      {currentUser && newTaskIcon}
         <Navbar.Toggle
           aria-controls='responsive-navbar-nav'
           ref={ref}
@@ -157,35 +145,6 @@ const NavBar = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-
-    {displayLogOutModal && (
-      <ModalPopup
-        show={displayLogOutModal}
-        onHide={handleCloseLogOutModal}
-        title={<h2>Log Out</h2>}
-        body={<p>Are you sure you want to log out?</p>}
-        footer={
-          <div>
-            <Button
-              className={`mr-1 ${appStyles.ButtonPrimary}`}
-              type='submit'
-              aria-label='Log out'
-              onClick={handleLogOut}
-            >
-              Log Out
-            </Button>
-            <Button
-              variant='secondary'
-              onClick={handleCloseLogOutModal}
-              aria-label='Cancel'
-            >
-              Cancel
-            </Button>
-          </div>
-        }
-      />
-    )
-  }
     </>
   )
 }
