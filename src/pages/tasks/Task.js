@@ -66,7 +66,7 @@ const Task = (props) => {
     try {
       await axiosRes.delete(`/tasks/${id}/`)
       toast.success('Task deleted successfully.');
-      history.goBack();
+      history.push('/tasks/');
     } catch (err) {
       console.log(err);
       setDisplayDeleteModal(false);
@@ -120,12 +120,14 @@ const Task = (props) => {
                   variant='danger'
                   onClick={handleDelete}
                   className='mr-1'
+                  aria-label='Delete task'
                 >
                   Delete Task
                 </Button>
                 <Button
                   variant='secondary'
                   onClick={handleCloseDeleteModal}
+                  aria-label='Cancel'
                 >
                   Cancel
                 </Button>
