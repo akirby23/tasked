@@ -14,6 +14,7 @@ const Task = (props) => {
     id,
     owner,
     profile_id,
+    assignee_profile_id,
     comments_count,
     title,
     created_on,
@@ -152,7 +153,7 @@ const Task = (props) => {
         <hr className='mt-0' />
         <Row className='align-items-center ml-2'>
           <Col md={6} className='text-left'>
-            <Link to={`/profiles/${profile_id}`}><span>assigned to {assignee_name} <i class='fa-solid fa-arrow-up-right-from-square' /></span></Link>
+            <Link to={`/profiles/${assignee_profile_id}`}><span>assigned to {assignee_name} <i className='fa-solid fa-arrow-up-right-from-square' /></span></Link>
           </Col>
           <Col md={6}>
             {(is_owner || is_assignee) && taskStatus.status === 'IN_PROGRESS' ? (<Button
