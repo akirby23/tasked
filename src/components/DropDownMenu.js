@@ -55,7 +55,7 @@ export function EditProfileDropdown({ id }) {
   return (
     <Dropdown 
     drop='left'
-    className={`ml-auto ${styles.Absolute}`}
+    className={`ml-auto px-5 ${styles.Absolute}`}
     >
       <Dropdown.Toggle 
       as={ThreeDots} 

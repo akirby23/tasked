@@ -62,15 +62,15 @@ const ProfilePage = () => {
                 <EditProfileDropdown
                     id={profile?.id}
                 />}
-            <Row className='m-3'>
-                <Col lg={3}>
+            <Row noGutters className='my-1'>
+                <Col md={3} className='d-flex justify-content-md-center align-items-center'>
                     <Image
                         src={profile?.profile_picture}
                         roundedCircle
                         className={`shadow ${styles.ProfilePicture}`}
                     />
                 </Col>
-                <Col className='text-center'>
+                <Col md={8} className='text-center'>
                     <h3>{profile?.owner}</h3>
                     <hr />
                     {profile?.content ? (
@@ -80,24 +80,24 @@ const ProfilePage = () => {
                     )}
                 </Col>
             </Row>
-            <Row className='text-center p-3'>
-                <Col>
+            <Row className='text-center p-2'>
+                <Col sm={4}>
                     <div>{profile?.created_tasks_count}</div>
                     <div>tasks created</div>
                 </Col>
-                <Col>
+                <Col sm={4}>
                 <div>{assignedInProgressCount}</div>
                     <div>tasks assigned</div> 
                 </Col>
-                <Col>
+                <Col sm={4}>
                 <div>{assignedCompletedCount}</div>
                     <div>tasks completed</div>
                 </Col>
             </Row>
             <Row>
                 <Col
-                    md={4}
-                    className='font-weight-light'
+                    lg={12}
+                    className={`font-weight-light ${styles.CreatedOn}`}
                 >
                     Member since {profile?.created_on}
                 </Col>
@@ -156,10 +156,9 @@ const ProfilePage = () => {
 
     return (
         <Row>
-            <Col lg={11}>
+            <Col py-2 p-0 p-lg-2 lg={11}>
                 <Container
                     className={`shadow mt-3 ${appStyles.Container}`}
-                    lg={11}
                 >
                     {hasLoaded ? (
                         <>
