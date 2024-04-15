@@ -29,6 +29,27 @@ const HomePage = () => {
     const profile_id = currentUser?.profile_id || "";
 
 
+    // useEffect(() => {
+    //     const fetchHomePageData = async () => {
+    //         try {
+    //             let nextPageHighPriority = `/tasks/?assignee=${profile_id}&priority_level=3&status=IN_PROGRESS`;
+    //             let nextPageInProgress = `/tasks/?status=IN_PROGRESS`;
+    //             let nextPageCompleted = `/tasks/?status=COMPLETED`;
+    //             let allUrls = [nextPageHighPriority, nextPageInProgress, nextPageCompleted]
+
+    //             for (let url = 0, url < allUrls.length; url++) {
+    //                 let nextPageUrl = allUrls[url]
+
+    //                 while nextPageUrl !== null {
+    //                     const response = await axios.get(nextPageUrl)
+    //                     const homePage
+    //                 }
+    //             }
+    //         }
+            
+
+    //     }})
+
     useEffect(() => {
         const fetchHomePageData = async () => {
             try {
@@ -57,10 +78,17 @@ const HomePage = () => {
     //     fetchMoreData(totalTasksCompleted, setTotalCompletedCount)
     // }, [totalTasksInProgress, totalTasksCompleted])
 
+    console.log(totalTasksInProgress)
+    console.log(totalInProgressCount)
+
     useEffect(() => {
+        
         setTotalInProgressCount(totalTasksInProgress.results.length);
+        // if (totalTasksInProgress.next) {
+        //     fetchMoreData(totalTasksInProgress.next, setTotalTasksInProgress)
+        // }
         setTotalCompletedCount(totalTasksCompleted.results.length);
-    }, [totalTasksInProgress.results.length, totalTasksCompleted.results.length])
+    }, [totalTasksInProgress.next, totalTasksInProgress.results.length, totalTasksCompleted.results.length])
 
 
     const myHighPriorityTasks = (
@@ -132,20 +160,20 @@ const HomePage = () => {
                         <h3 className='mt-2 text-center'>Hi {currentUser?.username}!</h3>
                         <hr />
                         <Row>
-                            <Col lg={8}>
-                                <Container
-                                    className={`shadow rounded ${appStyles.Container}`}
-                                >
-                                    <h4 className='text-center'>My High Priority Tasks</h4>
-                                    {myHighPriorityTasks}
-                                </Container>
-                            </Col>
                             <Col lg={4}>
-                                <Container
+                            <Container
                                     className={`shadow rounded ${appStyles.Container}`}
                                 >
                                     <h4 className='text-center'>All Tasks</h4>
                                     {globalTaskData}
+                                </Container>
+                            </Col>
+                            <Col lg={8}>
+                                <Container
+                                    className={`shadow rounded ${appStyles.Container} ${styles.Container}`}
+                                >
+                                    <h4 className='text-center'>My High Priority Tasks</h4>
+                                    {myHighPriorityTasks}
                                 </Container>
                             </Col>
                         </Row>
