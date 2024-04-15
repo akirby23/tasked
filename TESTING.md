@@ -12,29 +12,29 @@
 
 | User Story |  Status |
 |---|---|
-| As a user, I can sign up for an account so that I can access the app's content & features. |   |
-| As a user, I can log in so that I can access the app’s content and features.  |   |
-| As an authenticated user, I can log out so that I can protect my account. |   |
-| As an authenticated user, I can create a task so that I can manage & keep track of my responsibilities. |   |
-| As an authenticated user and task owner, I can edit my tasks so that I can keep them up to date or make changes to them if needed. |   |
-| As an authenticated user, I can retrieve my tasks so that I can access them to keep them up to date and/or make changes to them. |   |
-| As an authenticated user and task owner, I can delete my tasks so that I can remove them from my to-do list if they are no longer needed. |   |
-| As an authenticated user, I can retrieve tasks that are assigned to me so that I can work on tasks that require action from me. |   |
-| As an authenticated user, I can change the status of tasks that are owned by me or assigned to me so that I can mark them as completed when no further action is needed. |   |
-| As a user, I can see an informative error page when faced with a 404 error so that I can understand if the page I'm looking for exists. |   |
-| As an authenticated user, I can assign categories to tasks so that they can be organised based on their criteria. |   |
-| As an authenticated user, I can assign a priority level to a task so that I can focus on the most urgent tasks first. |   |
-| As an authenticated user, I can edit tasks that are assigned to me so that I can keep them up to date and/or make necessary changes to them. |   |
-| As an authenticated user, I can comment on tasks so that I can provide updates or additional information in relation to the task. |   |
-| As an authenticated user & comment owner, I can edit my comments so that I can update them or correct potential errors. |   |
-| As an authenticated user, I can retrieve all comments associated with a task so that I can follow the discussion and view the latest updates in relation to the task. |   |
-| As an authenticated user, I can delete my own comments so that I can remove them if they're no longer relevant. |   |
-| As a user, I can access a navbar so that I can easily navigate through the app. |   |
-| As an authenticated user, I can access user profiles so that I can learn more about the user. |   |
-| As an authenticated user, I can edit my own profile so that I can keep it up to date. |   |
-| As an authenticated user, I can scroll indefinitely through tasks so that I don't need to manually navigate to the next page when I reach the bottom of the page. |   |
-| As an authenticated user, I can search for tasks so that I can easily retrieve the tasks that I want to view or work on. |  |
-| As a user, I want messages to be displayed when I successfully perform an action so that I can be assured that the action has been completed successfully. |  |
+| As a user, I can sign up for an account so that I can access the app's content & features. | Pass  |
+| As a user, I can log in so that I can access the app’s content and features.  | Pass  |
+| As an authenticated user, I can log out so that I can protect my account. | Pass  |
+| As an authenticated user, I can create a task so that I can manage & keep track of my responsibilities. | Pass  |
+| As an authenticated user and task owner, I can edit my tasks so that I can keep them up to date or make changes to them if needed. | Pass  |
+| As an authenticated user, I can retrieve my tasks so that I can access them to keep them up to date and/or make changes to them. | Pass  |
+| As an authenticated user and task owner, I can delete my tasks so that I can remove them from my to-do list if they are no longer needed. | Pass  |
+| As an authenticated user, I can retrieve tasks that are assigned to me so that I can work on tasks that require action from me. |  Pass |
+| As an authenticated user, I can change the status of tasks that are owned by me or assigned to me so that I can mark them as completed when no further action is needed. | Pass  |
+| As a user, I can see an informative error page when faced with a 404 error so that I can understand if the page I'm looking for exists. | Pass  |
+| As an authenticated user, I can assign categories to tasks so that they can be organised based on their criteria. | Pass  |
+| As an authenticated user, I can assign a priority level to a task so that I can focus on the most urgent tasks first. | Pass  |
+| As an authenticated user, I can edit tasks that are assigned to me so that I can keep them up to date and/or make necessary changes to them. | Pass  |
+| As an authenticated user, I can comment on tasks so that I can provide updates or additional information in relation to the task. | Pass  |
+| As an authenticated user & comment owner, I can edit my comments so that I can update them or correct potential errors. | Pass  |
+| As an authenticated user, I can retrieve all comments associated with a task so that I can follow the discussion and view the latest updates in relation to the task. | Pass  |
+| As an authenticated user, I can delete my own comments so that I can remove them if they're no longer relevant. | Pass  |
+| As a user, I can access a navbar so that I can easily navigate through the app. | Pass  |
+| As an authenticated user, I can access user profiles so that I can learn more about the user. | Pass  |
+| As an authenticated user, I can edit my own profile so that I can keep it up to date. | Pass  |
+| As an authenticated user, I can scroll indefinitely through tasks so that I don't need to manually navigate to the next page when I reach the bottom of the page. | Pass  |
+| As an authenticated user, I can search for tasks so that I can easily retrieve the tasks that I want to view or work on. | Pass |
+| As a user, I want messages to be displayed when I successfully perform an action so that I can be assured that the action has been completed successfully. | Pass |
 
 ## Manual Testing
 
@@ -64,11 +64,11 @@
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| Form heading  | Should read "Log In"  | No  |   |   |
-| Username input  | Username can be added to the text field   | No  |   |   |
-| Password input  | Password can be added to the text field  | No  |   |   |
-| Log In button | If the user provides valid credentials, they should be logged in and redirected to the home page. <br> A success message should display at the top of the page that reads "Logged in as `username`" <hr> If the credentials are invalid/do not meet the username/password requirements, the user is prompted to correct any errors before proceeding.  |  No |   |   |
-| Sign up link  | A link should display below the log in button that reads "Don't have an account? Sign Up". <br> Once clicked, the user should be redirected to the sign up page.   | No  |   |   |
+| Form heading  | Should read "Log In"  | No  | Pass  |   |
+| Username input  | Username can be added to the text field   | No  | Pass  |   |
+| Password input  | Password can be added to the text field  | No  | Pass  |   |
+| Log In button | If the user provides valid credentials, they should be logged in and redirected to the home page. <br> A success message should display at the top of the page that reads "Logged in as `username`" <hr> If the credentials are invalid/do not meet the username/password requirements, the user is prompted to correct any errors before proceeding.  |  No | Pass  |   |
+| Sign up link  | A link should display below the log in button that reads "Don't have an account? Sign Up". <br> Once clicked, the user should be redirected to the sign up page.   | No  | Pass  |   |
 
 </details>
 
@@ -77,12 +77,12 @@
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| Form heading  | Should read "Sign Up"  | No  |   |    |
-| Username Input  | Username can be added to the text field  | No  |   |   |
-| Password input  | Password can be added to the text field  | No  |   |   |
-| Confirm password input | Password can be added to the text field  | No  |   |   |
-| Sign Up Now button | If the user provides valid credentials, a user & associated profile is created once the button is clicked. <br> User should be redirected to the log in page. <br> A success message should display at the top of the page that reads "Sign up successful! Please log in to continue." <hr> If the credentials are invalid/do not meet the username/password requirements, the user is prompted to correct any errors before proceeding. | No  |  |   |
-| Log In link  | A link should display below the sign up button that reads "Already have an account? Log In". <br> Once clicked, the user should be redirected to the log in page.  | No  |   |   |
+| Form heading  | Should read "Sign Up"  | No  | Pass  |    |
+| Username Input  | Username can be added to the text field  | No  | Pass  |   |
+| Password input  | Password can be added to the text field  | No  | Pass  |   |
+| Confirm password input | Password can be added to the text field  | No  | Pass  |   |
+| Sign Up Now button | If the user provides valid credentials, a user & associated profile is created once the button is clicked. <br> User should be redirected to the log in page. <br> A success message should display at the top of the page that reads "Sign up successful! Please log in to continue." <hr> If the credentials are invalid/do not meet the username/password requirements, the user is prompted to correct any errors before proceeding. | No  | Pass |   |
+| Log In link  | A link should display below the sign up button that reads "Already have an account? Log In". <br> Once clicked, the user should be redirected to the log in page.  | No  | Pass  |   |
 
 </details>
 
@@ -91,10 +91,10 @@
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| Modal header  | Should read "Log Out"  | Yes  |   |   |
-| Modal message  | Should read "Are you sure you want to log out?"  | Yes  |   |   |
-| Confirm log out button  | Once clicked, the user should be logged out and redirected to the home page.  | Yes  |   |   |
-| Cancel button  | Once clicked, the modal should be hidden and the user should not be redirected to a different page.  | Yes  |   |   |
+| Modal header  | Should read "Log Out"  | Yes  | Pass  |   |
+| Modal message  | Should read "Are you sure you want to log out?"  | Yes  | Pass  |   |
+| Confirm log out button  | Once clicked, the user is logged out and redirected to the home page. <br> A success message is displayed at the top of the page that reads "Successfully logged out." | Yes  | Pass  |   |
+| Cancel button  | Once clicked, the modal is hidden and the user is not redirected to a different page.  | Yes  | Pass |   |
 </details>
 
 <details>
@@ -134,9 +134,9 @@
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| Username input  | User can add a new username to the text field  | Yes |   |   |
-| Save Changes button | Once clicked, the user's username is changed. <br> A success message will display at the top of the page that reads "Username changed successfully." <br> The user is redirected to the profile page. <hr> If they input an invalid username or one that has already been taken, they will be prompted to correct this before changes can be saved. | Yes  |   |   |
-| Cancel button  | Once clicked, the user is redirected back to the profile page.  | Yes  |   |   |
+| Username input  | User can add a new username to the text field  | Yes | Pass  |   |
+| Save Changes button | Once clicked, the user's username is changed. <br> A success message will display at the top of the page that reads "Username changed successfully." <br> The user is redirected to the profile page. <hr> If they input an invalid username or one that has already been taken, they will be prompted to correct this before changes can be saved. | Yes  | Pass  |   |
+| Cancel button  | Once clicked, the user is redirected back to the profile page.  | Yes  | Pass  |   |
 
 </details>
 
@@ -145,10 +145,10 @@
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| Password input  | User can enter a new password in the text field  | Yes  |   |   |
-| Confirm password input  | User can enter their new password again in the text field  | Yes  |   |   |   |
-| Save Changes button  | Once clicked, the password will be changed & the user will be redirect to the profile page. <br> A success message will display at the top of the page that reads "Password changed successfully." <hr> If the user inputs an invalid password, they will be prompted to correct this before changes can be saved. | Yes  |   |   |
-| Cancel button  | Once clicked, the user is redirected back to the profile page.  |  Yes |   |   |
+| Password input  | User can enter a new password in the text field  | Yes  | Pass  |   |
+| Confirm password input  | User can enter their new password again in the text field  | Yes  | Pass  |   |   |
+| Save Changes button  | Once clicked, the password will be changed & the user will be redirect to the profile page. <br> A success message will display at the top of the page that reads "Password changed successfully." <hr> If the user inputs an invalid password, they will be prompted to correct this before changes can be saved. | Yes  | Pass  |   |
+| Cancel button  | Once clicked, the user is redirected back to the profile page.  |  Yes | Pass  |   |
 
 </details>
 
@@ -157,11 +157,11 @@
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| Jumbotron  | Displayed to logged out users only. <br> Once the user initially reaches the web page or redirects to the home page, a jumbotron should display containing a welcome message, brief description of the app & log in/sign up buttons.   |  No |   |   |
-| Log In Button  | Displayed to logged out users only. <br> Once clicked, the user is redirected to a page that will allow them to log in.  | No  |   |   |
-| Sign Up button | Displayed to logged out users only. <br> Once clicked, the user is redirected to a page that will allow them to sign up.  | No  |   |   |
-| All Tasks table  | Displayed to logged in users only. <br> Once the user logs in or redirects to the home page, a table will be displayed containing statistics on the total amount of tasks that are in progress & the total amount of tasks that have been completed.  | Yes  |   |   |
-| High Priority tasks   | Displayed to logged in users only. <br> Once the user logs in or redirects to the home page, their high priority tasks that are in progress will appear in the form of a list. If the user has no high priority tasks in progress, a message will appear to advise them of this.   | Yes |   |   |
+| Jumbotron  | Displayed to logged out users only. <br> Once the user initially reaches the web page or redirects to the home page, a jumbotron should display containing a welcome message, brief description of the app & log in/sign up buttons.   |  No | Pass  |   |
+| Log In Button  | Displayed to logged out users only. <br> Once clicked, the user is redirected to a page that will allow them to log in.  | No  | Pass  |   |
+| Sign Up button | Displayed to logged out users only. <br> Once clicked, the user is redirected to a page that will allow them to sign up.  | No  | Pass  |   |
+| All Tasks table  | Displayed to logged in users only. <br> Once the user logs in or redirects to the home page, a table will be displayed containing statistics on the total amount of tasks that are in progress & the total amount of tasks that have been completed.  | Yes  | Pass  |   |
+| High Priority tasks   | Displayed to logged in users only. <br> Once the user logs in or redirects to the home page, their high priority tasks that are in progress will appear in the form of a list. If the user has no high priority tasks in progress, a message will appear to advise them of this.   | Yes | Pass  |   |
 
 
 
@@ -172,8 +172,8 @@
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| Search bar  | Displayed at the top of the page. <br> Placeholder text reads "Search tasks by title or by category". <br> If the user searches for a keyword that matches a category or task title, the associated tasks should display on the page. <br> If there are no tasks associated with the keyword search, a "No results found. Adjust the search keyword or create a task." message should display.  | Yes |   |   |
-| Tasks list  | List of tasks displayed. <br> The list of tasks should contain all tasks that are currently in progress. <br> If there are no tasks currently in progress, a "No results found. Adjust the search keyword or create a task." message should display.  | Yes |   |   |
+| Search bar  | Displayed at the top of the page. <br> Placeholder text reads "Search tasks by title or by category". <br> If the user searches for a keyword that matches a category or task title, the associated tasks should display on the page. <br> If there are no tasks associated with the keyword search, a "No results found. Adjust the search keyword or create a task." message should display.  | Yes | Pass  |   |
+| Tasks list  | List of tasks displayed. <br> The list of tasks should contain all tasks that are currently in progress. <br> If there are no tasks currently in progress, a "No results found. Adjust the search keyword or create a task." message should display.  | Yes | Pass  |   |
 
 
 </details>
@@ -183,8 +183,8 @@
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| Search bar  | Displayed at the top of the page. <br> Placeholder text reads "Search tasks by title or by category". <br> If the user searches for a keyword that matches a category or task title, the associated tasks should display on the page. <br> If there are no tasks associated with the keyword search, a "No results found. Adjust the search keyword or create a task." message should display.  | Yes |   |   |
-| Tasks list  | List of tasks displayed. <br> The list of tasks should contain all tasks created by the logged in user that are currently in progress. <br> If there are no created tasks currently in progress, a "No results found. Adjust the search keyword or create a task." message should display.  |  Yes |   |   |
+| Search bar  | Displayed at the top of the page. <br> Placeholder text reads "Search tasks by title or by category". <br> If the user searches for a keyword that matches a category or task title, the associated tasks should display on the page. <br> If there are no tasks associated with the keyword search, a "No results found. Adjust the search keyword or create a task." message should display.  | Yes | Pass  |   |
+| Tasks list  | List of tasks displayed. <br> The list of tasks should contain all tasks created by the logged in user that are currently in progress. <br> If there are no created tasks currently in progress, a "No results found. Adjust the search keyword or create a task." message should display.  |  Yes | Pass  |   |
 </details>
 
 <details>
@@ -192,8 +192,8 @@
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| Search bar  | Displayed at the top of the page. <br> Placeholder text reads "Search tasks by title or by category". <br> If the user searches for a keyword that matches a category or task title, the associated tasks should display on the page. <br> If there are no tasks associated with the keyword search, a "No results found. Time for coffee! Adjust the keyword search if you are looking for something specific." message should display.  | Yes |   |   |
-| Tasks list  | List of tasks displayed. <br> The list of tasks should contain all tasks assigned to the logged in user that are currently in progress. <br> If there are assigned tasks currently in progress, a "No results found. Time for coffee! Adjust the keyword search if you are looking for something specific." message should display.  |  Yes |   |   |
+| Search bar  | Displayed at the top of the page. <br> Placeholder text reads "Search tasks by title or by category". <br> If the user searches for a keyword that matches a category or task title, the associated tasks should display on the page. <br> If there are no tasks associated with the keyword search, a "No results found. Time for coffee! Adjust the keyword search if you are looking for something specific." message should display.  | Yes | Pass  |   |
+| Tasks list  | List of tasks displayed. <br> The list of tasks should contain all tasks assigned to the logged in user that are currently in progress. <br> If there are assigned tasks currently in progress, a "No results found. Time for coffee! Adjust the keyword search if you are looking for something specific." message should display.  |  Yes | Pass  |   |
 
 </details>
 
@@ -202,18 +202,18 @@
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| Task title  | The task title is displayed. <br> The task title is hyperlinked. <br> Once clicked, the user is redirected to the associated task page.  | Yes  |   |   |
-| Task category  | The task category is displayed.  | Yes  |   |   |
-| Task priority level  | The task priority level is displayed.  |  Yes |   |   |
-| Task status  | The task status is displayed. <br> By default, the task status is set to "In Progress".  | Yes  |   |   |
-| Task details  | The task details are displayed.   | Yes  |   |   |
-| Task assignee  | The task assignee is displayed. <br> The task assignee's username is hyperlinked. <br> Once clicked, the user is redirected to the task assignee's profile.  | Yes  |   |   |
-| Change task status button  | Displayed to task owners & task assignees only. <br> While the task is in progress, the button reads "Mark as Completed". <br> Once clicked, the button text changes to "Reopen" and the task status is set to "Completed". | Yes  |   |   |
-| Created on date  | The created on date is displayed.  |  Yes |   |   |
-| Task owner  | The task owner is displayed next to the created on date. <br> Task owner's username is hyperlinked. <br> Once clicked, the user is redirected to the task owner's profile. |  Yes |   |   |
-| Edit task dropdown  | Displayed to task owners and task assignees only. <br> Once clicked, a dropdown menu should appear containing an edit icon and a delete icon. <br> Once the edit icon is clicked, the user is redirected to the edit task page. <br> Once the delete icon is clicked, the Delete Task modal should display.  | Yes  |   |   |
-| Total comment count | The total number of comments should display at the bottom of the task. <br> The total number of comments is hyperlinked. <br> Once clicked, the user is redirected to the associated task page.  | Yes  |   |   |
-| Last updated on date  | The last updated on date is displayed.  |  Yes |   |   |
+| Task title  | The task title is displayed. <br> The task title is hyperlinked. <br> Once clicked, the user is redirected to the associated task page.  | Yes  | Pass  |   |
+| Task category  | The task category is displayed.  | Yes  | Pass  |   |
+| Task priority level  | The task priority level is displayed.  |  Yes | Pass  |   |
+| Task status  | The task status is displayed. <br> By default, the task status is set to "In Progress".  | Yes  | Pass  |   |
+| Task details  | The task details are displayed.   | Yes  | Pass  |   |
+| Task assignee  | The task assignee is displayed. <br> The task assignee's username is hyperlinked. <br> Once clicked, the user is redirected to the task assignee's profile.  | Yes  | Pass  |   |
+| Change task status button  | Displayed to task owners & task assignees only. <br> While the task is in progress, the button reads "Mark as Completed". <br> Once clicked, the button text changes to "Reopen" and the task status is set to "Completed". | Yes  | Pass  |   |
+| Created on date  | The created on date is displayed.  |  Yes | Pass  |   |
+| Task owner  | The task owner is displayed next to the created on date. <br> Task owner's username is hyperlinked. <br> Once clicked, the user is redirected to the task owner's profile. |  Yes | Pass  |   |
+| Edit task dropdown  | Displayed to task owners and task assignees only. <br> Once clicked, a dropdown menu should appear containing an edit icon and a delete icon. <br> Once the edit icon is clicked, the user is redirected to the edit task page. <br> Once the delete icon is clicked, the Delete Task modal should display.  | Yes  | Pass  |   |
+| Total comment count | The total number of comments should display at the bottom of the task. <br> The total number of comments is hyperlinked. <br> Once clicked, the user is redirected to the associated task page.  | Yes  | Pass  |   |
+| Last updated on date  | The last updated on date is displayed.  |  Yes | Pass  |   |
 
 
 </details>
@@ -223,9 +223,9 @@
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| Task  | All of the task details from the task component should be displayed at the top of the page.  | Yes  |   |   |
-| Create comment form  | The create comment form is displayed below the task  | Yes  |   |   |
-| Comments list  | The comment list is displated below the create comment form. <br> If there are no comments yet, "No comments yet. Be the first to leave a comment!" is displayed below the comment form".  | Yes  |   |   |
+| Task  | All of the task details from the task component are displayed at the top of the page.  | Yes  |  Pass  |   |
+| Create comment form  | The create comment form is displayed below the task  | Yes  | Pass  |   |
+| Comments list  | The comment list is displayed below the create comment form. <br> If there are no comments yet, "No comments yet. Be the first to leave a comment!" is displayed below the comment form".  | Yes  | Pass  |   |
 
 </details>
 
@@ -319,7 +319,6 @@
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
 | 404 page  | If the user attempts to access an invalid URL, they are directed to the NotFound page. An 404 image should be displayed along with a message that reads "Sorry, the page you're looking for could not be found."  | No  | Pass  |   |
-
 
 </details>
 
