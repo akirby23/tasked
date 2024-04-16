@@ -1,19 +1,19 @@
 .ProfilePicture {
-    object-fit: cover;
-    height: 8rem;
-    width: 8rem;
+  object-fit: cover;
+  height: 8rem;
+  width: 8rem;
+}
+
+@media screen and (max-width: 768px) {
+  .ProfilePicture {
+    margin: 0 auto;
   }
 
-  @media screen and (max-width: 768px) {
-    .ProfilePicture {
-        margin: 0 auto;
-    }
+  h3 {
+    margin-top: 1rem;
+  }
 
-    h3 {
-      margin-top: 1rem;
-    }
-
-    .CreatedOn {
-      text-align: center;
-    }
+  .CreatedOn {
+    text-align: center;
+  }
 }

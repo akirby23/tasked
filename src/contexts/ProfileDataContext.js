@@ -1,6 +1,6 @@
-import { createContext, useContext, useState, useEffect } from "react";
-import { axiosReq } from "../api/axiosDefaults";
-import { useCurrentUser } from "./CurrentUserContext";
+import { createContext, useContext, useState, useEffect } from 'react';
+import { axiosReq } from '../api/axiosDefaults';
+import { useCurrentUser } from './CurrentUserContext';
 
 // Code adapted from CI's Moments walkthrough project
 const ProfileDataContext = createContext();
@@ -19,9 +19,7 @@ export const ProfileDataProvider = ({ children }) => {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get(
-          '/profiles/?ordering=-tasks_count'
-        );
+        const { data } = await axiosReq.get('/profiles/?ordering=-tasks_count');
         setProfileData((prevState) => ({
           ...prevState,
           profiles: data,

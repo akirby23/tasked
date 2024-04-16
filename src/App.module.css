@@ -2,12 +2,12 @@
     color: #1E252A;
     background-color: #D7DDE9;
     min-height: 100vh;
-    font-family: "Raleway", italic;
+    font-family: 'Raleway', italic;
 }
 
-h1, 
+h1,
 h2 {
-    font-family: "Fredoka", italic;
+    font-family: 'Fredoka', italic;
 }
 
 a {
@@ -23,28 +23,21 @@ a:hover {
 a:hover i {
     color: #AC524B;
     transition: color ease-in-out 0.3s;
-  }
+}
 
 
 .Container {
     background-color: #FFFFFF;
     padding: 2rem;
-    border: 1px solid rgba(0, 0, 0, 1);
-    border-radius: .25rem;
 }
 
 .ButtonPrimary {
     background-color: #67D09F;
     border-color: #67D09F;
-    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
 }
 
 .ButtonPrimary:hover {
-    background-color: #376153;
-    border-color: #376153;
-}
-
-.ButtonPrimary:disabled {
     background-color: #376153;
     border-color: #376153;
 }

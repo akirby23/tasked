@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { Alert, Row, Col, Container, Button, Form } from 'react-bootstrap'
-import { useHistory, useParams } from "react-router-dom";
-import { axiosRes } from "../../api/axiosDefaults";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { useRedirect } from "../../hooks/useRedirect";
-import appStyles from "../../App.module.css";
+import React, { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import { axiosRes } from '../../api/axiosDefaults';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import { useRedirect } from '../../hooks/useRedirect';
+import appStyles from '../../App.module.css';
 import toast from 'react-hot-toast';
+import Alert from 'react-bootstrap/Alert';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
-// Allows the user to change their password
 // Adapted from CI's Moments walkthrough project
 const EditPasswordForm = () => {
   useRedirect('loggedOut');
@@ -17,8 +21,8 @@ const EditPasswordForm = () => {
   const currentUser = useCurrentUser();
 
   const [userData, setUserData] = useState({
-    new_password1: "",
-    new_password2: "",
+    new_password1: '',
+    new_password2: '',
   });
   const { new_password1, new_password2 } = userData;
 
@@ -34,15 +38,15 @@ const EditPasswordForm = () => {
   useEffect(() => {
     if (currentUser?.profile_id?.toString() !== id) {
       // Redirects the user if they are not the owner of the profile
-      history.push("/");
+      history.push('/');
     }
   }, [currentUser, history, id]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axiosRes.post("/dj-rest-auth/password/change/", userData);
-      toast.success('Password changed successfully.')
+      await axiosRes.post('/dj-rest-auth/password/change/', userData);
+      toast.success('Password changed successfully.');
       history.goBack();
     } catch (err) {
       console.log(err);
@@ -53,9 +57,7 @@ const EditPasswordForm = () => {
   return (
     <Row className='d-flex justify-content-center mt-4'>
       <Col className='text-center' md={6}>
-        <Container 
-        className={`shadow rounded ${appStyles.Container}`}
-        >
+        <Container className={`shadow rounded ${appStyles.Container}`}>
           <Form onSubmit={handleSubmit}>
             <Form.Group>
               <Form.Label>New Password</Form.Label>
@@ -87,16 +89,10 @@ const EditPasswordForm = () => {
                 {message}
               </Alert>
             ))}
-            <Button
-              className={`mr-1 ${appStyles.ButtonPrimary}`}
-              type='submit'
-            >
+            <Button className={`mr-1 ${appStyles.ButtonPrimary}`} type='submit'>
               Save Changes
             </Button>
-            <Button
-              variant='secondary'
-              onClick={() => history.goBack()}
-            >
+            <Button variant='secondary' onClick={() => history.goBack()}>
               Cancel
             </Button>
           </Form>
@@ -106,4 +102,4 @@ const EditPasswordForm = () => {
   );
 };
 
-export default EditPasswordForm
+export default EditPasswordForm;

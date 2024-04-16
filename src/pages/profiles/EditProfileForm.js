@@ -1,14 +1,21 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Alert, Row, Col, Container, Button, Form, Image } from 'react-bootstrap'
 import { useHistory, useParams } from 'react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
-import { useCurrentUser, useSetCurrentUser } from '../../contexts/CurrentUserContext';
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from '../../contexts/CurrentUserContext';
 import { useRedirect } from '../../hooks/useRedirect';
 import appStyles from '../../App.module.css';
 import toast from 'react-hot-toast';
+import Alert from 'react-bootstrap/Alert';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Image from 'react-bootstrap/Image';
 
-
-// Allows users to edit their profiles
 // Adapted from CI's Moments walkthrough project
 const EditProfileForm = () => {
   useRedirect('loggedOut');
@@ -70,7 +77,7 @@ const EditProfileForm = () => {
         ...currentUser,
         profile_image: data.image,
       }));
-      toast.success('Your changes have been saved.')
+      toast.success('Your changes have been saved.');
       history.goBack();
     } catch (err) {
       console.log(err);
@@ -96,16 +103,10 @@ const EditProfileForm = () => {
           {message}
         </Alert>
       ))}
-      <Button
-        className={`mr-1 ${appStyles.ButtonPrimary}`}
-        type='submit'
-      >
+      <Button className={`mr-1 ${appStyles.ButtonPrimary}`} type='submit'>
         Save Changes
       </Button>
-      <Button
-        variant='secondary'
-        onClick={() => history.goBack()}
-      >
+      <Button variant='secondary' onClick={() => history.goBack()}>
         Cancel
       </Button>
     </>
@@ -115,16 +116,11 @@ const EditProfileForm = () => {
     <Form onSubmit={handleSubmit}>
       <Row className='d-flex justify-content-center mt-4'>
         <Col className='text-center' md={7} lg={6}>
-          <Container
-            className={`shadow rounded ${appStyles.Container}`}
-          >
+          <Container className={`shadow rounded ${appStyles.Container}`}>
             <Form.Group>
               {profile_picture && (
                 <figure>
-                  <Image
-                    src={profile_picture}
-                    fluid
-                  />
+                  <Image src={profile_picture} fluid />
                 </figure>
               )}
               {errors?.image?.map((message, idx) => (
@@ -133,10 +129,7 @@ const EditProfileForm = () => {
                 </Alert>
               ))}
               <div>
-                <Form.Label
-                  className='btn my-auto'
-                  htmlFor='image-upload'
-                >
+                <Form.Label className='btn my-auto' htmlFor='image-upload'>
                   Change Profile Picture
                 </Form.Label>
               </div>
@@ -159,9 +152,7 @@ const EditProfileForm = () => {
           </Container>
         </Col>
         <Col md={5} lg={6} className='d-none d-md-block p-0 text-center'>
-          <Container
-            className={`shadow rounded ${appStyles.Container}`}
-          >
+          <Container className={`shadow rounded ${appStyles.Container}`}>
             {textFields}
           </Container>
         </Col>
@@ -170,4 +161,4 @@ const EditProfileForm = () => {
   );
 };
 
-export default EditProfileForm
+export default EditProfileForm;

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Jumbotron, Container, Row, Col, Button } from 'react-bootstrap';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { axiosReq } from '../../api/axiosDefaults';
 import { useParams } from 'react-router-dom/cjs/react-router-dom';
@@ -11,6 +10,11 @@ import Task from '../tasks/Task';
 import appStyles from '../../App.module.css';
 import styles from '../../styles/HomePage.module.css';
 import HomePageGraphic from '../../assets/home-page-graphic.png';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 const HomePage = () => {
   const currentUser = useCurrentUser();
@@ -59,11 +63,7 @@ const HomePage = () => {
   useEffect(() => {
     setTotalInProgressCount(totalTasksInProgress.results.length);
     setTotalCompletedCount(totalTasksCompleted.results.length);
-  }, [
-    totalTasksInProgress.next,
-    totalTasksInProgress.results.length,
-    totalTasksCompleted.results.length,
-  ]);
+  }, [totalTasksInProgress.results.length, totalTasksCompleted.results.length]);
 
   const myHighPriorityTasks = (
     <>
@@ -115,26 +115,29 @@ const HomePage = () => {
       {currentUser ? (
         hasLoaded ? (
           <>
-            
-              <h3 className='text-center mt-2'>Hi {currentUser?.username}!</h3>
-              <hr />
-              <Row>
-                <Col lg={4}>
-                <Container className={`shadow rounded mt-2 ${appStyles.Container}`}>
+            <h3 className='text-center mt-2'>Hi {currentUser?.username}!</h3>
+            <hr />
+            <Row>
+              <Col lg={4}>
+                <Container
+                  className={`shadow rounded mt-2 ${appStyles.Container}`}
+                >
                   <h4 className='text-center'>All Tasks</h4>
                   <p className='text-center text-muted'>
                     The Tasked community has been keeping busy!
                   </p>
                   {globalTaskData}
-                  </Container>
-                </Col>
-                <Col lg={8}>
-                <Container className={`shadow rounded mt-2 ${appStyles.Container}`}>
+                </Container>
+              </Col>
+              <Col lg={8}>
+                <Container
+                  className={`shadow rounded mt-2 ${appStyles.Container}`}
+                >
                   <h4 className='text-center'>My High Priority Tasks</h4>
                   {myHighPriorityTasks}
-                  </Container>
-                </Col>
-              </Row>
+                </Container>
+              </Col>
+            </Row>
           </>
         ) : (
           <Asset spinner />
@@ -150,16 +153,15 @@ const HomePage = () => {
                   productive and accountable together.
                 </p>
                 <hr />
-                <Link to='/log-in'>
+                <Link to='/log-in' aria-label='Navigate to log in page'>
                   <Button
                     className={`mr-2 ${styles.Button}`}
-                    aria-label='Log In'
                   >
                     Log In
                   </Button>
                 </Link>
-                <Link to='sign-up'>
-                  <Button className={`${styles.Button}`} aria-label='Sign Up'>
+                <Link to='sign-up' aria-label='Navigate to sign up page'>
+                  <Button className={`${styles.Button}`}>
                     Sign Up
                   </Button>
                 </Link>

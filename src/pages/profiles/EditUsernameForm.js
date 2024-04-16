@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, Row, Col, Container, Button, Form } from 'react-bootstrap'
 import { useHistory, useParams } from 'react-router-dom';
 import { axiosRes } from '../../api/axiosDefaults';
-import { useCurrentUser, useSetCurrentUser } from '../../contexts/CurrentUserContext';
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from '../../contexts/CurrentUserContext';
 import { useRedirect } from '../../hooks/useRedirect';
 import toast from 'react-hot-toast';
 import appStyles from '../../App.module.css';
+import Alert from 'react-bootstrap/Alert';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
-// Allows the user to edit their username
 // Adapted from CI's Moments walkthrough project
 const EditUsernameForm = () => {
   useRedirect('loggedOut');
@@ -25,6 +32,7 @@ const EditUsernameForm = () => {
     if (currentUser?.profile_id?.toString() === id) {
       setUsername(currentUser.username);
     } else {
+      // Redirects the user if they are not the owner of the profile
       history.push('/');
     }
   }, [currentUser, history, id]);
@@ -39,7 +47,7 @@ const EditUsernameForm = () => {
         ...prevUser,
         username,
       }));
-      toast.success('Username changed successfully.')
+      toast.success('Username changed successfully.');
       history.goBack();
     } catch (err) {
       console.log(err);
@@ -50,12 +58,8 @@ const EditUsernameForm = () => {
   return (
     <Row className='d-flex justify-content-center mt-4'>
       <Col className='text-center' md={6}>
-        <Container
-          className={`shadow rounded ${appStyles.Container}`}
-        >
-          <Form
-            onSubmit={handleSubmit}
-          >
+        <Container className={`shadow rounded ${appStyles.Container}`}>
+          <Form onSubmit={handleSubmit}>
             <Form.Group>
               <Form.Label>Change Username</Form.Label>
               <Form.Control
@@ -70,16 +74,10 @@ const EditUsernameForm = () => {
                 {message}
               </Alert>
             ))}
-            <Button
-              className={`mr-1 ${appStyles.ButtonPrimary}`}
-              type='submit'
-            >
+            <Button className={`mr-1 ${appStyles.ButtonPrimary}`} type='submit'>
               Save Changes
             </Button>
-            <Button
-              variant='secondary'
-              onClick={() => history.goBack()}
-            >
+            <Button variant='secondary' onClick={() => history.goBack()}>
               Cancel
             </Button>
           </Form>

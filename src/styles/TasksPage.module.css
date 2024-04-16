@@ -1,20 +1,20 @@
 .SearchBar input {
-    border-radius: 20px;
-    color: #1E4185;
-    padding-left: 2.2rem;
-    border: 1px solid rgba(0, 0, 0, 1);
-  }
-  
-  .SearchIcon {
-    position: absolute;
-    font-size: 1.2rem;
-    padding: 9px;
-    padding-left: 15px;
-  }
+  border-radius: 20px;
+  color: #1E4185;
+  padding-left: 2.2rem;
+  border: 1px solid rgba(0, 0, 0, 1);
+}
+
+.SearchIcon {
+  position: absolute;
+  font-size: 1.2rem;
+  padding: 9px;
+  padding-left: 15px;
+}
 
 
-  @media screen and (max-width: 480px) {
-    ::placeholder {
-        font-size: 15px;
-    }
+@media screen and (max-width: 480px) {
+  ::placeholder {
+    font-size: 15px;
+  }
 }

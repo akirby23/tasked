@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 /**
  * Allows the user to click outside the navbar to collapse it
+ * Code obtained from CI's Moments walkthrough project
  */
 const useClickOutsideToggle = () => {
   const [expanded, setExpanded] = useState(false);

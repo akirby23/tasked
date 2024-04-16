@@ -1,8 +1,7 @@
 import React from 'react';
-import { Dropdown } from 'react-bootstrap';
+import Dropdown from 'react-bootstrap/Dropdown';
 import { useHistory } from 'react-router-dom';
-import styles from '../styles/DropDownMenu.module.css'
-
+import styles from '../styles/DropDownMenu.module.css';
 
 // The forwardRef is important!!
 // Dropdown needs access to the DOM node in order to position the Menu
@@ -17,17 +16,17 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
   />
 ));
 
+/**
+ * Dropdown menu to display edit & delete buttons
+ */
 export const DropDownMenu = ({ handleEdit, handleDelete }) => {
   return (
-    <Dropdown 
-    className={`ml-auto px-5 ${styles.Absolute}`}
-    drop='left'
-    >
+    <Dropdown className={`ml-auto px-5 ${styles.Absolute}`} drop='left'>
       <Dropdown.Toggle as={ThreeDots} />
 
       <Dropdown.Menu
-      className='text-center'
-      popperConfig={{ strategy: 'fixed' }}
+        className='text-center'
+        popperConfig={{ strategy: 'fixed' }}
       >
         <Dropdown.Item
           onClick={handleEdit}
@@ -48,18 +47,15 @@ export const DropDownMenu = ({ handleEdit, handleDelete }) => {
   );
 };
 
-// Displays on user's own profile to allow them to edit it
-// Adapted from CI's Moment's walkthrough project
+/**
+ * Displays on user's own profile to allow them to edit it
+ * Adapted from CI's Moment's walkthrough project
+ */
 export function EditProfileDropdown({ id }) {
   const history = useHistory();
   return (
-    <Dropdown 
-    drop='left'
-    className={`ml-auto px-5 ${styles.Absolute}`}
-    >
-      <Dropdown.Toggle 
-      as={ThreeDots} 
-      />
+    <Dropdown drop='left' className={`ml-auto px-5 ${styles.Absolute}`}>
+      <Dropdown.Toggle as={ThreeDots} />
       <Dropdown.Menu>
         <Dropdown.Item
           onClick={() => history.push(`/profiles/${id}/edit`)}
@@ -72,14 +68,14 @@ export function EditProfileDropdown({ id }) {
           aria-label='edit-username'
         >
           <i className='fa-regular fa-id-card mr-1' />
-            Change Username
+          Change Username
         </Dropdown.Item>
         <Dropdown.Item
           onClick={() => history.push(`/profiles/${id}/edit/password`)}
           aria-label='edit-password'
         >
           <i className='fa-solid fa-lock mr-1' />
-            Change Password
+          Change Password
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

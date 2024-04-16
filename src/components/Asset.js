@@ -1,6 +1,7 @@
 import React from 'react';
-import { Spinner } from 'react-bootstrap';
-import { Row, Col } from 'react-bootstrap'
+import Spinner from 'react-bootstrap/Spinner';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import styles from '../styles/Asset.module.css';
 
 /**
@@ -11,11 +12,11 @@ const Asset = ({ spinner, src, message }) => {
   return (
     <Row className='d-flex justify-content-center align-items-center mt-4'>
       <Col md={8} className='text-center'>
-      <div className={`${styles.Asset} p-4`}>
-      {spinner && <Spinner animation='border' />}
-      {src && <img src={src} alt={message} className={styles.Image}/>}
-      {message && <p className='mt-4'>{message}</p>}
-    </div>
+        <div className={`${styles.Asset} p-4`}>
+          {spinner && <Spinner animation='border' />}
+          {src && <img src={src} alt={message} className={styles.Image} />}
+          {message && <p className='mt-4'>{message}</p>}
+        </div>
       </Col>
     </Row>
   );

@@ -1,8 +1,8 @@
 /* Adapted from CI's Moments walkthrough project */
 
 .Asset {
-    min-height: 120px;
-  }
+  min-height: 120px;
+}
 
 .Image {
   object-fit: cover;

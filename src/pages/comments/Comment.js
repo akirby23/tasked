@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
-import ProfilePicture from '../../components/ProfilePicture'
-import { Media, Button } from 'react-bootstrap';
+import React, { useState } from 'react';
+import ProfilePicture from '../../components/ProfilePicture';
 import { Link } from 'react-router-dom';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { DropDownMenu } from '../../components/DropDownMenu';
@@ -8,9 +7,20 @@ import { axiosRes } from '../../api/axiosDefaults';
 import ModalPopup from '../../components/ModalPopup';
 import EditCommentForm from './EditCommentForm';
 import toast from 'react-hot-toast';
+import Media from 'react-bootstrap/Media';
+import Button from 'react-bootstrap/Button';
 
-const Comment = ({ profile_id, profile_image, owner, created_on, updated_on, comment_detail, id, setTask, setComments }) => {
-
+const Comment = ({
+  profile_id,
+  profile_image,
+  owner,
+  created_on,
+  updated_on,
+  comment_detail,
+  id,
+  setTask,
+  setComments,
+}) => {
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
 
@@ -19,11 +29,11 @@ const Comment = ({ profile_id, profile_image, owner, created_on, updated_on, com
 
   const handeDisplayDeleteModal = () => {
     setDisplayDeleteModal(true);
-  }
+  };
 
   const handleCloseDeleteModal = () => {
     setDisplayDeleteModal(false);
-  }
+  };
 
   const handleDelete = async () => {
     try {
@@ -36,26 +46,20 @@ const Comment = ({ profile_id, profile_image, owner, created_on, updated_on, com
         ...prevComments,
         results: prevComments.results.filter((comment) => comment.id !== id),
       }));
-      toast.success('Your comment has been deleted.')
+      toast.success('Your comment has been deleted.');
     } catch (err) {
       console.log(err);
       setDisplayDeleteModal(false);
-    };
+    }
   };
 
   return (
     <div>
       <Media className='my-2 py-2'>
-        <Link
-          to={`/profiles/${profile_id}`}
-        >
-          <ProfilePicture
-            src={profile_image}
-          />
+        <Link to={`/profiles/${profile_id}`} aria-label='Navigate to profile'>
+          <ProfilePicture src={profile_image} />
         </Link>
-        <Media.Body
-        className="align-self-center ml-2"
-        >
+        <Media.Body className='align-self-center ml-2'>
           <span className='mr-1'>{owner}</span>
           <span>{created_on}</span>
           {displayEditForm ? (
@@ -66,7 +70,9 @@ const Comment = ({ profile_id, profile_image, owner, created_on, updated_on, com
               setComments={setComments}
               setDisplayEditForm={setDisplayEditForm}
             />
-          ) : <p>{comment_detail}</p>}
+          ) : (
+            <p>{comment_detail}</p>
+          )}
           <span className='font-weight-light'>last updated {updated_on}</span>
         </Media.Body>
         {is_owner && !displayEditForm && (
@@ -76,34 +82,38 @@ const Comment = ({ profile_id, profile_image, owner, created_on, updated_on, com
           />
         )}
       </Media>
-      {displayDeleteModal && (<ModalPopup
-        show={displayDeleteModal}
-        onHide={handleCloseDeleteModal}
-        title={<h2>Delete Comment</h2>}
-        body={<p>Are you sure you want to delete this comment? This action cannot be undone.</p>}
-        footer={
-          <div>
-            <Button
-              variant='danger'
-              onClick={handleDelete}
-              aria-label='Delete comment'
-              className='mr-1'
-            >
-              Delete Comment
-            </Button>
-            <Button
-              variant='secondary'
-              onClick={handleCloseDeleteModal}
-              aria-label='Cancel'
-            >
-              Cancel
-            </Button>
-          </div>
-        }
-      />
+      {displayDeleteModal && (
+        <ModalPopup
+          show={displayDeleteModal}
+          onHide={handleCloseDeleteModal}
+          title={<h2>Delete Comment</h2>}
+          body={
+            <p>
+              Are you sure you want to delete this comment? This action cannot
+              be undone.
+            </p>
+          }
+          footer={
+            <div>
+              <Button
+                variant='danger'
+                onClick={handleDelete}
+                className='mr-1'
+              >
+                Delete Comment
+              </Button>
+              <Button
+                variant='secondary'
+                onClick={handleCloseDeleteModal}
+              >
+                Cancel
+              </Button>
+            </div>
+          }
+        />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Comment
+export default Comment;

@@ -1,19 +1,18 @@
 .NavBar {
-    background-color: #67D09F;
+  background-color: #67d09f;
 }
 
-.NavLink, 
+.NavLink,
 .NavDropdown {
-    padding: 0.4rem;
+  padding: 0.4rem;
 }
 
 .Active i {
-    color: #AC524B;
+  color: #ac524b;
 }
 
-
 @media screen and (min-width: 768px) {
-    .Active {
-        border-bottom: 2px solid #AC524B;
-    }
+  .Active {
+    border-bottom: 2px solid #ac524b;
+  }
 }

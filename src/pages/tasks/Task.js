@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import { Card, Row, Col, Button } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { DropDownMenu } from '../../components/DropDownMenu';
 import { axiosReq, axiosRes } from '../../api/axiosDefaults';
@@ -9,6 +8,10 @@ import ModalPopup from '../../components/ModalPopup';
 import styles from '../../styles/Task.module.css';
 import appStyles from '../../App.module.css';
 import toast from 'react-hot-toast';
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 const Task = (props) => {
   useRedirect('loggedOut');
@@ -50,7 +53,7 @@ const Task = (props) => {
     setTaskStatus(currentTaskStatus);
   }, [currentTaskStatus]);
 
-  const handeDisplayDeleteModal = () => {
+  const handleDisplayDeleteModal = () => {
     setDisplayDeleteModal(true);
   };
 
@@ -107,7 +110,7 @@ const Task = (props) => {
             {(is_owner || is_assignee) && taskPage && (
               <DropDownMenu
                 handleEdit={handleEdit}
-                handleDelete={handeDisplayDeleteModal}
+                handleDelete={handleDisplayDeleteModal}
               />
             )}
           </Col>
@@ -155,34 +158,31 @@ const Task = (props) => {
               </span>
             </div>
           </Col>
-          {(is_owner || is_assignee) &&
-            taskStatus.status === 'IN_PROGRESS' ? (
-              <Row>
-                <Col md={12}>
-              <Button
-                onClick={handleStatusChange}
-                aria-label='Mark task as Completed'
-                className={`text-center rounded-pill ml-3 my-3  ${appStyles.ButtonPrimary}`}
-              >
-                <i className='fa-regular fa-circle-check' /> Mark as Completed
-              </Button>
-              </Col>
-              </Row>
-            ) : (
-              (is_owner || is_assignee) && (
-                <Row>
-                  <Col md={12} >
+          {(is_owner || is_assignee) && taskStatus.status === 'IN_PROGRESS' ? (
+            <Row>
+              <Col md={12}>
                 <Button
                   onClick={handleStatusChange}
-                  aria-label='Reopen task'
-                  className={`rounded-pill ml-3 my-3 ${appStyles.ButtonPrimary}`}
+                  className={`text-center rounded-pill ml-3 my-3  ${appStyles.ButtonPrimary}`}
                 >
-                  <i className='fa-solid fa-arrow-rotate-right' /> Reopen
+                  <i className='fa-regular fa-circle-check' /> Mark as Completed
                 </Button>
+              </Col>
+            </Row>
+          ) : (
+            (is_owner || is_assignee) && (
+              <Row>
+                <Col md={12}>
+                  <Button
+                    onClick={handleStatusChange}
+                    className={`rounded-pill ml-3 my-3 ${appStyles.ButtonPrimary}`}
+                  >
+                    <i className='fa-solid fa-arrow-rotate-right' /> Reopen
+                  </Button>
                 </Col>
-                </Row>
-              )
-            )}
+              </Row>
+            )
+          )}
         </Row>
         <Row>
           <Col className={`text-left ml-2 ${styles.TaskDetails}`}>
@@ -197,27 +197,28 @@ const Task = (props) => {
         <Row className='d-flex justify-content-md-between mt-3 font-weight-light'>
           <Col className='ml-2'>
             <div>
-            <Link to={`/profiles/${assignee_profile_id}`}>
-            <span>
-                assigned to {assignee_name}{' '}
-                <i className='fa-solid fa-arrow-up-right-from-square' />
+              <Link to={`/profiles/${assignee_profile_id}`} aria-label="Navigate to assignee's profile">
+                <span>
+                  assigned to {assignee_name}{' '}
+                  <i className='fa-solid fa-arrow-up-right-from-square' />
+                </span>
+              </Link>
+            </div>
+            <div>
+              <span>
+                created on {created_on} by{' '}
+                <Link to={`/profiles/${profile_id}`} aria-label="Navigate to task owner's profile">
+                  {owner}{' '}
+                  <i className='fa-solid fa-arrow-up-right-from-square' />
+                </Link>
               </span>
-              </Link>
             </div>
             <div>
-            <span>
-              created on {created_on} by{' '}
-              <Link to={`/profiles/${profile_id}`}>
-                {owner} <i className='fa-solid fa-arrow-up-right-from-square' />
-              </Link>
-            </span>
-            </div>
-            <div>
-            <span>last updated {updated_on}</span>
+              <span>last updated {updated_on}</span>
             </div>
           </Col>
           <Col className='d-flex justify-content-end ml-2 align-items-center pr-2'>
-            <Link to={`/tasks/${id}`} className={styles.CommentsCount}>
+            <Link to={`/tasks/${id}`} className={styles.CommentsCount} aria-label='Navigate to task'>
               <i className='fa-regular fa-comments'></i> {comments_count}
             </Link>
           </Col>
