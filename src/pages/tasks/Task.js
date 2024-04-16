@@ -71,7 +71,7 @@ const Task = (props) => {
       toast.success('Task deleted successfully.');
       history.push('/tasks/');
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setDisplayDeleteModal(false);
     }
   };
@@ -89,7 +89,7 @@ const Task = (props) => {
       });
       setTaskStatus(updatedTaskStatus);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

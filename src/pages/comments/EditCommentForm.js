@@ -41,7 +41,7 @@ const EditCommentForm = ({
       toast.success('Your changes have been saved.');
       setDisplayEditForm(false);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

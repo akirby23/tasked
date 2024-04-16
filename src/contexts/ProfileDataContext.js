@@ -25,7 +25,7 @@ export const ProfileDataProvider = ({ children }) => {
           profiles: data,
         }));
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 

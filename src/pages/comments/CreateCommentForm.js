@@ -40,7 +40,7 @@ const CreateCommentForm = ({ task, setTask, setComments, profile_id }) => {
       }));
       setCommentDetail('');
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

@@ -48,7 +48,7 @@ const Comment = ({
       }));
       toast.success('Your comment has been deleted.');
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setDisplayDeleteModal(false);
     }
   };

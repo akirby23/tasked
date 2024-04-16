@@ -35,7 +35,7 @@ const NavBar = () => {
       toast.success('Successfully logged out.');
       history.push('/');
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

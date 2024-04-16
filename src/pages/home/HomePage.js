@@ -54,7 +54,7 @@ const HomePage = () => {
         setTotalTasksCompleted(totalTasksCompleted);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     fetchHomePageData();

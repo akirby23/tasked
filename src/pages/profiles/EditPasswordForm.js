@@ -49,7 +49,7 @@ const EditPasswordForm = () => {
       toast.success('Password changed successfully.');
       history.goBack();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setErrors(err.response?.data);
     }
   };

@@ -59,7 +59,7 @@ const ProfilePage = () => {
         setProfileCompletedTasks(profileCompletedTasks);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     fetchProfileData();

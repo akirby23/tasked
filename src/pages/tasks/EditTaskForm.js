@@ -46,7 +46,7 @@ const EditTaskForm = () => {
       const { data } = await axios.get('/categories/');
       setCategories(data);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -56,7 +56,7 @@ const EditTaskForm = () => {
       const { data } = await axios.get('/priority-levels/');
       setPriorityLevels(data);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -66,7 +66,7 @@ const EditTaskForm = () => {
       const { data } = await axios.get('/profiles/');
       setProfiles(data);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -216,7 +216,7 @@ const EditTaskForm = () => {
             })
           : history.push('/');
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
@@ -239,7 +239,7 @@ const EditTaskForm = () => {
       toast.success('Your changes have been saved.');
       history.push(`/tasks/${id}`);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
