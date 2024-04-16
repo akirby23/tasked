@@ -43,19 +43,16 @@
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| Logo | The Tasked logo is displayed on the left hand side of the nav bar. <br> Once clicked, the user is redirected to the home page.   | No  |   |   |
-| Log In nav link  | Displayed to logged out users only. <br> The log in nav link is displayed on the right hand side of the nav bar. <br> Once clicked, the user is redirected to a log in page.  | No  |   |   |
-| Sign In nav link  | Displayed to logged out users only. <br> The sign in button is displayed on the right hand side of the nav bar. <br> Once clicked, the user is redirected to a sign in page.  | No  |   |   |
-| New Task nav link   | Displayed to logged in users only. <br> Once clicked, the user is redirected to a page that will allow them to create a task.   | Yes  |   |   |
-| All Tasks nav link | Displayed to logged in users only. <br> Once clicked, the user is redirected to a page that displays a list of all tasks.   | Yes |   |   |
-| My Tasks nav link | Displayed to logged in users only. <br> Once clicked, the user is redirected to a page that displays all tasks that they have created.  | Yes  |   |   |
-| My Assigned Tasks nav link  | Displayed to logged in users only. Once clicked, the user is redirected to a page that will display all tasks that have been assigned to them.   |  Yes |   |   |
-| Nav drop down | Displayed to logged in users only. <br> The drop down link should display the logged in user's profile picture & username. Once clicked, the My Profile & Log Out navlinks will be displayed.  | Yes  |   |   |
-| My Profile nav link  | Displayed to logged in users only. <br> Once clicked, the user is redirected to their profile.  | Yes  |   |   |
-| Log Out nav link  | Displayed to logged in users only. <br> Once clicked, a modal will appear that will prompt them to confirm whether or not they want to log out. | Yes  |   |   |
-| Nav bar display  | Nav bar should be displayed on all pages  | No  |   |   |
-
-
+| Logo | The Tasked logo is displayed on the left hand side of the nav bar. <br> Once clicked, the user is redirected to the home page. | No  | Pass  |   |
+| Log In nav link  | Displayed to logged out users only. <br> The log in nav link is displayed on the right hand side of the nav bar. <br> Once clicked, the user is redirected to a log in page.  | No  | Pass  |   |
+| Sign In nav link  | Displayed to logged out users only. <br> The sign in button is displayed on the right hand side of the nav bar. <br> Once clicked, the user is redirected to a sign in page.  | No  | Pass  |   |
+| New Task nav link   | Displayed to logged in users only. <br> Once clicked, the user is redirected to a page that will allow them to create a task.   | Yes  | Pass  |   |
+| All Tasks nav link | Displayed to logged in users only. <br> Once clicked, the user is redirected to a page that displays a list of all tasks.   | Yes |  Pass |   |
+| My Tasks nav link | Displayed to logged in users only. <br> Once clicked, the user is redirected to a page that displays all tasks that they have created.  | Yes  |  Pass |   |
+| My Assigned Tasks nav link  | Displayed to logged in users only. Once clicked, the user is redirected to a page that will display all tasks that have been assigned to them.   |  Yes | Pass  |   |
+| Log Out nav link  | Displayed to logged in users only. <br> Once clicked, the user is logged out and redirected to the home page. <br> A success message is displayed at the top of the page that reads "Successfully logged out." | Yes  | Pass  |   |
+| Profile nav link  | Displayed to logged in users only. <br> User's profile picture & username is displayed. <br> Once clicked, the user is redirected to their profile.  | Yes  | Pass  |   |
+| Nav bar display  | Nav bar should be displayed on all pages  | No  | Pass  |   |
 
 </details>
 
@@ -87,31 +84,20 @@
 </details>
 
 <details>
-<summary>Log Out modal</summary>
-
-| Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
-|---|---|---|---|---|
-| Modal header  | Should read "Log Out"  | Yes  | Pass  |   |
-| Modal message  | Should read "Are you sure you want to log out?"  | Yes  | Pass  |   |
-| Confirm log out button  | Once clicked, the user is logged out and redirected to the home page. <br> A success message is displayed at the top of the page that reads "Successfully logged out." | Yes  | Pass  |   |
-| Cancel button  | Once clicked, the modal is hidden and the user is not redirected to a different page.  | Yes  | Pass |   |
-</details>
-
-<details>
 <summary>Profile page</summary>
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| Profile picture  | The profile owner's profile picture is displayed on the profile.  | Yes  |   |   |
-| Username  | The profile owner's username is displayed on the profile.  | Yes  |   |   |
-| Bio  | The profile owner's bio is displayed on the profile. <br> If the profile owner has not added a bio yet, the bio should read "`username` has not provided a bio yet."  | Yes  |   |   |
-| Tasks created  | The total number of tasks created by the profile owner should be displayed.  | Yes  |   |   |
-| Tasks assigned  | The total number of tasks assigned to the profile owner that are in progress should be displayed.  | Yes  |   |   |
-| Tasks completed  | The total number of tasks assigned to the profile owner that have been completed should be displayed.  |  Yes |   |   |
-| Assigned tasks heading | Heading should read "`username`'s assigned tasks"  | Yes |   |   |
-| In Progress tab  | A list of the profile owner's tasks that are in progress should display on this tab. <br> If the profile owner does not have any assigned tasks in progress, "`username` has no ongoing tasks assigned." should display on the tab.  | Yes  |   |   |
-| Completed tab  | A list of the profile owner's tasks that have been completed should display on this tab. <br> If the profile owner has not completed any assigned tasks, "`username` has not completed any assigned tasks yet." should display on the tab.  | Yes  |   |   |
-| Edit Profile dropdown  | Displayed to profile owners only. <br> Once clicked, a dropdown menu should appear containing Edit Profile, Change Username & Change Password links. <br> Once the Edit Profile link is clicked, the user is redirected to the edit profile page. <br> Once the Change Username link is clicked, the user is redirected to the change username page. <br> Once the Change Password link is clicked, the user is redirected to the change password page.    | Yes  |   |   |
+| Profile picture  | The profile owner's profile picture is displayed on the profile.  | Yes  | Pass  |   |
+| Username  | The profile owner's username is displayed on the profile.  | Yes  | Pass  |   |
+| Bio  | The profile owner's bio is displayed on the profile. <br> If the profile owner has not added a bio yet, the bio should read "`username` has not provided a bio yet."  | Yes  | Pass  |   |
+| Tasks created  | The total number of tasks created by the profile owner should be displayed.  | Yes  | Pass  |   |
+| Tasks assigned  | The total number of tasks assigned to the profile owner that are in progress should be displayed.  | Yes  | Pass  |   |
+| Tasks completed  | The total number of tasks assigned to the profile owner that have been completed should be displayed.  |  Yes | Pass  |   |
+| Assigned tasks heading | Heading should read "`username`'s assigned tasks"  | Yes | Pass  |   |
+| In Progress tab  | A list of the profile owner's tasks that are in progress should display on this tab. <br> If the profile owner does not have any assigned tasks in progress, "`username` has no ongoing tasks assigned." should display on the tab.  | Yes  | Pass  |   |
+| Completed tab  | A list of the profile owner's tasks that have been completed should display on this tab. <br> If the profile owner has not completed any assigned tasks, "`username` has not completed any assigned tasks yet." should display on the tab.  | Yes  | Pass  |   |
+| Edit Profile dropdown  | Displayed to profile owners only. <br> Once clicked, a dropdown menu should appear containing Edit Profile, Change Username & Change Password links. <br> Once the Edit Profile link is clicked, the user is redirected to the edit profile page. <br> Once the Change Username link is clicked, the user is redirected to the change username page. <br> Once the Change Password link is clicked, the user is redirected to the change password page.    | Yes  | Pass  |   |
 
 
 </details>
@@ -121,10 +107,10 @@
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| New Profile Picture input  | User's current profile picture is displayed. <br> Once the "Choose file" button is clicked, the user can upload a new profile picture from their device. <br> Once a new profile picture is uploaded, it should display within the form.  | Yes  |   |   |
-| Bio Input  | User's current bio is displayed in the text field, if they have one. <br> User can add a bio to the text field or edit the existing bio.  | Yes  |   |   |
-| Save Changes button | Once clicked, the changes to the profile are saved and the user is redirected to the profile page. <br> A success message should display at the top of the page that reads "Changes saved successfully." <hr> If the user provides invalid data, they are prompted to correct this before changes are saved. | Yes  |   |   |
-| Cancel button  | Once clicked, the user is redirected back to the profile page.  |  Yes |   |   |
+| New Profile Picture input  | User's current profile picture is displayed. <br> Once the "Choose file" button is clicked, the user can upload a new profile picture from their device. <br> Once a new profile picture is uploaded, it should display within the form.  | Yes  | Pass  |   |
+| Bio Input  | User's current bio is displayed in the text field, if they have one. <br> User can add a bio to the text field or edit the existing bio.  | Yes  | Pass  |   |
+| Save Changes button | Once clicked, the changes to the profile are saved and the user is redirected to the profile page. <br> A success message should display at the top of the page that reads "Changes saved successfully." <hr> If the user provides invalid data, they are prompted to correct this before changes are saved. | Yes  | Pass  |   |
+| Cancel button  | Once clicked, the user is redirected back to the profile page.  |  Yes | Pass  |   |
 
 
 </details>
@@ -161,7 +147,7 @@
 | Log In Button  | Displayed to logged out users only. <br> Once clicked, the user is redirected to a page that will allow them to log in.  | No  | Pass  |   |
 | Sign Up button | Displayed to logged out users only. <br> Once clicked, the user is redirected to a page that will allow them to sign up.  | No  | Pass  |   |
 | All Tasks table  | Displayed to logged in users only. <br> Once the user logs in or redirects to the home page, a table will be displayed containing statistics on the total amount of tasks that are in progress & the total amount of tasks that have been completed.  | Yes  | Pass  |   |
-| High Priority tasks   | Displayed to logged in users only. <br> Once the user logs in or redirects to the home page, their high priority tasks that are in progress will appear in the form of a list. If the user has no high priority tasks in progress, a message will appear to advise them of this.   | Yes | Pass  |   |
+| High Priority tasks  | Displayed to logged in users only. <br> Once the user logs in or redirects to the home page, their high priority tasks that are in progress will appear in the form of a list. If the user has no high priority tasks in progress, a message will appear to advise them of this.   | Yes | Pass  |   |
 
 
 
@@ -205,7 +191,7 @@
 | Task title  | The task title is displayed. <br> The task title is hyperlinked. <br> Once clicked, the user is redirected to the associated task page.  | Yes  | Pass  |   |
 | Task category  | The task category is displayed.  | Yes  | Pass  |   |
 | Task priority level  | The task priority level is displayed.  |  Yes | Pass  |   |
-| Task status  | The task status is displayed. <br> By default, the task status is set to "In Progress".  | Yes  | Pass  |   |
+| Task status  | The task status is displayed. <br> By default, the task status is set to "In Progress".  | Yes  | Pass  | While the task status is displayed, it is not displayed in the desired format. <br> Attempts were made to display the status name in the desired format however this caused issues with the state not being updated, or in some cases the status not being updated on the backend. <br> I opted to leave it as is for now in order not to degrade the user's experience. |
 | Task details  | The task details are displayed.   | Yes  | Pass  |   |
 | Task assignee  | The task assignee is displayed. <br> The task assignee's username is hyperlinked. <br> Once clicked, the user is redirected to the task assignee's profile.  | Yes  | Pass  |   |
 | Change task status button  | Displayed to task owners & task assignees only. <br> While the task is in progress, the button reads "Mark as Completed". <br> Once clicked, the button text changes to "Reopen" and the task status is set to "Completed". | Yes  | Pass  |   |
@@ -234,15 +220,15 @@
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| Form heading  | Should read "Create Task" | Yes  |   |   |
-| Title input  | User can add a title to the text field  |  Yes |   |   |
-| Task Detail input  | User can add task details to the text field  | Yes  |   |   |
-| Category input  | User can select a category from the dropdown menu  | Yes  |   |   |
-| Priority level input  | User can select a priority level from the dropdown menu  | Yes  |   |   |
-| Assignee input  | User can select an assignee from the dropdown menu  | Yes  |   |   |
-| Disclaimer  | A disclaimer that reads "Please note that your task will be visible to other members of the Tasked community." is displayed above the form buttons  | Yes  |   |   |
-| Create Task button  | Once clicked, the task is created & the user is redirected to the new task's page. <br> A success message that reads "Task created successfully." is displayed at the top of the screen. <hr> If the user provides invalid data in the form, they are prompted to correct this before proceeding.  | Yes |   |   |
-| Cancel button | Once clicked, the user is redirected to the previous page  | Yes  |   |   |
+| Form heading  | Should read "Create Task" | Yes  | Pass  |   |
+| Title input  | User can add a title to the text field  |  Yes | Pass  |   |
+| Task Detail input  | User can add task details to the text field  | Yes  |  Pass |   |
+| Category input  | User can select a category from the dropdown menu  | Yes  |  Pass |   |
+| Priority level input  | User can select a priority level from the dropdown menu  | Yes  | Pass  |   |
+| Assignee input  | User can select an assignee from the dropdown menu  | Yes  | Pass |   |
+| Disclaimer  | A disclaimer that reads "Please note that your task will be visible to other members of the Tasked community." is displayed above the form buttons  | Yes  | Pass  |   |
+| Create Task button  | Once clicked, the task is created & the user is redirected to the new task's page. <br> A success message that reads "Task created successfully." is displayed at the top of the screen. <hr> If the user provides invalid data in the form, they are prompted to correct this before proceeding.  | Yes | Pass  |   |
+| Cancel button | Once clicked, the user is redirected to the previous page  | Yes  | Pass  |   |
 
 
 </details>
@@ -252,14 +238,14 @@
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| Form heading  | Should read "Edit Task" | Yes  |   |   |
-| Title input  | Prepopulated with the current title. <br> User can edit the current task title.  |  Yes |   |   |
-| Task Detail input  | Prepopulated with the current task details. <br> User can edit the current task details. | Yes  |   |   |
-| Category input  | Prepopulated with the current task category. <br> User can select a different category.  | Yes  |   |   |
-| Priority level input  | Prepopulated with the current task priority level. <br> User can select a different priority level.   | Yes  |   |   |
-| Assignee input  | Prepopulated with the current task assignee. <br> User can select a different assignee.   | Yes  |   |   |
-| Save changes button  | Once clicked, the changes are saved & the user is redirected to the task's page. <br> A success message that reads "Your changes have been saved." is displayed at the top of the screen. <hr> If the user provides invalid data in the form, they are prompted to correct this before proceeding.  | Yes |   |   |
-| Cancel button | Once clicked, the user is redirected to the previous page  | Yes  |   |   |
+| Form heading  | Should read "Edit Task" | Yes  | Pass  |   |
+| Title input  | Prepopulated with the current title. <br> User can edit the current task title.  |  Yes | Pass  |   |
+| Task Detail input  | Prepopulated with the current task details. <br> User can edit the current task details. | Yes  | Pass  |   |
+| Category input  | Prepopulated with the current task category. <br> User can select a different category.  | Yes  | Fail  | User can select a new category, however the form dropdown is not prepopulated with the current category. Further details in the [bugs](#bugs) section.  |
+| Priority level input  | Prepopulated with the current task priority level. <br> User can select a different priority level.   | Yes  | Fail  | User can select a new priority level, however the form dropdown is not prepopulated with the current priority level. Further details in the [bugs](#bugs) section.   |
+| Assignee input  | Prepopulated with the current task assignee. <br> User can select a different assignee.  | Yes  | Fail  | User can select a new assignee, however the form dropdown is not prepopulated with the current assignee. Further details in the [bugs](#bugs) section.  |
+| Save changes button  | Once clicked, the changes are saved & the user is redirected to the task's page. <br> A success message that reads "Your changes have been saved." is displayed at the top of the screen. <hr> If the user provides invalid data in the form, they are prompted to correct this before proceeding.  | Yes | Pass  |   |
+| Cancel button | Once clicked, the user is redirected to the previous page  | Yes  | Pass  |   |
 </details>
 
 <details>
@@ -267,10 +253,10 @@
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| Modal header  | Should read "Delete Task"  | Yes  |   |   |
-| Modal message  | Should read "Are you sure you want to delete this task? This action cannot be undone.  | Yes  |   |   |
-| Confirm task delete button  | Once clicked, modal should be hidden, the task should be deleted & user should be redirected to the previous page. <br> A success message should appear at the top of the page that reads "Task deleted successfully." | Yes |   |   |
-| Cancel button  | Once clicked, the modal should be hidden, task should not be deleted.  |  Yes |   |   |
+| Modal header  | Should read "Delete Task"  | Yes  | Pass  |   |
+| Modal message  | Should read "Are you sure you want to delete this task? This action cannot be undone.  | Yes  | Pass  |   |
+| Confirm task delete button  | Once clicked, modal should be hidden, the task should be deleted & user should be redirected to the All Tasks page. <br> A success message should appear at the top of the page that reads "Task deleted successfully." | Yes | Pass  |   |
+| Cancel button  | Once clicked, the modal should be hidden, task should not be deleted.  |  Yes | Pass  |   |
 
 </details>
 
@@ -279,12 +265,12 @@
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| Profile Picture  | The user's profile picture is displayed to the left of the comment.  | Yes  |   |   |
-| Username  | The comment owner's username is displayed at the top of the comment.  | Yes  |   |   |
-| Created on date  | The created on date is displayed next to the comment owner's username.  | Yes  |   |   |
-| Updated on date  | The updated on date is displayed at the bottom of the comment.  | Yes  |   |   |
-| Comment detail  | The comment owner's comment is displayed below their username & created on date.  | Yes  |   |   |
-| Edit Comment Dropdown  | Displayed to comment owners only. <br> Once clicked, a dropdown menu should appear containing an edit icon and a delete icon. <br> Once the edit icon is clicked, a form should display on the comment that will allow the user to edit it. <br> Once the delete icon is clicked, the Delete Comment modal should display. |  Yes |   |   |
+| Profile Picture  | The user's profile picture is displayed to the left of the comment.  | Yes  | Pass |   |
+| Username  | The comment owner's username is displayed at the top of the comment.  | Yes  | Pass  |   |
+| Created on date  | The created on date is displayed next to the comment owner's username.  | Yes  | Pass  |   |
+| Updated on date  | The updated on date is displayed at the bottom of the comment.  | Yes  | Pass  |   |
+| Comment detail  | The comment owner's comment is displayed below their username & created on date.  | Yes  | Pass  |   |
+| Edit Comment Dropdown  | Displayed to comment owners only. <br> Once clicked, a dropdown menu should appear containing an edit icon and a delete icon. <br> Once the edit icon is clicked, a form should display on the comment that will allow the user to edit it. <br> Once the delete icon is clicked, the Delete Comment modal should display. |  Yes | Pass  |   |
 
 </details>
 
@@ -293,9 +279,9 @@
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| Comment detail input  | Prepopulated with the current comment. <br> User should be able to edit the current comment in the text field.  | Yes  |   |   |
-| Save Changes button  | Once clicked, the changes should be saved. <br> Form will be hidden and new changes will be visible on the comment. <br> A success message will display at the top of the page that reads "Your changes have been saved.". <br> Updated on date is updated to "now". <hr> If the user inputs invalid data, they are prompted to correct this before changes can be saved.   |  Yes |   |   |
-| Cancel button  | Once clicked, the form will no longer be displayed and no changes will be made to the comment.  | Yes  |   |   |
+| Comment detail input  | Prepopulated with the current comment. <br> User should be able to edit the current comment in the text field.  | Yes  | Pass  |   |
+| Save Changes button  | Once clicked, the changes should be saved. <br> Form will be hidden and new changes will be visible on the comment. <br> A success message will display at the top of the page that reads "Your changes have been saved.". <br> Updated on date is updated to "now". <hr> If the user inputs invalid data, they are prompted to correct this before changes can be saved.   |  Yes | Pass  |   |
+| Cancel button  | Once clicked, the form will no longer be displayed and no changes will be made to the comment.  | Yes  | Pass  |   |
 
 
 </details>
@@ -305,10 +291,10 @@
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| Modal header  | Should read "Delete Comment"  | Yes  |   |   |
-| Modal message  | Should read "Are you sure you want to delete this comment? This action cannot be undone."  | Yes  |   |   |
-| Confirm task delete button  | Once clicked, the comment should be deleted & should no longer appear on the task page. <br> The modal should be hidden & the user should stay on the same page. <br> A success message should appear at the top of the page that reads "Your comment has been deleted."  |  Yes |   |   |
-| Cancel button  | Once clicked, the modal should be hidden, comment should not be deleted.  | Yes  |   |   |
+| Modal header  | Should read "Delete Comment"  | Yes  | Pass  |   |
+| Modal message  | Should read "Are you sure you want to delete this comment? This action cannot be undone."  | Yes  | Pass  |   |
+| Confirm task delete button  | Once clicked, the comment should be deleted & should no longer appear on the task page. <br> The modal should be hidden & the user should stay on the same page. <br> A success message should appear at the top of the page that reads "Your comment has been deleted."  |  Yes | Pass  |   |
+| Cancel button  | Once clicked, the modal should be hidden, comment should not be deleted.  | Yes  | Pass  |   |
 
 
 </details>
@@ -322,10 +308,75 @@
 
 </details>
 
-
 ## Validator Testing
 
+<details>
+<summary>JavaScript</summary>
+
+An ESLint report was run to validate the JavaScript. 
+
+![ESLint report](documentation/readme/testing/validator-testing/eslint-report.PNG)
+
+No errors were found.
+
+</details>
+
+<details>
+<summary>HTML</summary>
+
+The [The W3C Markup Validation Service](https://validator.w3.org/) was used to validate the HTML. 
+
+![HTML validated](documentation/readme/testing/validator-testing/html-validated.PNG)
+
+Aside from informational messages regarding trailing slashes, no errors were found.
+
+</details>
+
+<details>
+<summary>CSS</summary>
+
+ [The W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) was used to validate each of the CSS files.
+
+![CSS validated](documentation/readme/testing/validator-testing/css-validated.PNG)
+
+No errors were found.
+
+</details>
+
+## Lighthouse
+
+<details>
+<summary>Desktop</summary>
+
+![Lighthouse Desktop Report](documentation/readme/testing/lighthouse/lighthouse-tasks-list-desktop.PNG)
+
+</details>
+
+<details>
+<summary>Mobile</summary>
+
+![Lighthouse Mobile Report](documentation/readme/testing/lighthouse/lighthouse-my-assigned-tasks-mobile.PNG)
+
+</details>
+
+## Browser Testing
+
+Tasked was testing on Google Chrome, Firefox, Microsoft Edge & Opera. 
+
+No compatability issues were discovered.
+
 ## Bugs
+
+| Feature  |  Issue | Status  | Notes  |
+|---|---|---|---|
+| Edit task form  | Assignees could not access edit task form  | Resolved  | Added is_assignee field on the backend to allow for the edit task dropdown menu to be displayed to task assignees as well as task owners  |
+| Edit comment form  | Comments could not be edited.  | Resolved  | The comment could not be edited as the task ID was not being sent with the PUT request, despite it being fetched from the API. <br> Changed the logic so that a PATCH request is sent to edit a comment instead of a PUT request which resolved the issue.  |
+| Edit task form | category, priority level & assignee dropdown menus are not prepopulated with the current task data  | Unresolved  | Due to time constraints, a fix was deprioritised. While not ideal, this issue does not prevent the categories, priority levels & assignees from being saved upon task creation, nor does it prevent the user from editing them. |
+
+
+**Undesirable behaviour**
+
+The statistics on the home page as well as the statistics displayed on the user's profile are capped at a total count of 10 due to pagination rules on the backend. Due to time constraints, a fix has not yet been implemented, however this is expected to be resolved in future development. 
 
 [Back to the top](#testing--tasked)
 <br>
