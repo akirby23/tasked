@@ -21,7 +21,7 @@ Tasked leverages the power of the frontend framework [React](https://react.dev/)
     - [User Stories](#user-stories)
     - [Design](#design)
         - [Colour Scheme](#colour-scheme)
-        - [Typeography](#typeography)
+        - [Typography](#typography)
         - [Imagery](#imagery)
         - [Wireframes](#wireframes)
 - [Technologies Used](#technologies-used)
@@ -33,7 +33,7 @@ Tasked leverages the power of the frontend framework [React](https://react.dev/)
 - [Credits](#credits)
     - [Code](#code)
     - [media](#media)
-    - [Acknowledgements](#acknowledgements)
+    - [Acknowledgments](#acknowledgments)
 
 
 ## User Goals
@@ -62,7 +62,9 @@ The home page for logged out users features a welcoming message and brief descri
 ![Home page, logged out, mobile](documentation/readme/features/home-logged-out-mobile.PNG)
 <br>
 The home page for logged in users displays a dashboard which contains the following:
+<br>
     - A table containing the total number of tasks in progress & total number of tasks completed by the tasked community.
+    <br>
     - A list of the user's high priority tasks, if they have any in progress.
 <br>
 ![Home page, logged in, desktop](documentation/readme/features/home-logged-in-desktop.PNG)
@@ -288,7 +290,7 @@ The colour palette was generated from the Tasked logo using [coolors](https://co
 - `#D7DDE9` has been used as the background colour to provide contrast to the containers.
 - `#FFFFFF` has been used as the background colour for the containers across the app, and as the text colour on the task labels to provide contrast.
 
-#### Typeography
+#### Typography
 
 - `Fredoka` with a fallback font of `italic` has been used for the main headings, to match the font in the Tasked logo.
 
@@ -485,7 +487,7 @@ Resources used for assistance with debugging:
     - Credit to [charco_design](https://www.vecteezy.com/vector-art/10396903-woman-working-at-office-and-managing-tasks) for the image displayed on the home page.
     - Credit to [mostkingto](https://www.vecteezy.com/vector-art/20765399-default-profile-account-unknown-icon-black-silhouette) for the default profile picture.
 
-### Acknowledgements
+### Acknowledgments
 
 - I would like to thank my Code Insitute mentor, Mo Shami, for his support & guidance throughout the development of this project. 
 - I would also like to thank Thomas & John from the tutor support team at Code Institute for helping me to troubleshoot an issue that I was having with implementing comment editing functionality.

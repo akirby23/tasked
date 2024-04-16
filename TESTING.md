@@ -133,7 +133,7 @@
 |---|---|---|---|---|
 | Password input  | User can enter a new password in the text field  | Yes  | Pass  |   |
 | Confirm password input  | User can enter their new password again in the text field  | Yes  | Pass  |   |   |
-| Save Changes button  | Once clicked, the password will be changed & the user will be redirect to the profile page. <br> A success message will display at the top of the page that reads "Password changed successfully." <hr> If the user inputs an invalid password, they will be prompted to correct this before changes can be saved. | Yes  | Pass  |   |
+| Save Changes button  | Once clicked, the password will be changed & the user will be redirected to the profile page. <br> A success message will display at the top of the page that reads "Password changed successfully." <hr> If the user inputs an invalid password, they will be prompted to correct this before changes can be saved. | Yes  | Pass  |   |
 | Cancel button  | Once clicked, the user is redirected back to the profile page.  |  Yes | Pass  |   |
 
 </details>
@@ -304,7 +304,7 @@
 
 | Feature  | Expected Behaviour  | User Authentication Required? |  Status  |  Notes  |   
 |---|---|---|---|---|
-| 404 page  | If the user attempts to access an invalid URL, they are directed to the NotFound page. An 404 image should be displayed along with a message that reads "Sorry, the page you're looking for could not be found."  | No  | Pass  |   |
+| 404 page  | If the user attempts to access an invalid URL, they are directed to the NotFound page. A 404 image should be displayed along with a message that reads "Sorry, the page you're looking for could not be found."  | No  | Pass  |   |
 
 </details>
 
