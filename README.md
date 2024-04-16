@@ -1,11 +1,22 @@
 # Tasked
 
+Experience peak productivity levels with Tasked, a task management solution aimed at users who want to effectively manage their personal tasks. 
+
+![Tasked Am I Responsive](documentation/readme/am-i-responsive.PNG)
+
+Tasked leverages the power of the frontend framework [React](https://react.dev/) to create an interactive user interface that seamlessly integrates the [DRF Tasked API](https://github.com/akirby23/drf-tasked).
+
+[Live Link](https://tasked-pp5-f085ebbd00be.herokuapp.com/)
+
 ## Table of Contents
 
 - [User Goals](#user-goals)
 - [Features](#features)
     - [Existing Features](#existing-features)
     - [Future Features](#future-features)
+    - [Components](#components)
+    - [Hooks](#hooks)
+    - [Contexts](#contexts)
 - [User Experience](#user-experience)
     - [User Stories](#user-stories)
     - [Design](#design)
@@ -27,11 +38,205 @@
 
 ## User Goals
 
+Tasked aims to enable users to:
+
+- Create an account and log in to access the app's features
+- Create, read, update & delete tasks
+- Categorise tasks
+- Prioritise tasks
+- Assign tasks to other users
+- Complete/Reopen tasks
+- Create, update and delete comments on tasks
+- Access user profiles
+
 ## Features
 
 ### Existing Features
 
+#### Home Page
+
+The home page for logged out users features a welcoming message and brief description of the app:
+<br>
+![Home page, logged out, desktop](documentation/readme/features/home-logged-out-desktop.png)
+<br>
+![Home page, logged out, mobile](documentation/readme/features/home-logged-out-mobile.PNG)
+<br>
+The home page for logged in users displays a dashboard which contains the following:
+    - A table containing the total number of tasks in progress & total number of tasks completed by the tasked community.
+    - A list of the user's high priority tasks, if they have any in progress.
+<br>
+![Home page, logged in, desktop](documentation/readme/features/home-logged-in-desktop.PNG)
+<br>
+![Home page, logged in, mobile](documentation/readme/features/home-logged-in-mobile.PNG)
+
+#### Navbar
+
+The app features a responsive navbar on each page. 
+The Tasked logo is displayed to the left of the navbar. The user will be redirected to the home page once the logo is clicked.
+<br> 
+![Logo](documentation/readme/features/logo.PNG)
+<br>
+Below are the navigation links that are available while logged out:
+<br>
+![Navbar logged out](documentation/readme/features/navbar-logged-out.PNG)
+<br>
+Below are the navigation links that are available while logged in:
+![Navbar logged in](documentation/readme/features/navbar-logged-in.PNG)
+
+#### Create a task
+
+Users can create a new task by clicking the "New Task" link in the navbar.
+![Create new task desktop](documentation/readme/features/create-new-task-desktop.PNG)
+![Create new task mobile](documentation/readme/features/create-new-task-mobile.PNG)
+
+#### Task Page
+
+The task page features all of the task's details as well as the task's associated comments.
+<br>
+![Task](documentation/readme/features/task.PNG)
+<br>
+Task owners & assignees can change the status of the task on button click: 
+<br>
+![Mark as completed button](documentation/readme/features/mark-as-completed-button.PNG)
+<br>
+![Reopen button](documentation/readme/features/reopen-tasks.PNG)
+
+#### Edit a task
+
+Task owners and task assignees can edit tasks if they need to update them:
+<br>
+![Task drop down](documentation/readme/features/task-comment-dropdown.PNG)
+<br>
+![Edit task](documentation/readme/features/edit-task.PNG)
+
+#### Comment on tasks
+
+Users can add comments to tasks to keep them up to date or to offer encouragement to other members of the community:
+<br>
+![Comments](documentation/readme/features/comments.PNG)
+
+#### Edit comments
+
+Users can edit their own comments if they need to update them:
+<br>
+![Comment drop down](documentation/readme/features/task-comment-dropdown.PNG)
+<br>
+![Edit comment](documentation/readme/features/edit-comment-form.PNG)
+
+#### Defensive programming 
+
+Task owners and task assignees can delete tasks, and comment owners can delete their own comments. 
+
+To prevent any hasty actions from being taken, the app features defensive programming. 
+
+Users are prompted to confirm if they want to delete the task/comment and are given the chance to cancel the request. 
+
+![Delete task modal](documentation/readme/features/delete-task-modal.PNG) 
+<br>
+![Delete comment modal](documentation/readme/features/delete-comment-modal.PNG)
+
+#### Tasks Pages
+
+There are 3 different task list pages available:
+
+- All Tasks. All tasks that are currently in progress are displayed here. 
+
+![All Tasks desktop](documentation/readme/features/all-tasks-desktop.PNG) ![All Tasks Mobile](documentation/readme/features/all-tasks-mobile.PNG)
+
+- My Tasks. All tasks created by the authenticated user are displayed here. 
+
+![My Tasks desktop](documentation/readme/features/my-tasks-desktop.PNG)  ![My Tasks mobile](documentation/readme/features/my-tasks-mobile.PNG)
+
+- My Assigned Tasks. All tasks assigned to the authenticated user are displayed here. 
+
+![My Assigned Tasks desktop](documentation/readme/features/my-assigned-tasks-desktop.PNG) ![My Assigned Tasks mobile](documentation/readme/features/my-assigned-tasks-mobile.PNG)
+
+#### Search functionality
+
+User can search for tasks by title or by category from each of the 3 tasks pages. 
+<br>
+![Search bar](documentation/readme/features/search-bar.PNG)
+<br>
+If no results are found, the message below will display to the user:
+<br>
+![No results found](documentation/readme/features/no-results-found.PNG)
+
+#### Profile Page 
+
+User profiles are created upon sign up 
+<br>
+![Profile desktop](documentation/readme/features/profile-desktop.PNG)
+<br>
+![Profile mobile](documentation/readme/features/profile-mobile.PNG)
+
+Users can edit their own profiles to personalise them.
+
+![Profile dropdown menu](documentation/readme/features/profile-dropdown-menu.PNG)
+<br>
+![Change username](documentation/readme/features/change-username.PNG)
+<br>
+![Change password](documentation/readme/features/change-password.PNG)
+<br>
+![Edit profile](documentation/readme/features/edit-profile.PNG)
+
+
+#### Informative Messages
+
+Success messages are displayed to users when actions are completed successfully.
+<br>
+![Log in success message](documentation/readme/features/log-in-success-message.PNG)
+<br>
+![Logged out success message](documentation/readme/features/logged-out-success-message.PNG)
+<br>
+![Your changes have been saved message](documentation/readme/features/changes-saved-success-message.PNG)
+<br>
+![Task created success message](documentation/readme/features/task-created-success-message.PNG)
+<br>
+![Task deleted success message](documentation/readme/features/task-deleted-success-message.PNG)
+<br>
+![Comment deleted success message](documentation/readme/features/comment-deleted-success-message.PNG)
+<br>
+An error message is displayed if the user attempts to access restricted pages:
+<br>
+![Please log in to view this page message](documentation/readme/features/please-log-in-message.PNG)
+
 ### Future Features
+
+- Due date assignment to allow users to manage their tasks more effeciently.
+- Ability to add multiple assignees to one task.
+- Goals: A feature that would allow users to group tasks together and complete them as part of an overall goal. 
+- Allow site admins to create new categories on the frontend. Currently, this can only be actioned by superusers on the backend.
+- Search functionality in form dropdowns: as the application scales, it will likely become cumbersome to scroll through long dropdown menus to select a category or assignee. With this in mind we would like to implement search functionality in create & edit task dropdown fields.
+- Dashboard component to display on the home page & on the task list pages. It will include the existing total globalTaskData table and list of high priority tasks as well as the following:
+    - statistics on categories and priority levels
+    - leaderboard displaying the profiles with the most completed tasks count
+- Dashboard on the task list pages that will display the total number of tasks in progress/completed on the All Tasks list, My Tasks list & My Assigned Tasks list. 
+
+### Components
+
+- **Asset:** a multi-purpose component that is used throughout the app to display a spinner when data is loading, a message and/or an image, depending on the props that are passed to it.
+
+- **DropDownMenu:** this component displays a three dot dropdown menu on comments, tasks and profiles. It enables task owners/assignees and comment owners to edit and delete their tasks and comments with ease, and allows profile owners to edit their profiles.
+
+- **ModalPopUp:** used primarily for defensive programming. This component has been reused on comments and tasks to prompt the user to confirm whether or not they want to delete their comment or task. 
+
+- **NavBar:** displays a nav bar on every page of the application, allowing users to seamlessly navigate between pages to access all of the application's features.
+
+- **NotFound:** displays a 404 error message to the user if they navigate to an invalid URL. The asset component is reused here to display the 404 image & message.
+
+- **ProfilePicture:** displays the user's profile picture throughout the application.
+
+### Hooks
+
+- **useRedirect:** used to redirect users to the log in page if they attempt to access pages that require user authentication, and also to redirect users to the home page if they attempt to access log in/sign up pages while logged in. 
+
+- **useClickOutsideToggle:** use to collapse the expanded navbar menu when the user clicks outside of the navbar for better UI.
+
+### Contexts
+
+- **CurrentUserContext:** used to set the current user's authentication state. This is used throughout the application to redirect users if they attempt to access pages that require the user to be logged in. 
+
+- **ProfileDataContext:** used to set the profile data. This context will be reused more in future development when the dashboard is developed further.
 
 ## User Experience
 
@@ -118,25 +323,25 @@ Both of the fonts above were obtained from the Google Fonts library.
 <details>
 <summary>Desktop</summary>
 
-|  Page | Screenshot  | Notes  |  
+|  Page | Screenshot  | Deviation from wireframes  |  
 |---|---|---|
 | Home Page - Logged Out  | ![Home page for logged out users on desktop](documentation/readme/wireframes/home-logged-out-desktop.png)  |   | 
-| All Tasks  | ![All Tasks on desktop](documentation/readme/wireframes/all-tasks-desktop.png)  |   | 
-| My Assigned Tasks  | ![My Assigned Tasks on mobile](documentation/readme/wireframes/my-assigned-tasks-desktop.png)  |   | 
-| My Tasks  | ![My Tasks on mobile](documentation/readme/wireframes/my-tasks-desktop.png)  |   | 
-| Task  | ![Task on desktop](documentation/readme/wireframes/task-desktop.png)  |   | 
-| Profile  | ![Profile on desktop](documentation/readme/wireframes/profile-desktop.png)  |   | 
+| All Tasks  | ![All Tasks on desktop](documentation/readme/wireframes/all-tasks-desktop.png)  | Dashboard has not been implemented yet, this is planned for future development  | 
+| My Assigned Tasks  | ![My Assigned Tasks on mobile](documentation/readme/wireframes/my-assigned-tasks-desktop.png)  | Dashboard has not been implemented yet, this is planned for future development  | 
+| My Tasks  | ![My Tasks on mobile](documentation/readme/wireframes/my-tasks-desktop.png)  | Dashboard has not been implemented yet, this is planned for future development  | 
+| Task  | ![Task on desktop](documentation/readme/wireframes/task-desktop.png)  | Due date assignment is planned for future development. <br> Categories, priority levels & status were styles like labels to appear more visually appealing. <br> Status change button was added to improve the UI  | 
+| Profile  | ![Profile on desktop](documentation/readme/wireframes/profile-desktop.png)  | Tabs were added that filter the user's assigned tasks by "In Progress" & "Completed", allowing the user to reopen closed tasks if they need to  | 
 
 </details>
 
 <details>
 <summary>Mobile</summary>
 
-|  Page | Screenshot  | Notes  |  
+|  Page | Screenshot  | Deviation from wireframes |  
 |---|---|---|
 | Home  | ![Home page on mobile](documentation/readme/wireframes/home-logged-out-mobile.png)  |   | 
-| Tasks (All Tasks, My Created Tasks, My Assigned Tasks)  | ![Tasks (All Tasks, My Created Tasks, My Assigned Tasks) on mobile](documentation/readme/wireframes/tasks-mobile.png)  |   | 
-| Profile  | ![Profile on mobile](documentation/readme/wireframes/profile-mobile.png)  |   | 
+| Tasks (All Tasks, My Created Tasks, My Assigned Tasks)  | ![Tasks (All Tasks, My Created Tasks, My Assigned Tasks) on mobile](documentation/readme/wireframes/tasks-mobile.png)  | Dashboard has not been implemented yet, this is planned for future development  | 
+| Profile  | ![Profile on mobile](documentation/readme/wireframes/profile-mobile.png)  | Tabs were added that filter the user's assigned tasks by "In Progress" & "Completed", allowing the user to reopen closed tasks if they need to  | 
 
 </details>
 
@@ -162,6 +367,7 @@ Both of the fonts above were obtained from the Google Fonts library.
 - [Git](https://git-scm.com/): to commit & push the code to GitHub for version control.
 - [Heroku](https://dashboard.heroku.com/): to deploy the app.
 - [ChromeDevTools](https://developer.chrome.com/docs/devtools) for debugging and manual testing.
+- [AmIResponsive](https://ui.dev/amiresponsive): to test for responsiveness.
 - [Balsamiq](https://balsamiq.com/): to create the wireframes.
 - [Google Fonts](https://fonts.google.com/): to import the "Fredoka" & "Raleway" fonts.
 - [FontAwesome](https://fontawesome.com/): to import the icons used throughout the app.
@@ -235,8 +441,8 @@ The steps below can be followed to deploy the application:
 
 1. In your repository, navigate to ``src/api/axiosDefaults.js``. 
 2. Replace the current axios.defaults.baseURL with your own deployed API URL.
-    1. This can be found by navigating to your Heroku dashboard, clicking on your deployed API's app name, clicking on "Open App" at the top of the page and copying the app's url.
-
+    1. This can be found by navigating to your Heroku dashboard, clicking on your deployed API's app name, clicking on "Open App" at the top of the page and copying the app's url. If you have not deployed your API yet, the steps to do so can be found [here](https://github.com/akirby23/drf-tasked?tab=readme-ov-file#deployment).
+    
 ### Create the app
 1. Create a Heroku account on [heroku.com](https://heroku.com/)
 2. From the top right hand corner of the dashboard, click "New", then click "Create new app".
@@ -280,5 +486,9 @@ Resources used for assistance with debugging:
     - Credit to [mostkingto](https://www.vecteezy.com/vector-art/20765399-default-profile-account-unknown-icon-black-silhouette) for the default profile picture.
 
 ### Acknowledgements
+
+- I would like to thank my Code Insitute mentor, Mo Shami, for his support & guidance throughout the development of this project. 
+- I would also like to thank Thomas & John from the tutor support team at Code Institute for helping me to troubleshoot an issue that I was having with implementing comment editing functionality.
+- Special thanks to [Josip](https://github.com/josipcodes) for the daily standups. I couldn't have asked for a better accountability buddy!
 
 [Back to the top](#tasked)
